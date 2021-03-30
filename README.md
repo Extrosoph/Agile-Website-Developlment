@@ -42,7 +42,7 @@ Find a partner(s) with (ideally with common interests) and come up with a theme 
 4. The website must use HTML5, and CSS. The HTML and CSS must pass this validator.
 5. The website must work on Chrome, Firefox and Microsoft Edge
 6. The website should have at least six pages/sections:
-  1. * one promoting the theme and purpose to users;
+       * one promoting the theme and purpose to users;
   * a registration/login page for new or returning users;
   * one or more pages presenting content to users;
   * one or more pages for users to complete assessments;
