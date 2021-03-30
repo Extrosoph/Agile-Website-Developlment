@@ -43,11 +43,11 @@ Find a partner(s) with (ideally with common interests) and come up with a theme 
 5. The website must work on Chrome, Firefox and Microsoft Edge
 6. The website should have at least six pages/sections:
    * one promoting the theme and purpose to users;
-  * a registration/login page for new or returning users;
-  * one or more pages presenting content to users;
-  * one or more pages for users to complete assessments;
-  * one page giving feedback to the user;
-  * one page showing aggregate results and usage statsitics
+   * a registration/login page for new or returning users;
+   * one or more pages presenting content to users;
+   * one or more pages for users to complete assessments;
+   * one page giving feedback to the user;
+   * one page showing aggregate results and usage statsitics
 7. There must be a consistent style (via css file) for all pages yet each page should be easily identifiable.
 
 **Marking Scheme**
