@@ -1,5 +1,5 @@
 # Project Description
-** Due 6p, May 17 2021 **
+**Due 6p, May 17 2021**
 ## Project Description
 
 For this project you are required to build an online formative assessment. That is, you should write a web application that simulates a learning experience like a laboratory, and applies some assessment and feedback at the end. The application should be written using HTML, CSS, Flask, AJAX, JQuery, and Bootstrap. The application should allow uses to register, progress through a series of activities saving their progress, complete an assessment at the end, and receive meaningful feedback on their performance. The context of the questions and the type of assessment mechanism is up to you.
