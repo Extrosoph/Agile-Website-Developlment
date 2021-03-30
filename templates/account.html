@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Account{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/account.css')}}">
+<div class="header">
+    <image src="{{ url_for('static', filename='images/defaultAvatar.jpg')}}" class="avatar"></image>
+    <header>{{username}}</header>
+</div>
+{% endblock %}

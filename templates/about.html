@@ -1,0 +1,148 @@
+{%extends "base.html" %}
+{% block title %}About Me{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css')}}">
+<div class="header">
+    <image src="{{ url_for('static', filename='images/avatar.jpg')}}" class="avatar" ></image>
+    <header>Theo Andily [Extrosoph]</header>
+    <a href="https://www.facebook.com/theo.andily" class="fa fa-facebook"></a>
+    <a href="https://twitter.com/AndilyTheo" class="fa fa-twitter"></a>
+    <a href="https://www.youtube.com/channel/UCvQVevWDXYO_qN4xUIHjmxw" class="fa fa-youtube"></a>
+    <a href="https://www.instagram.com/theoandily/" class="fa fa-instagram"></a>
+    <a href="https://www.linkedin.com/in/theoridho-andily-283182186/" class="fa fa-linkedin"></a>
+</div>
+<body>
+<h1 class="center-align bold"><i>Who am I?</i></h1>
+<p class="center-align">A student studying studying Comp Sci and Data Sci in University of Western Australia, currently in third and final year hoping to soon join an internship program.</br>
+    Born in Indonesia and moved to Perth in 2010 until now. Occasional hobbies includes playing pc games as well as learning the piano, currently still a beginner.</br>
+</p>
+<h3 class="center-align bold"><i>Get In Touch!</i></h3>
+<address class="center-align">
+    <p>Email me at
+        <a href="mailto:theoridho@hotmail.com">theoridho@hotmail.com</a>
+        for any enquiries.
+    </p>
+</address>
+<h1 class="center-align bold"><i>Current University Timetable</i></h1>
+<table class="center" border="3">
+    <tr>
+        <th>Time</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+    </tr>
+    <tr>
+        <td>9am</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td bgcolor="#ffc0cb"><a href="https://teaching.csse.uwa.edu.au/units/CITS3403/">Agile Web Dev Workshop</a> <b>[CIT3403]</b>: </br>
+            Online on Team
+        </td>
+    </tr>
+    <tr>
+        <td>10am</td>
+        <td></td>
+        <td bgcolor="#ffa500"><a href="https://teaching.csse.uwa.edu.au/units/CITS3003/">Graphics and Animations Lecture-2</a> <b>[CITS3003]</b>: </br>
+            <a href="https://www.google.com/maps/dir//ENCM:+%5B+G04%5D+Engineering+Lecture+Theatre+2,+37+Fairway,+Crawle
+            y+WA+6009/@-31.9791005,115.8167473,17.95z/data=!4m16!1m6!3m5!1s0x2a32a4ee03c166ff:0xe738cc6eb5540368!2sENCM:
+            +%5B+G04%5D+Engineering+Lecture+Theatre+2!8m2!3d-31.9803239!4d115.8169447!4m8!1m0!1m5!1m1!1s0x2a32a4ee03c166
+            ff:0xe738cc6eb5540368!2m2!1d115.8169447!2d-31.9803239!3e3">Harold and Margaret Clough Engineering Lecture
+                Theatre 1</a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>11am</td>
+        <td></td>
+        <td bgcolor="#add8e6"><a href="https://handbooks.uwa.edu.au/unitdetails?code=JAPN1401">Japanese1, LangClas-01</a> <b>[JAPN1401]</b>: </br>
+            <a href="https://www.google.com/maps/dir//UWA+Law+School+Moot+Court,+Crawley+WA+6009/@-31.9794271,115.817607
+            7,17z/data=!4m16!1m6!3m5!1s0x2a32a4ee88789355:0x9c534d885e8dc5db!2sUWA+Law+School+Moot+Court!8m2!3d-31.97943
+            17!4d115.8197964!4m8!1m0!1m5!1m1!1s0x2a32a4ee88789355:0x9c534d885e8dc5db!2m2!1d115.8197964!2d-31.9794317!3e3
+            ">Moot Court</a>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>12pm</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td bgcolor="#ffa500" rowspan="2"><a href="https://teaching.csse.uwa.edu.au/units/CITS3003/">Graphics and Animation Lab</a> <b>[CIT3003]</b>: </br>
+            <a href="https://www.google.com/maps/dir//Computer+Science+and+Software+Engineering,+35+Stirling+Hwy,+Crawle
+            y+WA+6009/@-31.9776461,115.8140331,17z/data=!4m16!1m6!3m5!1s0x2a32a4f02f644639:0x81d6a3411692e3a!2sComputer+
+            Science+and+Software+Engineering!8m2!3d-31.9776461!4d115.8162218!4m8!1m0!1m5!1m1!1s0x2a32a4f02f644639:0x81d6
+            a3411692e3a!2m2!1d115.8162218!2d-31.9776461!3e3">CSSE 201</a>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>1pm</td>
+        <td bgcolor="#ffa500"><a href="https://teaching.csse.uwa.edu.au/units/CITS3003/">Graphics and Animations Lecture-1</a> <b>[CITS3003]</b>: </br>
+            <a href="https://www.google.com/maps/dir//Weatherburn+Lecture+Theatre,+35+Stirling+Hwy,+Crawley+WA+6009/@-31
+            .9791293,115.8143968,17z/data=!4m16!1m6!3m5!1s0x2a32a4f1df4d0f8d:0x7df2326c8a87e6dd!2sWeatherburn+Lecture+Th
+            eatre!8m2!3d-31.9791293!4d115.8165855!4m8!1m0!1m5!1m1!1s0x2a32a4f1df4d0f8d:0x7df2326c8a87e6dd!2m2!1d115.8165
+            855!2d-31.9791293!3e3">Weatherburn Lecture Theatre</a>
+        </td>
+        <td></td>
+        <td bgcolor="#ffc0cb" rowspan="3"><a href="https://teaching.csse.uwa.edu.au/units/CITS3403/">Agile Web Dev Lecture </a> <b>[CIT3403]</b>: </br>
+            <a href="https://www.google.com/maps/dir//Alexander+Lecture+Theatre,+35+Stirling+Hwy,+Perth+Stirling+Hwy,+Pe
+            rth+WA+6009/@-31.9784366,115.8160371,17z/data=!4m16!1m6!3m5!1s0x2a32a4ee48b63b8b:0x4760f78ac2c9d3bd!2sAlexan
+            der+Lecture+Theatre!8m2!3d-31.9784366!4d115.8182258!4m8!1m0!1m5!1m1!1s0x2a32a4ee48b63b8b:0x4760f78ac2c9d3bd!
+            2m2!1d115.8182258!2d-31.9784366!3e3">Alexander Lecture Theatre</a>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2pm</td>
+        <td></td>
+        <td bgcolor="#00ff00" rowspan="2"><a href="https://handbooks.uwa.edu.au/unitdetails?code=MUSC2273">Electronic Music: Generative Process</a> <b>[MUSC2273]</b>: </br>
+            233 Mac Studio
+        </td>
+        <td bgcolor="#add8e6" rowspan="2"><a href="https://handbooks.uwa.edu.au/unitdetails?code=JAPN1401">Japanese 1, LangClas-02</a> <b>[JAPN1401]</b>: </br>
+            Law Lecture Room 1
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3pm</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4pm</td>
+        <td></td>
+        <td></td>
+        <td bgcolor="#ffc0cb" rowspan="3"><a href="https://teaching.csse.uwa.edu.au/units/CITS3403/">Agile Web Dev Lab</a> <b>[CIT3403]</b>: </br>
+            <a href="https://www.google.com/maps/dir//Computer+Science+and+Software+Engineering,+35+Stirling+Hwy,+Crawle
+            y+WA+6009/@-31.9776461,115.8140331,17z/data=!4m16!1m6!3m5!1s0x2a32a4f02f644639:0x81d6a3411692e3a!2sComputer+
+            Science+and+Software+Engineering!8m2!3d-31.9776461!4d115.8162218!4m8!1m0!1m5!1m1!1s0x2a32a4f02f644639:0x81d6
+            a3411692e3a!2m2!1d115.8162218!2d-31.9776461!3e3">CSSE 205</a>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>5pm</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6pm</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+</body>
+{% endblock %}

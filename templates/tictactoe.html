@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}TicTacToe{% endblock %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/tictactoe.css')}}">
+<!--<script type="text/javascript" src="{{ url_for('static',filename='javascript/tictactoe.js')}}"></script>-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<!--  <title>Tic-Tac-Toe</title>-->
+</head>
+<body>
+<div class="board circle" id="board">
+  <div class="cell x" data-cell></div>
+  <div class="cell circle" data-cell></div>
+  <div class="cell" data-cell></div>
+  <div class="cell" data-cell></div>
+  <div class="cell" data-cell></div>
+  <div class="cell" data-cell></div>
+  <div class="cell" data-cell></div>
+  <div class="cell" data-cell></div>
+  <div class="cell" data-cell></div>
+</div>
+<div class="winning-message" id="winningMessage">
+  <div data-winning-message-text></div>
+  <button id="restartButton">Restart</button>
+</div>
+</body>
+{% endblock %}
