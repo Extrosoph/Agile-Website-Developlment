@@ -1,2 +1,15 @@
 To Do:
-Plans
+
+1. MakeTeam
+2. Set team name and student numbers with the corresponding github account
+3. Choose a topic for the website
+4. Since we have to use flask it will be our main framework and it is preferred to use external css as its convenience to use in other files.
+5. Plan out how the user page will look like
+6. plan out how the login page will look like as wel as the JS required possibly use JQuery and Ajax
+7. plan out how the homepage will look like
+8. plan out other required pages.
+9. Choose sql db for storing data such as SQLite, mongoDB, postgreSQL, MariaDB or NoSQL
+10. Choose hashing algorithm for storing the password such as bcrypt, scrypt, sha256 or PBKDF2 not MD5
+11. Set task for each team member
+12. Set team meeting for other times
+13. Start working and Good Luck :) <3
