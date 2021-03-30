@@ -50,14 +50,14 @@ Find a partner(s) with (ideally with common interests) and come up with a theme 
   * one page showing aggregate results and usage statsitics
 7. There must be a consistent style (via css file) for all pages yet each page should be easily identifiable.
 
-** Marking Scheme **
+**Marking Scheme**
 * HTML5 - style, maintainability, validation **10%**
 * CSS -style, maintainability **10%**
 * Javascript-code quality, validation of user generated data, execution **15%**
 * Style - look and feel, usability **10%**
 * Content - coherence, effectiveness **5%**
 
-** Criteria: Backend functionality (50%) **
+**Criteria: Backend functionality (50%)**
 The second part of the project criteria is the back end functionality of web application. The web application should be implmented using Flask (any additional libraries/modules require unit coordinator approval), and provide at least the following functionality:
 1. A user account and login feature, (as a minimum for administrators)
 2. A method to complete tests and store progress.
@@ -70,9 +70,9 @@ Students should submit a complete Flask application providing the functionality 
 * all source code, with comments and attributions for any external libraries.
 * a requirements.txt file, listing all packages used. To build the requirements.txt file for your virtual environment, use the command: pip freeze > requirements.txt while your virtual environment is active.
 
-** Do not ** submit the virtual environment directory, or the .git directory. These are overly large, not required and will result in a penalty if they are submitted.
+**Do not** submit the virtual environment directory, or the .git directory. These are overly large, not required and will result in a penalty if they are submitted.
 
-** Marking Scheme **
+**Marking Scheme**
 * Codecode quality, complexity of task, execution **10%**
 * Persistence and User authentication Database schema and models **10%**
 * Testing Unit tests and Selenium Tests **10%**
