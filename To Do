@@ -9,6 +9,7 @@ To Do:
 7. plan out how the homepage will look like
 8. plan out other required pages.
 9. Choose sql db for storing data such as SQLite, mongoDB, postgreSQL, MariaDB or NoSQL
+10. Choose the required number of table and it`s attribute as well as normalisation
 10. Choose hashing algorithm for storing the password such as bcrypt, scrypt, sha256 or PBKDF2 not MD5
 11. Set task for each team member
 12. Set team meeting for other times
