@@ -1,6 +1,6 @@
 To Do:
 
-1. MakeTeam <-- (Stuck on this one)
+1. MakeTeam
 2. Set team name and student numbers with the corresponding github account
 3. Choose a topic for the website
 4. Since we have to use flask it will be our main framework and it is preferred to use external css as its convenience to use in other files.
