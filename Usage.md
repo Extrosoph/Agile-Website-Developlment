@@ -11,13 +11,13 @@
 ## windows:
 1. set FLASK_APP=webapp
 2. set FLASK_ENV=development
-3. pip install -e .
+3. pip3 install -e .
 4. flask run
 
 ## mac/linux:
 1. export FLASK_APP=webapp
 2. export FLASK_ENV=development
-3. pip install -e .
+3. pip3 install -e .
 4. flask run
 
 make sure you are in the main directory folder.
