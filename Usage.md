@@ -20,3 +20,4 @@
 3. pip install -e .
 4. flask run
 
+make sure you are in the main directory folder.
