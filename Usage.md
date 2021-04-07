@@ -9,7 +9,7 @@
 #How to run:
 
 ##windows:
-1. set flask=webapp
+1. set FLASK_APP=webapp
 2. set FLASK_ENV=development
 3. pip install -e .
 4. flask run

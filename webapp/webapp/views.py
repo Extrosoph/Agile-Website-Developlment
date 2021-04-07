@@ -9,14 +9,6 @@ def home():
 def user():
     return render_template("user.html", page='user')
 
-@app.route("/login")
-def login():
-    return render_template("login.html", page='login')
-
-@app.route("/admin")
-def admin():
-    return render_template("admin.html", page='admin')
-
 @app.route("/statistics")
 def statistic():
     return render_template("statistics.html", page='statistics')
