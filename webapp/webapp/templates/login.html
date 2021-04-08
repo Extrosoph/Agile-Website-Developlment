@@ -1,7 +1,7 @@
 {%extends "base.html" %}
 {% block title %}Login{% endblock %}
 {% block content %}
-<script type="text/javascript" src="{{ url_for('static',filename='javascript/first.js')}}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='javascript/login.js')}}"></script>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css')}}">
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <body>
@@ -11,11 +11,8 @@
         <input type="email" name="email" placeholder="Email">
     </div>
     <div class="input-box">
-        <input type="password" name="password" placeholder="Password" id="myInput">
-        <span class="eye" onclick="myFunction()">
-                <i id="hide1" class="fa fa-eye"></i>
-                <i id="hide2" class="fa fa-eye-slash"></i>
-        </span>
+        <input type="password" name="password" placeholder="Password" id="passwordInput">
+        <i id="eye" class="fa fa-eye"></i>
     </div>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -24,8 +21,9 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-    <button type="submit" class="button">Login</button>
-    <a href="/signup" class="button">Sign up</a>
+    <button type="submit" id="login" class="button">Login</button>
+    <button type="reset" id="signup" class="button">Sign up</button>
+
 </form>
 </body>
 {% endblock %}

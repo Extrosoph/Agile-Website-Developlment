@@ -1,16 +1,22 @@
-function passwordHide() {
-    var x = document.getElementById("myInput");
-    var y = document.getElementById("hide1");
-    var z = document.getElementById("hide2");
+$(document).ready(function() {
+    const password = $('#passwordInput') ;
+    //Function to show and hide password
+    $('#eye').click(function(){
+        if(password.prop('type') == 'password'){
+            $(this).addClass('fa-eye-slash');
+            password.attr('type','text')
+        }
+        else {
+            $(this).removeClass('fa-eye-slash');
+            password.attr('type','password');
+        }
+    })
 
-    if(x.type === 'password') {
-        x.type = "text";
-        y.style.display = "block";
-        z.style.display = "none";
-    }
-    else {
-        x.type = "password";
-        y.style.display = "none";
-        z.style.display = "block";
-    }
-}
+    //Function to make it into a Sign Up page
+    $('#signup').click(function() {
+        $('h1').text("Sign Up");
+        $('h1').after('<div class="input-box"><input type="username" name="username" placeholder="Username"></div>');
+        $('#login').remove();
+        $('#signup').attr('type', 'submit')
+    })
+})
