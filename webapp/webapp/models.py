@@ -1,5 +1,6 @@
-from webapp1 import app
+from webapp import app
 from flask_sqlalchemy import SQLAlchemy
+from bcrypt import gensalt, hashpw
 
 
 class User(db.Model):
@@ -7,18 +8,27 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), unique=False, nullable=False)
+    admin = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __init__(self, username, email, password):
+        salt = gensalt(rounds=12)
         self.username = username
         self.email = email
-        self.password = password
+        self.password = hashpw(password, salt)
+
+    #To check password if cehckpw(given password, hashed value): True or False
 
     def __repr__(self):
         return '<Post %r>' % self.id
 
 class Assessments(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
+    QuestionID = db.Column(db.String(50), nullable=False)
 
-    def __repr__(self):
-        return '<Category %r>' % self.name
+class Questions(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+class userAnswers(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+

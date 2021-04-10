@@ -5,12 +5,12 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css')}}">
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <body>
-<form class="form-box" method="post">
+<form class="form-box" method="post" id="myform">
     <h1>Login</h1>
     <div class="input-box">
         <input type="email" name="email" placeholder="Email">
     </div>
-    <div class="input-box">
+    <div class="input-box" id="password">
         <input type="password" name="password" placeholder="Password" id="passwordInput">
         <i id="eye" class="fa fa-eye"></i>
     </div>
@@ -22,8 +22,8 @@
         {% endif %}
     {% endwith %}
     <button type="submit" id="login" class="button">Login</button>
-    <button type="reset" id="signup" class="button">Sign up</button>
-
+    <p type="button" id="signup" class="button">Sign up</p>
+    <button type="button" id="forget-password" class="button">Forget Password</button>
 </form>
 </body>
 {% endblock %}
