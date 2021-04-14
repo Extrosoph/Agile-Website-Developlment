@@ -5,7 +5,7 @@ from secrets import token_urlsafe
 app = Flask(__name__)
 
 #Need to change secret key
-app.secret_key = toekn_urlsafe(18)
+app.secret_key = token_urlsafe(18)
 
 # db = SQLAlchemy(app)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
