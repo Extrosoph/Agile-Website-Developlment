@@ -1,4 +1,4 @@
-from webapp import app
+from app import app
 from flask_sqlalchemy import SQLAlchemy
 from bcrypt import gensalt, hashpw
 

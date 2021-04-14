@@ -1,4 +1,4 @@
-from webapp import app
+from app import app
 from flask import  redirect, url_for, render_template, request, session, flash
 
 @app.route("/login", methods=["POST", "GET"])
