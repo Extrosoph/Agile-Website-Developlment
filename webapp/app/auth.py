@@ -1,5 +1,7 @@
 from app import app
 from flask import  redirect, url_for, render_template, request, session, flash
+from app.models import User, db
+
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
@@ -11,11 +13,33 @@ def login():
             session['logged_in'] = False
             username = request.form['username']
             email = request.form['email']
+            password = request.form["password"]
+            current_user_email = User.query.filter_by(email=email).first()
+            current_user_username = User.query.filter_by(email=email).first()
 
-            # Check if there is another user with the same email and/or username
-            # If true flash already used for both email and username
-            password = request.form['password']
-            return render_template("user.html", user=username)
+            # If username is taken
+            if current_user_username is not None:
+                flash("The provided username is already taken!")
+
+                # need to fix with jquery
+                return render_template("login.html", page='login')
+
+            #If email is already registered
+            elif current_user_email is not None:
+                flash("The provided email is already registered!")
+
+                # need to fix with jquery
+                return render_template("login.html", page='login')
+
+            # Create a new user account and redirect to user.html
+            else:
+                newUser = User(username=username, email=email, password=password, admin=False)
+                db.sessions.add(newUser)
+                db.session.commit()
+
+                # Logged them in
+                session['logged_in'] = True
+                return render_template("user.html", username=username, page='user')
 
         # if the page is a login
         else:
