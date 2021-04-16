@@ -1,5 +1,5 @@
-.idea
-venv
+.idea/
+venv/
 LICENSE
 users.sqlite3
 
