@@ -3,21 +3,20 @@ from flask_sqlalchemy import SQLAlchemy
 from bcrypt import gensalt, hashpw
 
 db = SQLAlchemy(app)
+db.create_all()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
-    admin = db.Column(db.Boolean(), nullable=False)
+    admin = db.Column(db.Boolean(), default=False)
 
     def __init__(self, username, email, password):
         salt = gensalt(rounds=12)
         self.username = username
         self.email = email
-        self.password = hashpw(password, salt)
-
-    #To check password if cehckpw(given password, hashed value): True or False
+        self.password = hashpw(password.encode(), salt)
 
     def __repr__(self):
         return '<Post %r>' % self.id

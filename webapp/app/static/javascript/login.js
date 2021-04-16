@@ -12,16 +12,6 @@ $(document).ready(function() {
         }
     })
 
-    //Function to make it into a Sign Up page
-    $('#signup').click(function() {
-        $('h1').text("Sign Up");
-        $('h1').after('<div class="input-box"><input type="username" name="username" placeholder="Username"></div>');
-        $('#login').remove();
-        $('#forget-password').remove();
-        $('#signup').remove();
-        $('#myform').append('<button type="submit" id="signup" class="button">Sign up</button>')
-    })
-
     //Function to make it into a Forget Password page
     $('#forget-password').click(function() {
         $('h1').text("Forget Password");

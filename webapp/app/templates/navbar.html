@@ -13,12 +13,12 @@
           <a class="nav-link {% if page == 'assessment' %}active{% endif %} " href="/assessment">Assessment</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if page == 'user' %}active{% endif %} " href="/user">User</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link {% if page == 'statistics'%}active{% endif %} " href="/statistics">Statistics</a>
         </li>
         {% if session['logged_in'] == True%}
+        <li class="nav-item">
+          <a class="nav-link {% if page == 'user' %}active{% endif %} " href="/user">User</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
         </li>
