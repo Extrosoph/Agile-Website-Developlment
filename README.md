@@ -20,4 +20,9 @@
 3. pip3 install -e .
 4. flask run
 
+*Still trying to figure out how to use
+virtual environment :)
+
+*Will create a simple ERD soon too :)
+
 make sure you are in the main directory folder.

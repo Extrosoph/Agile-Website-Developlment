@@ -1,10 +1,21 @@
 from app import app
 from flask_sqlalchemy import SQLAlchemy
 from bcrypt import gensalt, hashpw
+
+# Preparation for migration
+# from flask_script import Manager
+# from flask_migrate import Migrate, MigrateCommand
 from datetime import datetime
 
 db = SQLAlchemy(app)
-db.create_all()
+
+# Preparation for migration
+# migrate = Migrate(app, db)
+#
+#
+# manager = Manager(app)
+# manager.add_command('db', MigrateCommand)
+# manager.run()
 
 class User(db.Model):
     __tablename__ = 'user'
@@ -84,7 +95,7 @@ class Score(db.Model):
     def __repr__(self):
         return '<user: {} assessment: {} score: {}'.format(self.user, self.assessmentId, self.score)
 
-
+db.create_all()
 
 
 
