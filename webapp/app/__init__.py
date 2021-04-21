@@ -1,4 +1,4 @@
-from flask import Flask, session
+from flask import Flask, session, Blueprint
 from datetime import timedelta
 from secrets import token_urlsafe
 
@@ -11,4 +11,16 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 #Set session variable to last only for 5 mintues instead of 30 days.
 app.permanent_session_lifetime = timedelta(minutes=5)
 
-from app import views, auth, models
+# Import the blueprints
+from app import models
+from app.views import home_bp, user_bp, statistics_bp, assessment_bp
+from app.auth import login_bp, signup_bp, logout_bp
+
+# Register the blueprints
+app.register_blueprint(home_bp)
+app.register_blueprint(user_bp)
+app.register_blueprint(statistics_bp)
+app.register_blueprint(assessment_bp)
+app.register_blueprint(login_bp)
+app.register_blueprint(signup_bp)
+app.register_blueprint(logout_bp)

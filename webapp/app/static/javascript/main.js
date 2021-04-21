@@ -32,7 +32,7 @@ $(document).ready(function() {
 
             $('#login').click(function() {
                 if ($('#email').val().length === 0 || $('#passwordInput').val().length === 0) {
-                    alert('Need to fill all fields!');
+                    alert('Need to fill all fields!')
                     return false;
                 }
             })
@@ -41,11 +41,31 @@ $(document).ready(function() {
         else {
             $('#signup').click(function() {
                 if ($('#email').val().length === 0 || $('#passwordInput').val().length === 0 || $('#username').val().length === 0) {
-                    alert('Need to fill all fields!');
+                    alert('Need to fill all fields!')
+                    return false;
+                }
+
+                // Password checking for stronger password
+                if ($('#passwordInput').val().length < 7) {
+                    alert('Password requires at least 8 characters!')
+                    return false;
+                }
+
+                if ($('#passwordInput').val().search('/[a-z]/') < 1) {
+                    alert('Password requires lowercase characters!')
+                    return false;
+                }
+
+                if ($('#passwordInput').val().search('/[A-Z]/') < 1) {
+                    alert('Password requires uppercase characters!')
+                    return false;
+                }
+
+                if ($('#passwordInput').val().search('/[0-9]/') < 1) {
+                    alert('Password requires numbers!')
                     return false;
                 }
             })
         }
     }
-
 })
