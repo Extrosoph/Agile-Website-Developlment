@@ -68,4 +68,23 @@ $(document).ready(function() {
             })
         }
     }
+
+    //Variable for event handler
+    //Need to fix
+    var isActive = true;
+    if (lastPathSegment == 'admin') {
+        /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+        $('#menus').click(function() {
+            if (isActive) {
+                $('#mySidenav').css('width') = '250px';
+                $('#main').style['margin-left'] = '250px';
+                isActive = false
+            }
+            else {
+                $('#mySidenav').css('width') = '0px';
+                $('#main').style['margin-left'] = '0px';
+                isActive = false;
+            }
+        })
+    }
 })

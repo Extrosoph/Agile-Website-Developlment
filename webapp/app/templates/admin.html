@@ -1,5 +1,19 @@
 {%extends "base.html" %}
-{% block title %}Home Page{% endblock %}
+{% block title %}Admin{% endblock %}
 {% block content %}
-<h1>Admin</h1>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin.css')}}">
+<div id="mySidenav" class="sidenav">
+  <a href="/home">About</a>
+  <a href="/assessment">Services</a>
+  <a href="/statistics">Clients</a>
+  <a href="/login">Contact</a>
+</div>
+
+<!-- Use any element to open the sidenav -->
+<button id="menus">open</button>
+
+<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+<div id="main">
+  <h1>Admin</h1>
+</div>
 {% endblock %}
