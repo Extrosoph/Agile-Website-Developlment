@@ -1,8 +1,7 @@
 from app import app
-from flask import  redirect, url_for, render_template, request, session, flash
+from flask import  redirect, url_for, render_template, request, session, flash, Blueprint
 from app.models import User, db
 from bcrypt import checkpw
-from flask import Blueprint
 
 login_bp = Blueprint('login_bp', __name__)
 signup_bp = Blueprint('signup_bp', __name__)

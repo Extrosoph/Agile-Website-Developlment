@@ -7,6 +7,10 @@ from bcrypt import gensalt, hashpw
 # from flask_migrate import Migrate, MigrateCommand
 from datetime import datetime
 
+# App configuration for the database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///baseModel.sqlite3'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(app)
 
 # Preparation for migration
