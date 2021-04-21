@@ -11,14 +11,16 @@
 ## windows:
 1. set FLASK_APP=app
 2. set FLASK_ENV=development
-3. pip3 install -e .
-4. flask run
+3. cd webapp 
+4. pip3 install -e .
+5. flask run
 
 ## mac/linux:
 1. export FLASK_APP=webapp
 2. export FLASK_ENV=development
-3. pip3 install -e .
-4. flask run
+3. cd webapp 
+4. pip3 install -e .
+5. flask run
 
 *Still trying to figure out how to use
 virtual environment :)
