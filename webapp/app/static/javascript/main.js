@@ -51,17 +51,17 @@ $(document).ready(function() {
                     return false;
                 }
 
-                if ($('#passwordInput').val().search('/[a-z]/') < 1) {
+                if (/[a-z]/.test($('#passwordInput').val()) == false) {
                     alert('Password requires lowercase characters!')
                     return false;
                 }
 
-                if ($('#passwordInput').val().search('/[A-Z]/') < 1) {
+                if (/[A-Z]/.test($('#passwordInput').val()) == false) {
                     alert('Password requires uppercase characters!')
                     return false;
                 }
 
-                if ($('#passwordInput').val().search('/[0-9]/') < 1) {
+                if (/[0-9]/.test($('#passwordInput').val()) == false) {
                     alert('Password requires numbers!')
                     return false;
                 }
@@ -73,18 +73,15 @@ $(document).ready(function() {
     //Need to fix
     var isActive = true;
     if (lastPathSegment == 'admin') {
-        /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+        // Function to add the menu items and move everything to the right
         $('#menus').click(function() {
-            if (isActive) {
-                $('#mySidenav').css('width') = '250px';
-                $('#main').style['margin-left'] = '250px';
-                isActive = false
-            }
-            else {
-                $('#mySidenav').css('width') = '0px';
-                $('#main').style['margin-left'] = '0px';
-                isActive = false;
-            }
+            $('#mySidenav').css('width', '250px');
+            $('#main').css('margin-left', '250px');
+        })
+
+        $('#close').click(function() {
+            $('#mySidenav').css('width', '0px');
+                $('#main').css('margin-left', '0px');
         })
     }
 })

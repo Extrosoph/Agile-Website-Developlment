@@ -3,14 +3,13 @@
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin.css')}}">
 <div id="mySidenav" class="sidenav">
-  <a href="/home">About</a>
-  <a href="/assessment">Services</a>
+  <a href="javascript:void(0)" class="closebtn" id="close">&times;</a>
+  <a href="/assessment">Assessment</a>
+  <a href="/user">Users</a>
   <a href="/statistics">Clients</a>
-  <a href="/login">Contact</a>
 </div>
 
-<!-- Use any element to open the sidenav -->
-<button id="menus">open</button>
+<span id="menus">&#8801;Menu</span>
 
 <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 <div id="main">

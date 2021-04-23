@@ -6,13 +6,13 @@
 <form class="form-box" method="post">
     <h1>Sign Up</h1>
     <div class="input-box">
-        <input id="username" type="text" name="username" placeholder="Username">
+        <input id="username" type="text" name="username" placeholder="Username" maxlength="40">
     </div>
     <div class="input-box">
-        <input id="email" type="email" name="email"placeholder="Email">
+        <input id="email" type="email" name="email"placeholder="Email" maxlength="256">
     </div>
     <div class="input-box" id="password">
-        <input type="password" name="password" placeholder="Password" id="passwordInput">
+        <input type="password" name="password" placeholder="Password" id="passwordInput" maxlength="200">
         <i id="eye" class="fa fa-eye"></i>
     </div>
     {% with messages = get_flashed_messages() %}
