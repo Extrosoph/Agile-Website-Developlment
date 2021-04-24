@@ -70,7 +70,7 @@ def signup():
             return render_template("user.html", username=username, page='user')
 
     else:
-        return render_template("signup.html", page=signup)
+        return render_template("signup.html", page='signup')
 
 @logout_bp.route("/logout")
 def logout():

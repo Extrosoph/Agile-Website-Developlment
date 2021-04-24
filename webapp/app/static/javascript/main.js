@@ -2,7 +2,7 @@ $(document).ready(function() {
     var href = document.location.href;
     var lastPathSegment = href.substr(href.lastIndexOf('/') + 1);
 
-    //Check what page it is on
+    //Js for login and signup page
     if(lastPathSegment == 'login' || lastPathSegment == 'signup') {
 
         //Function to show and hide password
@@ -18,7 +18,7 @@ $(document).ready(function() {
             }
         })
 
-        //Check if forms are empty depending on the page
+        //Js for login page
         if(lastPathSegment == 'login') {
             //Cool function to add later
             $('#forget-password').click(function() {
@@ -38,6 +38,7 @@ $(document).ready(function() {
             })
         }
 
+        //Js for signup page
         else {
             $('#signup').click(function() {
                 if ($('#email').val().length === 0 || $('#passwordInput').val().length === 0 || $('#username').val().length === 0) {
@@ -69,9 +70,7 @@ $(document).ready(function() {
         }
     }
 
-    //Variable for event handler
-    //Need to fix
-    var isActive = true;
+    //Js for admin page
     if (lastPathSegment == 'admin') {
         // Function to add the menu items and move everything to the right
         $('#menus').click(function() {
@@ -84,4 +83,33 @@ $(document).ready(function() {
                 $('#main').css('margin-left', '0px');
         })
     }
+
+    //Js for adminAssessment page
+    if (lastPathSegment == 'adminAssessment') {
+        // Function to add the menu items and move everything to the right
+        $('#menus').click(function() {
+            $('#mySidenav').css('width', '250px');
+            $('#main').css('margin-left', '250px');
+        })
+
+        $('#close').click(function() {
+            $('#mySidenav').css('width', '0px');
+                $('#main').css('margin-left', '0px');
+        })
+    }
+
+    //Js for adminAssessment page
+    if (lastPathSegment == 'adminUser') {
+        // Function to add the menu items and move everything to the right
+        $('#menus').click(function() {
+            $('#mySidenav').css('width', '250px');
+            $('#main').css('margin-left', '250px');
+        })
+
+        $('#close').click(function() {
+            $('#mySidenav').css('width', '0px');
+                $('#main').css('margin-left', '0px');
+        })
+    }
+
 })
