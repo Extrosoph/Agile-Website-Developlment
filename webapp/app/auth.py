@@ -18,17 +18,17 @@ def login():
         current_user_username = User.query.filter_by(username=email).first()
 
         # If the given email does not have an account
-        if current_user_email is None or current_user_username is None:
+        if current_user_email is None and current_user_username is None:
             flash("Need to create an account")
             return redirect(url_for("login_bp.login", page='login'))
 
         # Check if the given password is correct
         else:
-            if checkpw(request.form['password'].encode(), current_user_email.password) == True:
+            if current_user_email is not None and checkpw(request.form['password'].encode(), current_user_email.password) == True:
                 session['logged_in'] = True
                 return render_template("user.html", page='user', user=current_user_email)
 
-            elif checkpw(request.form['password'].encode(), current_user_username.password) == True:
+            elif current_user_username is not None and checkpw(request.form['password'].encode(), current_user_username.password) == True:
                 session['logged_in'] = True
                 return render_template("user.html", page='user', user=current_user_username)
 
