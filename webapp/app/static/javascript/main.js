@@ -86,6 +86,10 @@ $(document).ready(function() {
 
     //Js for adminAssessment page
     if (lastPathSegment == 'adminAssessment') {
+        var len = {{ assessmentLen|safe }} ;
+        if (len == 0) {
+            $('div').append('<table class="category"><tr><th><a herf="/newAssessment" > Create a new category</a></th></tr></table>');
+        }
         // Function to add the menu items and move everything to the right
         $('#menus').click(function() {
             $('#mySidenav').css('width', '250px');

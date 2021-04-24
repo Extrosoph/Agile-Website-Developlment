@@ -53,3 +53,9 @@
     font-size: 30px;
     color: #808080;
 }
+
+.category {
+    border-style: solid;
+    border-radius: 25px;
+    padding: 10px;
+}
