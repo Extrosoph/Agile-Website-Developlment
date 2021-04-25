@@ -10,18 +10,17 @@ TODO:
 
 ** NEED TO GET CONTENT ASAP **
 
-1. Understand how to use virtual environment for windows
-2. Get some templates for homepage, assessment and etc
-3. Choose a good template design made by Isaac
-4. Fix some issues with login CSS
-5. Test if all the models in the database work
-6. Try to implement migration for the database changes
-7. Start adding content
-8. Get Saksham to understand the unit testing for the website and
+1. Get some templates for homepage, assessment and etc
+2. Choose a good template design made by Isaac
+3. Fix some issues with login CSS
+4. Test if all the models in the database work
+5. Try to implement migration for the database changes
+6. Start adding content
+7. Get Saksham to understand the unit testing for the website and
    create a python script using selenium to test the website
-9. Start adding content
+8. Start adding content
 
 ** Things to do once all is complete **
-10. Complete the website and the unit testing
-11. Prepare for the presentation
+9. Complete the website and the unit testing
+10. Prepare for the presentation
 

@@ -6,6 +6,10 @@
 3. Commit to main local
 4. Push to main remote
 
+# How to use venv:
+1. Make sure you are in the cits3403-Website-Project directory
+2. run venv\Scripts\activate.bat on windows
+3. run source venv\Scripts\activate on mac
 # How to run:
 
 ## windows:
