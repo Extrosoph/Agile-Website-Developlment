@@ -55,7 +55,8 @@
 }
 
 .category {
+    border-color: #808080;
     border-style: solid;
-    border-radius: 25px;
-    padding: 10px;
+    border-radius: 30px;
+    padding: 5px;
 }

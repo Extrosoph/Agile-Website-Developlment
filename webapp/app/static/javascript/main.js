@@ -1,3 +1,10 @@
+function passAssessment(param) {
+    console.log(typeof param);
+    if (param == 0) {
+        $('#main').append('<table><tr><th><a herf="/newAssessment" class="category" id="newCategory"> Create a new category</a></th></tr></table>');
+    }
+}
+
 $(document).ready(function() {
     var href = document.location.href;
     var lastPathSegment = href.substr(href.lastIndexOf('/') + 1);
@@ -86,10 +93,10 @@ $(document).ready(function() {
 
     //Js for adminAssessment page
     if (lastPathSegment == 'adminAssessment') {
-        var len = {{ assessmentLen|safe }} ;
-        if (len == 0) {
-            $('div').append('<table class="category"><tr><th><a herf="/newAssessment" > Create a new category</a></th></tr></table>');
-        }
+        $('#newCategory').click(function() {
+
+
+        })
         // Function to add the menu items and move everything to the right
         $('#menus').click(function() {
             $('#mySidenav').css('width', '250px');
