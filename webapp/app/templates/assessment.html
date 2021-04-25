@@ -1,5 +1,12 @@
 {%extends "base.html" %}
 {% block title %}Assessments{% endblock %}
 {% block content %}
-<h1>Assessments</h1>
+<div class="gen">
+    <h1>Assessments</h1>
+    <p>Select an assessment from the list below to start the module</p>
+    {#get this to work#}
+    {% if session['logged_in'] == False %}
+    <p>Log in to save and track your progress</p>
+    {% endif %}
+</div>
 {% endblock %}
