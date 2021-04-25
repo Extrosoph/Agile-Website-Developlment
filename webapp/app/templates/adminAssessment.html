@@ -3,6 +3,7 @@
 {% block content %}
 <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 <div id="main">
-  <h1>Admin</h1>
+  <h1>Assessments</h1>
+  <script type="text/javascript" src="{{ url_for('static',filename='javascript/main.js')}}" onload="passAssessment({{assessmentLen|safe}})"></script>
 </div>
 {% endblock %}
