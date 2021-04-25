@@ -4,6 +4,13 @@
 <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 <div id="main">
   <h1>Assessments</h1>
-  <script type="text/javascript" src="{{ url_for('static',filename='javascript/main.js')}}" onload="passAssessment({{assessmentLen|safe}})"></script>
+  <table id="assessmentTable">
+    {% if assessmentLen > 0 %}
+      {% for assessment in assessments %}
+        <tr><th><p>assessment.category</p></th></tr>
+      {% endfor %}
+    {% endif %}
+    <tr><th><p class="category" id="newCategory"> Create a new category</p></th></tr>
+  </table>
 </div>
 {% endblock %}

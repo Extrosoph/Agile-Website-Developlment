@@ -17,12 +17,7 @@ def adminAssessment():
         return render_template("adminAssessment.html", page='admin')
     else:
         assessment = Assessment.query.all()
-        print(len(assessment))
-        if len(assessment) == 0:
-            print('a')
-            return render_template("adminAssessment.html", page='admin', assessmentLen=dumps(len(assessment)), assessment=map(dumps, assessment))
-        return render_template("adminAssessment.html", page='admin')
-
+        return render_template("adminAssessment.html", page='admin', assessmentLen=len(assessment), assessment=assessment)
 @adminUser_bp.route("/adminUser", methods=["POST", "GET"])
 def adminUser():
     return render_template("adminUser.html", page='admin')
