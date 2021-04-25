@@ -1,8 +1,15 @@
+function passAssessment(param) {
+    console.log(typeof param);
+    if (param == 0) {
+        $('#main').append('<table><tr><th><a herf="/newAssessment" class="category" id="newCategory"> Create a new category</a></th></tr></table>');
+    }
+}
+
 $(document).ready(function() {
     var href = document.location.href;
     var lastPathSegment = href.substr(href.lastIndexOf('/') + 1);
 
-    //Check what page it is on
+    //Js for login and signup page
     if(lastPathSegment == 'login' || lastPathSegment == 'signup') {
 
         //Function to show and hide password
@@ -18,7 +25,7 @@ $(document).ready(function() {
             }
         })
 
-        //Check if forms are empty depending on the page
+        //Js for login page
         if(lastPathSegment == 'login') {
             //Cool function to add later
             $('#forget-password').click(function() {
@@ -38,6 +45,7 @@ $(document).ready(function() {
             })
         }
 
+        //Js for signup page
         else {
             $('#signup').click(function() {
                 if ($('#email').val().length === 0 || $('#passwordInput').val().length === 0 || $('#username').val().length === 0) {
@@ -51,21 +59,68 @@ $(document).ready(function() {
                     return false;
                 }
 
-                if ($('#passwordInput').val().search('/[a-z]/') < 1) {
+                if (/[a-z]/.test($('#passwordInput').val()) == false) {
                     alert('Password requires lowercase characters!')
                     return false;
                 }
 
-                if ($('#passwordInput').val().search('/[A-Z]/') < 1) {
+                if (/[A-Z]/.test($('#passwordInput').val()) == false) {
                     alert('Password requires uppercase characters!')
                     return false;
                 }
 
-                if ($('#passwordInput').val().search('/[0-9]/') < 1) {
+                if (/[0-9]/.test($('#passwordInput').val()) == false) {
                     alert('Password requires numbers!')
                     return false;
                 }
             })
         }
     }
+
+    //Js for admin page
+    if (lastPathSegment == 'admin') {
+        // Function to add the menu items and move everything to the right
+        $('#menus').click(function() {
+            $('#mySidenav').css('width', '250px');
+            $('#main').css('margin-left', '250px');
+        })
+
+        $('#close').click(function() {
+            $('#mySidenav').css('width', '0px');
+                $('#main').css('margin-left', '0px');
+        })
+    }
+
+    //Js for adminAssessment page
+    if (lastPathSegment == 'adminAssessment') {
+        $('#newCategory').click(function() {
+
+
+        })
+        // Function to add the menu items and move everything to the right
+        $('#menus').click(function() {
+            $('#mySidenav').css('width', '250px');
+            $('#main').css('margin-left', '250px');
+        })
+
+        $('#close').click(function() {
+            $('#mySidenav').css('width', '0px');
+                $('#main').css('margin-left', '0px');
+        })
+    }
+
+    //Js for adminAssessment page
+    if (lastPathSegment == 'adminUser') {
+        // Function to add the menu items and move everything to the right
+        $('#menus').click(function() {
+            $('#mySidenav').css('width', '250px');
+            $('#main').css('margin-left', '250px');
+        })
+
+        $('#close').click(function() {
+            $('#mySidenav').css('width', '0px');
+                $('#main').css('margin-left', '0px');
+        })
+    }
+
 })

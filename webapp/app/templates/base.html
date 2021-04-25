@@ -12,6 +12,18 @@
 <body>
 {% include 'navbar.html' %}
     <main id="main">
+        {% if page == 'admin' %}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin.css')}}">
+        <div id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" id="close">&times;</a>
+          <a href="/adminAssessment">Assessment</a>
+          <a href="/adminUser">Users</a>
+        </div>
+        <span id="menus">&#8801;Menu</span>
+        {% endif %}
+        {% if page == 'login' or page == 'signup' %}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/auth.css')}}">
+        {% endif %}
         {% block content %}
         {% endblock %}
     </main>

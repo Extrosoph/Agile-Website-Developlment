@@ -44,6 +44,7 @@ class User(db.Model):
 class Assessment(db.Model):
     __tablename__ = 'assessment'
     id = db.Column(db.Integer, primary_key=True)
+    category = db.Column(db.String(250), nullable=False)
     userId = db.Column(db.Integer, db.ForeignKey('user.id'))
     questions = db.relationship('Questions', cascade='all, delete-orphan')
     userAnswers = db.relationship('userAnswers', cascade='all, delete-orphan')
@@ -81,7 +82,6 @@ class correctAnswers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     answer = db.Column('answer', db.String(100), nullable=False)
     questionID = db.Column(db.Integer, db.ForeignKey('questions.id'))
-    question = db.relationship('Questions')
     assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
 
     def __repr__(self):
