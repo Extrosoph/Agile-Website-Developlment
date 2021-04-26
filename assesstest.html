@@ -2,17 +2,49 @@
 <html>
     <head>
         <title>Test Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script>
             //Javascript
-            var count = 0;
-            var pages = ["base","p1","p2","p3"];
-            function myFunction(){
-                count+=1;
-                var x = document.getElementsByClassName(pages[count]);
-                x.style.display = "none";
-                var y = document.getElementsByClassName(pages[count+1]);
-                y.style.display = "block";
+            
+            var clickCount = 0;
+            function nextPage(){
+                var base = document.getElementById("#base");
+                var p1 = document.getElementById("#p1");
+                var p2 = document.getElementById("#p2");
+                var p3 = document.getElementById("#p3");
+                if (base.style.display !== "none"){
+                    base.style.display = "none";
+                    p1.style.display = "block";
+                } else if (p1.style.display !== "none"){
+                    p1.style.display = "none";
+                    p2.style.display = "block";
+                } else if (p2.style.display !== "none"){
+                    p2.style.display = "none";
+                    p3.style.display = "block";
+                }
+                clickCount+=1;
+                console.log(clickCount)
             }
+
+            function prevPage(){
+                var base = document.getElementById("#base");
+                var p1 = document.getElementById("#p1");
+                var p2 = document.getElementById("#p2");
+                var p3 = document.getElementById("#p3");
+                if (p1.style.display !=="none"){
+                    p1.style.display = "none";
+                    base.style.display = "block";
+                }else if (p2.style.display !== "none"){
+                    p2.style.display = "none";
+                    p1.style.display = "block";
+                }else if(p3.style.dispaly !== "none"){
+                    p3.style.dispaly = "none";
+                    p2.style.dispaly = "block";
+                }
+                clickCount-=1;
+                console.log(clickCount);
+            }
+            
         </script>
         <style>
             body{
@@ -25,6 +57,7 @@
                 border:15px solid white;
                 margin:20px;
                 padding:20px;
+                display:block;
             }
             .p1{
                 background-color:white;
@@ -33,6 +66,7 @@
                 border:15px solid black;
                 margin:20px;
                 padding:20px;
+                display:block;
             }
             .p2{
                 background-color:blue;
@@ -41,6 +75,7 @@
                 border:15px solid white;
                 margin:20px;
                 padding:20px;
+                display:block;
             }
             .p3{
                 background-color:green;
@@ -49,6 +84,7 @@
                 border:15px solid black;
                 margin:20px;
                 padding:20px;
+                display:block;
             }
             .hidden{
                 display: none;
@@ -57,26 +93,28 @@
     </head>
     <body>
         <!-- //base page -->
-        <div class="base">
+        <div class="base" id="#base">
             <p>This is the Base Page</p>
             
         </div>
-        <button onclick="myFunction()">Next</button>
+        
 
         <!-- //p1 -->
-        <div class="p1 hidden">
+        <div class="p1 hidden" id="#p1">
             <p>This is the 1st Page</p>
         </div>
 
         <!-- //p2 -->
-        <div class="p2 hidden">
+        <div class="p2 hidden " id="#p2">
             <p>This is the 2nd Page</p>
         </div>
 
         <!-- //p3 -->
-        <div class="p3 hidden">
+        <div class="p3 hidden" id="#p3">
             <p>This is the final page</p>
         </div>
+        <button onclick="prevPage()">Previous</button>
+        <button onclick="nextPage()">Next</button>
     </body>
 </html>
 
