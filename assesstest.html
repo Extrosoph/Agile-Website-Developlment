@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test Page</title>
+        <script>
+            //Javascript
+            var count = 0;
+            var pages = ["base","p1","p2","p3"];
+            function myFunction(){
+                count+=1;
+                var x = document.getElementsByClassName(pages[count]);
+                x.style.display = "none";
+                var y = document.getElementsByClassName(pages[count+1]);
+                y.style.display = "block";
+            }
+        </script>
+        <style>
+            body{
+                background-color:lightgrey;
+            }
+            .base{
+                background-color:red;
+                color:white;
+                width:200px;
+                border:15px solid white;
+                margin:20px;
+                padding:20px;
+            }
+            .p1{
+                background-color:white;
+                color:black;
+                width:200px;
+                border:15px solid black;
+                margin:20px;
+                padding:20px;
+            }
+            .p2{
+                background-color:blue;
+                color:white;
+                width:200px;
+                border:15px solid white;
+                margin:20px;
+                padding:20px;
+            }
+            .p3{
+                background-color:green;
+                color:black;
+                width:200px;
+                border:15px solid black;
+                margin:20px;
+                padding:20px;
+            }
+            .hidden{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- //base page -->
+        <div class="base">
+            <p>This is the Base Page</p>
+            
+        </div>
+        <button onclick="myFunction()">Next</button>
+
+        <!-- //p1 -->
+        <div class="p1 hidden">
+            <p>This is the 1st Page</p>
+        </div>
+
+        <!-- //p2 -->
+        <div class="p2 hidden">
+            <p>This is the 2nd Page</p>
+        </div>
+
+        <!-- //p3 -->
+        <div class="p3 hidden">
+            <p>This is the final page</p>
+        </div>
+    </body>
+</html>
+
+
