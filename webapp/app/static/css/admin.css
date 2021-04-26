@@ -55,6 +55,7 @@
 }
 
 .category {
+    text-align: center;
     border-color: #808080;
     border-style: solid;
     border-radius: 30px;

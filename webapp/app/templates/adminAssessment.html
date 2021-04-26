@@ -5,9 +5,7 @@
   <h1>Assessments</h1>
   <table id="assessmentTable" class="center">
     {% if assessmentLen > 0 %}
-      {% for assessment in assessments %}
-        <tr><th><p>assessment.category</p></th></tr>
-      {% endfor %}
+    {{assessment|safe}}
     {% endif %}
     <tr><th><p class="category" id="newCategory">Create a new category</p></th></tr>
   </table>

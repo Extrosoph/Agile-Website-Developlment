@@ -51,8 +51,11 @@ class Assessment(db.Model):
     correctAnswers = db.relationship('correctAnswers', cascade='all, delete-orphan')
     score = db.relationship('Score', uselist=False, back_populates='assessment', cascade='all, delete-orphan')
 
+    def __init__(self, category):
+        self.category = category
+
     def __repr__(self):
-        return '<assessment set {}>'.format(self.id)
+        return '<assessment name: {}>'.format(self.category)
 
 class Questions(db.Model):
     __tablename__ = 'questions'
