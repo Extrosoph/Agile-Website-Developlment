@@ -14,9 +14,15 @@ def admin():
 @adminAssessment_bp.route("/adminAssessment", methods=["POST", "GET"])
 def adminAssessment():
     if request.method == "POST":
-        return render_template("adminAssessment.html", page='admin')
+        assessment = Assessment.query.all()
+        for x in request.form:
+            print(x)
+        print('a')
+
+        return render_template("adminAssessment.html", page='admin', assessmentLen=len(assessment), assessment=assessment)
     else:
         assessment = Assessment.query.all()
+        print('f')
         return render_template("adminAssessment.html", page='admin', assessmentLen=len(assessment), assessment=assessment)
 @adminUser_bp.route("/adminUser", methods=["POST", "GET"])
 def adminUser():

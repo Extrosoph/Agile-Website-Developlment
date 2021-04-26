@@ -73,24 +73,87 @@ h1{
 
 .input-box {
     margin: 31px auto;
-    width: 80%;
-    border-bottom: 1px solid #000000;
-    padding-top: 10px;
-    padding-bottom: 5px;
+    width: 20%;
+    border-style:solid;
+    padding: 5px;
+    border-radius: 25px;
 }
 
-.input-box input{
+.input-box input {
     width: 90%;
     border: none;
     outline: none;
     background: transparent;
     color: #000000;
+    border-width: thin;
+    border-radius: 25px;
 }
 
 ::placeholder {
-    color: #ccc;
+    color:	#696969;
 }
 
 .fa {
    margin-right: 10px
+}
+
+.button {
+    text-align: center;
+    margin: 40px auto 20px;
+    width: 5%;
+    display: block;
+    outline: none;
+    padding: 10px 0;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    background: transparent;
+    color: #000000;
+    font-size: 16px;
+}
+
+.questionBox {
+    margin: 31px auto;
+    width: 80%;
+    border-style:solid;
+    padding: 8px;
+    padding-top: 7px;
+    padding-bottom: 3px;
+    border-radius: 25px;
+}
+
+.questionBox input {
+    width: 99%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #000000;
+    border-width: thin;
+    border-radius: 25px;
+}
+
+#numQuestions {
+    width: 100%;
+    max-width: 100%;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.answerBox {
+    margin: 31px auto;
+    width: 80%;
+    border-style:solid;
+    padding: 8px;
+    padding-top: 7px;
+    padding-bottom: 3px;
+    border-radius: 25px;
+}
+
+.answerBox textarea {
+    width: 24.75%;
+    color: #000000;
+    border-width: thin;
 }
