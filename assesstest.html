@@ -31,20 +31,34 @@
                 var p1 = document.getElementById("#p1");
                 var p2 = document.getElementById("#p2");
                 var p3 = document.getElementById("#p3");
-                if (p1.style.display !=="none"){
+                var a = document.getElementById("#sc");
+                var but = document.getElementById("#but");
+                if(base.style.display !== "none"){
+                    base.style.display = "none";
+                    a.style.display = "block";
+                    but.style.display = "none";
+                } else if (p1.style.display !=="none"){
                     p1.style.display = "none";
                     base.style.display = "block";
                 }else if (p2.style.display !== "none"){
                     p2.style.display = "none";
                     p1.style.display = "block";
-                }else if(p3.style.dispaly !== "none"){
-                    p3.style.dispaly = "none";
-                    p2.style.dispaly = "block";
+                }else if(p3.style.display !== "none"){
+                    p3.style.display = "none";
+                    p2.style.display = "block";
                 }
                 clickCount-=1;
                 console.log(clickCount);
             }
             
+            function startAssess(){
+                var a = document.getElementById("#sc");
+                var base = document.getElementById("#base");
+                var but = document.getElementById("#but");
+                a.style.display= "none";
+                base.style.display="block";
+                but.style.display="block";
+            }
         </script>
         <style>
             body{
@@ -53,7 +67,8 @@
             .base{
                 background-color:red;
                 color:white;
-                width:200px;
+                width:80%;
+                height:auto;
                 border:15px solid white;
                 margin:20px;
                 padding:20px;
@@ -62,7 +77,7 @@
             .p1{
                 background-color:white;
                 color:black;
-                width:200px;
+                width:80%;
                 border:15px solid black;
                 margin:20px;
                 padding:20px;
@@ -71,7 +86,7 @@
             .p2{
                 background-color:blue;
                 color:white;
-                width:200px;
+                width:80%;
                 border:15px solid white;
                 margin:20px;
                 padding:20px;
@@ -80,7 +95,7 @@
             .p3{
                 background-color:green;
                 color:black;
-                width:200px;
+                width:80%;
                 border:15px solid black;
                 margin:20px;
                 padding:20px;
@@ -89,32 +104,65 @@
             .hidden{
                 display: none;
             }
+            .startclass{
+                text-align: center;
+                width: 80%;
+                background-color: blueviolet;
+                color: white;
+                border: 15px solid white;
+                display:block;
+                margin:20px;
+                padding:20px;
+            }
         </style>
     </head>
     <body>
+        <h1 style="text-align: center;">Take this assessment</h1>
+        <div class="startclass" id="#sc">
+            <span><button onclick="startAssess()">Start the Assessment</button></span>
+        </div>
+
+
         <!-- //base page -->
-        <div class="base" id="#base">
+        <div class="base hidden" id="#base">
             <p>This is the Base Page</p>
-            
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
         
 
         <!-- //p1 -->
         <div class="p1 hidden" id="#p1">
             <p>This is the 1st Page</p>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
 
         <!-- //p2 -->
         <div class="p2 hidden " id="#p2">
             <p>This is the 2nd Page</p>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
 
         <!-- //p3 -->
         <div class="p3 hidden" id="#p3">
             <p>This is the final page</p>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
-        <button onclick="prevPage()">Previous</button>
-        <button onclick="nextPage()">Next</button>
+        <div class="hidden" id="#but">
+            <button onclick="prevPage()">Previous</button>
+            <button onclick="nextPage()">Next</button>
+        </div>
     </body>
 </html>
 
