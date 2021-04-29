@@ -111,7 +111,7 @@ $(document).ready(function() {
                         var html2 = html1.concat((i+1).toString());
                         var html3 = html2.concat('" name="question');
                         var html4 = html3.concat((i+1).toString());
-                        var html5 = html4.concat('" maxlength="200"></textarea></div>');
+                        var html5 = html4.concat('" maxlength="200"></textarea><textarea id="score" placeholder="score" name="score" maxlength="2"></textarea></div>');
                         var answers = `<div class="answerBox" name="as">
                                        <textarea id="answer1" placeholder="Answer1" maxlength="200" name="answer"></textarea>
                                        <textarea id="answer2" placeholder="Answer2" maxlength="200" name="answer"></textarea>
@@ -127,6 +127,13 @@ $(document).ready(function() {
                                       </div>`);
                     $('#reset').click(function() {
                         $('textarea').val('');
+                    })
+
+                    $('#submit').click(function() {
+                        if (isNaN($('#score').val())) {
+                            alert('Scores need to be a number')
+                            return false;
+                            }
                     })
                 }
             })

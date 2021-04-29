@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.secret_key = token_urlsafe(18)
 
 #Set session variable to last only for 5 mintues instead of 30 days.
-app.permanent_session_lifetime = timedelta(minutes=5)
+app.permanent_session_lifetime = timedelta(minutes=60)
 
 # Import the blueprints
 from app import models
