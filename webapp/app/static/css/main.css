@@ -7,9 +7,6 @@ body{
 h1{
     color:#ff652f;
 }
-.gen p{
-    color:#747474
-}
 /*colors for later
 #FFE400 Yellow
 #14A76C Aqua-ish Green
@@ -40,26 +37,34 @@ h1{
 
 .startBlock{
     display:block;
-    width:100%;
+    width:85%;
     margin:auto;
-    height:75px;
-    overflow:scroll;
-    background-color: red;
+    height:200px;
+    overflow-y:auto;
+    border:2px solid white;
+    padding:.8em;
 }
 
 .aBlock{
+    height:400px;
+    width:85%;
     display:block;
-    width:100%;
-    height:100px;
-    overflow:scroll;
+    overflow-y:auto;
     margin:auto;
-    background-color: blue;
+    padding:.8em;
+    border:2px solid white;
+}
+
+.aBlock p, .startBlock p, .gen p{
+    color:#747474;
 }
 
 .hidden{
-    display:hidden;
+    display:none;
 }
 
 #but{
+    position:relative;
     float:right;
+    padding:3em;
 }
