@@ -7,7 +7,8 @@
         <p>Select an assessment from the list below to start the module</p>
         <br>
         <!-- {#get this to work#}-->
-        {% if session['logged_in'] == false %}
+        {% if session['logged_in'] == True %}
+        {% else %}
         <p>You must be logged in to attempt Assessments</p>
         {% endif %} 
     </div>
