@@ -1,3 +1,12 @@
+// String manipulation function to assist
+function stringManipulations(data) {
+    var value = data.replaceAll('"', '');
+    value = value.replaceAll('[', '');
+    value = value.replaceAll(']', '');
+    value = value.split(',');
+    return value;
+}
+
 $(document).ready(function() {
     var href = document.location.href;
     var lastPathSegment = href.substr(href.lastIndexOf('/') + 1);
@@ -86,6 +95,53 @@ $(document).ready(function() {
 
     //Js for adminAssessment page
     if (lastPathSegment == 'adminAssessment') {
+
+        // Fix for a POST sumbit after refreshing a page
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+
+        $('.categoryAssessment').click(function() {
+            $.post(`${window.origin}/getAssessment`, {'category': $(this).html()}, function(data, status) {
+                console.log(data);
+                var html = '<div class="questionBox"><textarea id="numQuestions" placeholder="Question';
+                $('table').remove();
+                console.log(data['name']);
+                $('h1').html(data['name']);
+                var first = `<div class="input-box">
+                             <input id="name" name="assessmentName" placeholder="namehere" maxlength="100">
+                             </div>`;
+                first = first.replace('namehere',data['name']);
+                $('main').append(first);
+
+                const questions = stringManipulations(data['questions']);
+
+                const answers = stringManipulations(data['answers']);
+
+                const correctAnswer = stringManipulations(data['correctAnswer']);
+
+                console.log(answers);
+
+                for (var i=0; i < questions.length; i++) {
+                    console.log('a');
+                    var html1 = '<div class="questionBox"><textarea id="numQuestions" placeholder="';
+                    html1 = html1.concat(questions[i]);
+                    var html3 = html1.concat('" name="question');
+                    var html4 = html3.concat((i+1).toString());
+                    var html5 = html4.concat('" maxlength="200"></textarea><textarea id="score" placeholder="score" name="score" maxlength="2"></textarea></div>');
+                    var answer = `<div class="answerBox" name="as">
+                                   <textarea id="answer1" placeholder="Answer1" maxlength="200" name="answer"></textarea>
+                                   <textarea id="answer2" placeholder="Answer2" maxlength="200" name="answer"></textarea>
+                                   <textarea id="answer3" placeholder="Answer3" maxlength="200" name="answer"></textarea>
+                                   <textarea id="correctAnswer" placeholder="Correct Answer" maxlength="200" name="answer"></textarea>
+                                   </div>`;
+                    answer = answer.replace('Answer1', answers[i]);
+                    var html6 = html5.concat(answer);
+                    $('main').append(html6);
+                }
+            });
+        });
+
         $('#newCategory').click(function() {
             $('h1').html('New Assessment');
             $('#assessmentTable').remove();
@@ -97,11 +153,22 @@ $(document).ready(function() {
                               <input id="numQuestions" placeholder="Number of Questions" maxlength="3" >
                               </div>
                               <p id="createQs" class="button">Create</p>`);
+
             $('#createQs').click(function() {
-                if (isNaN($('#numQuestions').val())) {
-                    alert('Number of questions needs to be a number')
+
+                // Check if the number of question field is empty
+                if (!$('#numQuestions').val()) {
+                    alert('Please speicify the number of questions!');
                     return false;
                 }
+
+                // Check if the number of question field is an Integer
+                else if (!Number.isInteger(parseFloat($('#numQuestions').val()))) {
+                    alert('Number of questions needs to be an integer');
+                    return false;
+                }
+
+                // Create the question template
                 else {
                     const numberOfQs = $('#numQuestions').val();
                     $('#initial').remove();
@@ -121,19 +188,29 @@ $(document).ready(function() {
                         var html6 = html5.concat(answers);
                         $('#myform').append(html6);
                     }
+
                     $('form').append(`<div style="width:60%;margin:40px auto;" >
                                       <p style="float:left" type="submit" id="reset" class="button">Reset</p>
                                       <button style="float:right" type="submit" id="submit" class="button">Submit</button>
                                       </div>`);
+
                     $('#reset').click(function() {
                         $('textarea').val('');
                     })
 
                     $('#submit').click(function() {
-                        if (isNaN($('#score').val())) {
-                            alert('Scores need to be a number')
+
+                        // Check if any fields are empty
+                        if ($('#score').val() == '' || $('textarea').val() == '' || $('#name').val() == '') {
+                            alert('Please fill in all fields!');
                             return false;
-                            }
+                        }
+
+                        // Check if the score is a number
+                        if (isNaN($('#score').val())) {
+                            alert('Scores need to be a number');
+                            return false;
+                        }
                     })
                 }
             })
