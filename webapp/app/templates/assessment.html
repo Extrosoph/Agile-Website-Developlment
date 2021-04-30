@@ -4,9 +4,33 @@
 <div class="gen">
     <h1>Assessments</h1>
     <p>Select an assessment from the list below to start the module</p>
-    {#get this to work#}
+    <!-- {#get this to work#}
     {% if session['logged_in'] == False %}
     <p>Log in to save and track your progress</p>
-    {% endif %}
+    {% endif %} -->
+</div>
+<div class="container" id="sb">
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="startblock">
+                <!-- Have assessment overview here -->
+                <h1>Some Test Text</h1>
+            </div>
+        </div>
+        <div class="col-sm-2 hidden">
+            <!-- If logged in show progress (unhide)-->
+            <p>test text 3</p>
+        </div>
+    </div>
+</div>
+<div class="container hidden" id="abase">
+    <div class="ablock hidden">
+        <!-- load assessment here -->
+        <p>Other test text</p>
+    </div>
+</div>
+<div class="container hidden" id="but">
+    <button id="prev">Previous</button>
+    <button id="next">Next</button>
 </div>
 {% endblock %}

@@ -68,4 +68,22 @@ $(document).ready(function() {
             })
         }
     }
+
+    $('#sb').click(function(){
+        $('#sb').hide();
+        $('#abase').show();
+        $('#but').show();
+    })
+
+    $('#next').click(function(){
+        // NextPage function
+        if($('#abase').css('display') !== 'hidden'){
+            $('#abase').hide();
+        }
+    })
+
+    $('#prev').click(function(){
+        // PrevPage function
+    })
 })
+
