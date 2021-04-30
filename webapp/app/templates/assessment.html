@@ -2,12 +2,15 @@
 {% block title %}Assessments{% endblock %}
 {% block content %}
 <div class="gen">
-    <h1>Assessments</h1>
-    <p>Select an assessment from the list below to start the module</p>
-    <!-- {#get this to work#}
-    {% if session['logged_in'] == False %}
-    <p>Log in to save and track your progress</p>
-    {% endif %} -->
+        <h1>Assessments</h1>
+        <div id="ahome">
+        <p>Select an assessment from the list below to start the module</p>
+        <br>
+        <!-- {#get this to work#}-->
+        {% if session['logged_in'] == false %}
+        <p>You must be logged in to attempt Assessments</p>
+        {% endif %} 
+    </div>
 </div>
 <div class="startBlock" id="sb">
         <h1>Assessment name</h1>

@@ -70,8 +70,9 @@ $(document).ready(function() {
     }
 
     $('#sb').click(function(){
-        $('#sb').hide();
-        $('#abase').show();
+        $('#ahome').hide(),
+        $('#sb').hide(),
+        $('#abase').show(),
         $('#but').show();
     })
 
