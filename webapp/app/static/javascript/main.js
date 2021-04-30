@@ -79,11 +79,24 @@ $(document).ready(function() {
         // NextPage function
         if($('#abase').css('display') !== 'hidden'){
             $('#abase').hide();
+            $('#page1').show();
+        } else if($('#page1').css('display')!=='hidden'){
+            $('#page1').hide();
+            $('#page2').show();
         }
+        //needs to continue for whole assessment - loop?
     })
 
     $('#prev').click(function(){
         // PrevPage function
+        if($('#page2').css('display')!=='hidden'){
+            $('#page2').hide();
+            $('#page1').show();
+        } else if($('#page1').css('display')!=='hidden'){
+            $('#page1').hide();
+            $('abase').show();
+        }
+        //needs to continue for whole assessment - loop?
     })
 })
 
