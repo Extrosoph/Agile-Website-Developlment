@@ -173,3 +173,23 @@ h1{
     max-width: 10%;
     float: right;
 }
+
+.searchBox {
+    margin: 31px auto;
+    width: 80%;
+    border-style:solid;
+    padding: 8px;
+    padding-top: 7px;
+    padding-bottom: 3px;
+    border-radius: 25px;
+}
+
+.searchBox input {
+    width: 99%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #000000;
+    border-width: thin;
+    border-radius: 25px;
+}

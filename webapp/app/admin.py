@@ -1,6 +1,6 @@
 from app import app
 from flask import  redirect, url_for, render_template, request, session, flash, Blueprint, jsonify, make_response
-from app.models import Assessment, Questions, Answers, correctAnswer, Score, db
+from app.models import Assessment, Questions, Answers, correctAnswer, Score, db, User
 from datetime import datetime
 from json import dumps
 
@@ -8,10 +8,42 @@ admin_bp = Blueprint('admin_bp', __name__)
 adminAssessment_bp = Blueprint('adminAseessment_bp', __name__)
 adminUser_bp = Blueprint('adminUser_bp', __name__)
 getAssessment_bp = Blueprint('getAssessment_bp', __name__)
+getUser_bp = Blueprint('getUser_bp', __name__)
 
 @admin_bp.route("/admin", methods=["POST", "GET"])
 def admin():
     return render_template("admin.html", page='admin')
+
+@getUser_bp.route("/getUser", methods=["POST"])
+def getUser():
+    # Function to get user details from ajax
+    req = request.get_json()
+    query = request.form['query']
+
+    current_user_email = User.query.filter_by(email=query).first()
+    current_user_username = User.query.filter_by(username=query).first()
+
+    # If there is no such username or email
+    if current_user_email is None and current_user_username is None:
+        response = make_response(jsonify({'result': 'none'}), 200)
+
+    # If the user sends an email
+    elif current_user_email is not None:
+        response = make_response(jsonify({'username': current_user_email.username,
+                                          'email': current_user_email.email,
+                                          'Admin': current_user_email.admin,
+                                          'dateJoined': current_user_email.dateJoined,
+                                          }), 200)
+
+    # If the user sends a username
+    else:
+        response = make_response(jsonify({'username': current_user_username.username,
+                                          'email': current_user_username.email,
+                                          'Admin': current_user_username.admin,
+                                          'dateJoined': current_user_username.dateJoined,
+                                          }), 200)
+
+    return response
 
 @getAssessment_bp.route("/getAssessment", methods=["POST"])
 def getAssessment():
@@ -21,28 +53,35 @@ def getAssessment():
     assessment = Assessment.query.filter_by(category=category).first()
 
     questions = []
-    answers = [[], [], [], []]
+    answers = []
     correctAnswer = []
+    mark = []
 
     # Get questions from db
     for question in assessment.questions:
         questions.append(question.question)
 
+    print(answers)
+
     # Get answers from db
     for answer in assessment.answer:
-        answers[0].append(answer.answer1)
-        answers[1].append(answer.answer2)
-        answers[2].append(answer.answer3)
-        answers[3].append(answer.answer4)
+        answers.append(answer.answer1)
+        answers.append(answer.answer2)
+        answers.append(answer.answer3)
+        answers.append(answer.answer4)
+
+    print(answers)
 
     # Get correct answer from db
     for correct_answer in assessment.correctAnswer:
         correctAnswer.append(correct_answer.answer)
+        mark.append(correct_answer.mark)
 
     response = make_response(jsonify({'name': assessment.category,
                                  'questions': dumps(questions),
                                  'answers': dumps(answers),
-                                 'correctAnswer': dumps(correctAnswer)
+                                 'correctAnswer': dumps(correctAnswer),
+                                 'mark': dumps(mark)
                                  }), 200)
 
     return response

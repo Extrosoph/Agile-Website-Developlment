@@ -16,7 +16,7 @@ def login():
         current_user_email = User.query.filter_by(email=email).first()
         current_user_username = User.query.filter_by(username=email).first()
 
-        # If the given email does not have an account
+        # If the given email or username does not have an account
         if current_user_email is None and current_user_username is None:
             flash("Need to create an account")
             return redirect(url_for("login_bp.login", page='login'))

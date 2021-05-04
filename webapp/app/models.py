@@ -29,7 +29,9 @@ class User(db.Model):
     password = db.Column('password', db.String(120), nullable=False)
     admin = db.Column('admin', db.Boolean(), default=False)
     assessments = db.relationship('Assessment')
+    score = db.relationship('Score')
     userAnswers = db.relationship('userAnswers', cascade='all, delete-orphan')
+    dateJoined = db.Column(db.DateTime, default=datetime.now)
 
     def __init__(self, username, email, password):
         salt = gensalt(rounds=12)
@@ -122,6 +124,7 @@ class Score(db.Model):
     __tablename__ = 'score'
     id = db.Column(db.Integer, primary_key=True)
     score = db.Column('score', db.Integer, nullable=True)
+    userId = db.Column(db.Integer, db.ForeignKey('user.id'))
     assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
     assessment = db.relationship('Assessment', back_populates='score')
     timeAttempted = db.Column(db.DateTime, default=datetime.now)

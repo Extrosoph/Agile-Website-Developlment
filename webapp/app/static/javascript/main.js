@@ -1,8 +1,10 @@
 // String manipulation function to assist
 function stringManipulations(data) {
     var value = data.replaceAll('"', '');
+    value = value.replaceAll('"', '');
     value = value.replaceAll('[', '');
     value = value.replaceAll(']', '');
+    value = value.replace(/\s/g, "");
     value = value.split(',');
     return value;
 }
@@ -108,7 +110,8 @@ $(document).ready(function() {
                 $('table').remove();
                 console.log(data['name']);
                 $('h1').html(data['name']);
-                var first = `<div class="input-box">
+                var first = `<form method="post" id="myform">
+                             <div class="input-box">
                              <input id="name" name="assessmentName" placeholder="namehere" maxlength="100">
                              </div>`;
                 first = first.replace('namehere',data['name']);
@@ -120,25 +123,62 @@ $(document).ready(function() {
 
                 const correctAnswer = stringManipulations(data['correctAnswer']);
 
-                console.log(answers);
+                const marks = stringManipulations(data['mark']);
 
+                var a=0, b=1, c=2, d=3;
                 for (var i=0; i < questions.length; i++) {
-                    console.log('a');
                     var html1 = '<div class="questionBox"><textarea id="numQuestions" placeholder="';
-                    html1 = html1.concat(questions[i]);
-                    var html3 = html1.concat('" name="question');
+                    var html2 = html1.concat(questions[i]);
+                    var html3 = html2.concat('" name="question');
                     var html4 = html3.concat((i+1).toString());
-                    var html5 = html4.concat('" maxlength="200"></textarea><textarea id="score" placeholder="score" name="score" maxlength="2"></textarea></div>');
+                    var html5 = html4.concat('" maxlength="200"></textarea><textarea id="score" placeholder="')
+                    html5 = html5.concat(marks[i]);
+                    html5 = html5.concat('" name="score" maxlength="2"></textarea></div>');
                     var answer = `<div class="answerBox" name="as">
                                    <textarea id="answer1" placeholder="Answer1" maxlength="200" name="answer"></textarea>
                                    <textarea id="answer2" placeholder="Answer2" maxlength="200" name="answer"></textarea>
                                    <textarea id="answer3" placeholder="Answer3" maxlength="200" name="answer"></textarea>
                                    <textarea id="correctAnswer" placeholder="Correct Answer" maxlength="200" name="answer"></textarea>
                                    </div>`;
-                    answer = answer.replace('Answer1', answers[i]);
+                    answer = answer.replace('Answer1', answers[a]);
+                    answer = answer.replace('Answer2', answers[b]);
+                    answer = answer.replace('Answer3', answers[c]);
+                    answer = answer.replace('Correct Answer', answers[d]);
+
+                    a += 4;
+                    b += 4,
+                    c += 4;
+                    d += 4;
+
                     var html6 = html5.concat(answer);
-                    $('main').append(html6);
+                    $('#myform').append(html6);
+
                 }
+
+                $('form').append(`<div style="width:60%;margin:40px auto;" >
+                                  <p style="float:left" id="reset" class="button">Reset</p>
+                                  <button style="float:right" type="submit" id="update" class="button">Update</button>
+                                  </div>`);
+
+                $('#reset').click(function() {
+                        $('textarea').val('');
+                        $('#name').val('');
+                })
+
+                $('#update').click(function() {
+
+                    // Check if any fields are empty
+                    if ($('#score').val() == '' || $('textarea').val() == '' || $('#name').val() == '') {
+                        alert('Please fill in all fields!');
+                        return false;
+                    }
+
+                    // Check if the score is a number
+                    if (isNaN($('#score').val())) {
+                        alert('Scores need to be a number');
+                        return false;
+                    }
+                })
             });
         });
 
@@ -190,12 +230,13 @@ $(document).ready(function() {
                     }
 
                     $('form').append(`<div style="width:60%;margin:40px auto;" >
-                                      <p style="float:left" type="submit" id="reset" class="button">Reset</p>
+                                      <p style="float:left" id="reset" class="button">Reset</p>
                                       <button style="float:right" type="submit" id="submit" class="button">Submit</button>
                                       </div>`);
 
                     $('#reset').click(function() {
                         $('textarea').val('');
+                        $('#name').val('');
                     })
 
                     $('#submit').click(function() {
@@ -230,6 +271,14 @@ $(document).ready(function() {
 
     //Js for adminAssessment page
     if (lastPathSegment == 'adminUser') {
+
+        $('#search').click(function() {
+            console.log($('#query').val());
+            $.post(`${window.origin}/getUser`, {'query': $('#query').val()}, function(data, status) {
+                console.log(data);
+            })
+        })
+
         // Function to add the menu items and move everything to the right
         $('#menus').click(function() {
             $('#mySidenav').css('width', '250px');
