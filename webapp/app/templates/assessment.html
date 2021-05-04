@@ -4,15 +4,16 @@
 <div class="gen">
         <h1>Assessments</h1>
         <div id="ahome">
-        <p>Select an assessment from the list below to start the module</p>
-        <br>
-        <!-- {#get this to work#}-->
-        {% if session['logged_in'] == True %}
-        {% else %}
-        <p>You must be logged in to attempt Assessments</p>
-        {% endif %} 
-    </div>
+                <p>Select an assessment from the list below to start the module</p>
+                {% if session['logged_in'] == True %}
+                <!-- add the list of assessments here -->
+                {% else %}
+                <p style="color:red; font-weight:bold">You must be logged in to attempt Assessments</p>
+                <!-- add redict box to login here -->
+                {% endif %} 
+        </div>
 </div>
+<!-- link boxes to db to load learning, questions and user data -->
 <div class="startBlock" id="sb">
         <h1>Assessment name</h1>
         <p>Maybe a description</p>

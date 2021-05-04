@@ -105,7 +105,8 @@ $(document).ready(function() {
         } else if($('#abase').css('display') !== 'none'){
             $('#abase').hide(),
             $('#but').hide(),
-            $("#sb").show();
+            $("#sb").show(),
+            $('#ahome').show();
         }
         //needs to continue for whole assessment - loop?
     })
