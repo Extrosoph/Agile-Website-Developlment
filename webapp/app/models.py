@@ -44,14 +44,18 @@ class User(db.Model):
 class Assessment(db.Model):
     __tablename__ = 'assessment'
     id = db.Column(db.Integer, primary_key=True)
+    category = db.Column(db.String(250), nullable=False)
     userId = db.Column(db.Integer, db.ForeignKey('user.id'))
     questions = db.relationship('Questions', cascade='all, delete-orphan')
     userAnswers = db.relationship('userAnswers', cascade='all, delete-orphan')
     correctAnswers = db.relationship('correctAnswers', cascade='all, delete-orphan')
     score = db.relationship('Score', uselist=False, back_populates='assessment', cascade='all, delete-orphan')
 
+    def __init__(self, category):
+        self.category = category
+
     def __repr__(self):
-        return '<assessment set {}>'.format(self.id)
+        return '<assessment name: {}>'.format(self.category)
 
 class Questions(db.Model):
     __tablename__ = 'questions'
@@ -81,7 +85,6 @@ class correctAnswers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     answer = db.Column('answer', db.String(100), nullable=False)
     questionID = db.Column(db.Integer, db.ForeignKey('questions.id'))
-    question = db.relationship('Questions')
     assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
 
     def __repr__(self):
