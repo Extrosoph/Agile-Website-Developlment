@@ -8,13 +8,13 @@ app = Flask(__name__)
 app.secret_key = token_urlsafe(18)
 
 #Set session variable to last only for 5 mintues instead of 30 days.
-app.permanent_session_lifetime = timedelta(minutes=5)
+app.permanent_session_lifetime = timedelta(minutes=60)
 
-# Import the blueprints
+# Import the blueprints and models
 from app import models
 from app.views import home_bp, user_bp, statistics_bp, assessment_bp
 from app.auth import login_bp, signup_bp, logout_bp
-from app.admin import admin_bp, adminAssessment_bp, adminUser_bp
+from app.admin import admin_bp, adminAssessment_bp, adminUser_bp, getAssessment_bp, getUser_bp
 
 # Register the blueprints
 app.register_blueprint(home_bp)
@@ -27,3 +27,5 @@ app.register_blueprint(logout_bp)
 app.register_blueprint(admin_bp)
 app.register_blueprint(adminAssessment_bp)
 app.register_blueprint(adminUser_bp)
+app.register_blueprint(getAssessment_bp)
+app.register_blueprint(getUser_bp)
