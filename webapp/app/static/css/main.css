@@ -1,0 +1,142 @@
+body{
+    background-color:#212529
+}
+.gen{
+    margin-left:3em;
+}
+h1, h2, h3{
+    color:#ff652f;
+}
+
+.hBlock{
+    width:40%;
+    margin:auto;
+}
+
+.clear{
+    clear:both;
+}
+
+.uBlock, .lBlock, .asBlock, .sgBlock{
+    display:block;
+    margin:auto;
+    height:200px;
+    width:47%;
+    background-image: url("/webapp/app/static/images/User.jpg");
+    /*get this to work*/
+    background-color:white;;
+    background-position: center;
+    background-repeat:no-repeat;
+    position:relative;
+    /* border/padding? */
+}
+
+.lBlock{
+    float:left;
+}
+
+.sgBlock{
+    float:right;
+}
+
+.blockText{
+    text-align:center;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.uBlock:hover, .sgBlock:hover{
+    box-shadow:0px 0px 20px #34e8eb;
+}
+
+.lBlock:hover{
+    box-shadow:0px 0px 20px #86C232;
+}
+
+.asBlock:hover{
+    box-shadow: 0px 0px 20px #FFE400;
+}
+
+.startBlock{
+    display:block;
+    width:85%;
+    margin:auto;
+    height:200px;
+    overflow-y:auto;
+    border:2px solid white;
+    padding:.8em;
+}
+
+.startBlock:hover {
+    box-shadow: 0px 0px 30px #86C232;
+}
+
+.aBlock{
+    height:400px;
+    width:85%;
+    display:block;
+    overflow-y:auto;
+    margin:auto;
+    padding:.8em;
+    border:2px solid white;
+}
+
+p{
+    color:#747474;
+}
+
+.hidden{
+    display:none;
+}
+
+#but{
+    position:relative;
+    float:right;
+    padding:3em;
+}
+
+table, th, td{
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+.tableClass th, .tableClass td, .userTable th, .userTable td{
+    text-align:left;
+    padding:5px;
+    color:#747474;
+    width:50%;
+}
+
+.tableClass{
+    border-spacing:5px;
+    margin:auto;
+    width:75%;
+}
+
+.userTable{
+    border-spacing:5px;
+    margin:auto;
+    width:75%;
+}
+
+.userAssess th, .userAssess td{
+    text-align:left;
+    padding:5px;
+    color:#747474;
+    width:33%;
+}
+
+.userAssess{
+    border-spacing:5px;
+    margin:auto;
+    width:75%;
+}
+/*colors for later
+#14A76C Aqua-ish Green
+#61892F Forest Green
+#222629 Dark Grey
+#474B4F Mid Grey
+#6B6E70 Light Grey
+*/

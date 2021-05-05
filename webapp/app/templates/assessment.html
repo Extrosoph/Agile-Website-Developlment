@@ -1,5 +1,79 @@
 {%extends "base.html" %}
 {% block title %}Assessments{% endblock %}
 {% block content %}
-<h1>Assessments</h1>
+<div class="gen">
+        <h1>Assessments</h1>
+        <div id="ahome">
+                <p>Select an assessment from the list below to start the module</p>
+                {% if session['logged_in'] == True %}
+                <!-- add the list of assessments here -->
+                {% else %}
+                <p style="color:red; font-weight:bold">You must be logged in to attempt Assessments</p>
+                <div class = "hBlock">
+                        <div class = "uBlock">
+                                <div class = "blockText">
+                                        <h2>Login</h2>
+                                </div>
+                        </div>
+                </div>
+                <!-- add redict box to login here -->
+                <!-- box centered and glows blue when hovered
+                has an outline of person and box that says login -->
+                {% endif %} 
+        </div>
+</div>
+<br>
+<!--for testing-->
+<br>
+<!-- link boxes to db to load learning, questions and user data -->
+<div class="startBlock" id="sb">
+        <!-- needs to glow/highlight when hovered - green? -->
+        <h1>Assessment name</h1>
+        <p>Maybe a description</p>
+        <br>
+        <p>if logged in show if complete/in-progress/etc?</p>
+</div>
+<!-- make sure the box is easily differentiated from bg
+decide if txt loads straight into box or if popup
+work out forms to both load and import into db -->
+<div class="aBlock hidden" id="abase">
+        <!-- load assessment here -->
+        <p>Other test text</p>
+        <br>
+        <br>
+        <br>
+        <p>does the scroll work?</p>
+        <br>
+        <p>or</p>
+        <br>
+        <br>
+        <p>does this resize?</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>test that scroll!</p>
+</div>
+<div class="aBlock hidden" id="page1">
+        <!-- load next bit of assessment -->
+        <p>test text test</p>
+</div>
+<div class="aBlock hidden" id="page2">
+        <!-- load next bit of assessment -->
+        <p>test text test2</p>
+</div>
+<div class="aBlock hidden" id="page3">
+        <!-- load next bit of assessment -->
+        <p>test text test3</p>
+        <br>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam consequuntur beatae ab iste nulla ullam dolorem unde soluta provident natus magni architecto, esse, eum rem accusantium itaque veritatis est dolor.</p>
+        <br>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam consequuntur beatae ab iste nulla ullam dolorem unde soluta provident natus magni architecto, esse, eum rem accusantium itaque veritatis est dolor.</p>
+        <br>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam consequuntur beatae ab iste nulla ullam dolorem unde soluta provident natus magni architecto, esse, eum rem accusantium itaque veritatis est dolor.</p>
+</div>
+<div class="hidden" id="but">
+    <button id="prev">Previous</button>
+    <button id="next">Next</button>
+</div>
 {% endblock %}
