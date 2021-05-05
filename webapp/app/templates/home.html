@@ -7,19 +7,37 @@
     <p>Learn "INSERT LEARN THING" and test your knowledge all on our site!</p>
     <!-- update text to reflect content -->
 </div>
+<br>
 <!-- add if else logged in -->
-<!-- if logged in - redict to login box
+<!-- if logged in - redict to assessment box
 if not logged in - box to redict to login/signup -->
-<div class="container" style='margin-left:1em;margin-right:1em;'>
-    <div class="row">
-      <div class="col-sm-4">
-        <span class="hpbutton"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Links</a></span>
-      </div>
-      <div class="col-sm-4">
-        <span class="hpbutton"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">To Other</a></span>
-      </div>
-      <div class="col-sm-4">
-        <span class="hpbutton"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Places</a></span>
-      </div>
+<!-- login box glows blue when hovered and has outline of person, says login
+signup box glows green when hovered and has outline of person, says signup
+assessment box glows yellow when hovered and has outline of person, says assessments -->
+<!--put these next to each other if not logged in-->
+<div class = "hBlock">
+  <div class = "lBlock">
+    <div class = "blockText">
+        <h2>Login</h2>
     </div>
+  </div>
+  <div class = "sgBlock">
+    <div class = "blockText">
+        <h2>Sign-up</h2>
+    </div>
+  </div>
+  <div class = "clear"></div>
+</div>
+<br> <!--until i add login support-->
+<!--if logged in show this one-->
+<div class= "hBlock">
+  <div class = "asBlock">
+    <div class = "blockText">
+        <h2>Assessments</h2>
+    </div>
+  </div>
+</div>
+{% if session['logged_in'] == True %}
+
+{% endif %}
 {% endblock %}

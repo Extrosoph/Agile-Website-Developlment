@@ -9,17 +9,33 @@
                 <!-- add the list of assessments here -->
                 {% else %}
                 <p style="color:red; font-weight:bold">You must be logged in to attempt Assessments</p>
+                <div class = "hBlock">
+                        <div class = "uBlock">
+                                <div class = "blockText">
+                                        <h2>Login</h2>
+                                </div>
+                        </div>
+                </div>
                 <!-- add redict box to login here -->
+                <!-- box centered and glows blue when hovered
+                has an outline of person and box that says login -->
                 {% endif %} 
         </div>
 </div>
+<br>
+<!--for testing-->
+<br>
 <!-- link boxes to db to load learning, questions and user data -->
 <div class="startBlock" id="sb">
+        <!-- needs to glow/highlight when hovered - green? -->
         <h1>Assessment name</h1>
         <p>Maybe a description</p>
         <br>
         <p>if logged in show if complete/in-progress/etc?</p>
 </div>
+<!-- make sure the box is easily differentiated from bg
+decide if txt loads straight into box or if popup
+work out forms to both load and import into db -->
 <div class="aBlock hidden" id="abase">
         <!-- load assessment here -->
         <p>Other test text</p>

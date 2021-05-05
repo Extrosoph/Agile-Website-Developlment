@@ -110,5 +110,21 @@ $(document).ready(function() {
         }
         //needs to continue for whole assessment - loop?
     })
+
+    $('.lBlock').click(function(){
+        //Change to Login Page
+    })
+
+    $('.sgBlock').click(function(){
+        //Change to Sign-up Page
+    })
+
+    $('.asBlock').click(function(){
+        //Change to Assessments Page
+    })
+
+    $('.uBlock').click(function(){
+        //Change to Login Page
+    })
 })
 
