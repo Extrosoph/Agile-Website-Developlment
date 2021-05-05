@@ -102,7 +102,7 @@ table, th, td{
     border-collapse: collapse;
 }
 
-th,td{
+.tableClass th, .tableClass td, .userTable th, .userTable td{
     text-align:left;
     padding:5px;
     color:#747474;
@@ -110,6 +110,25 @@ th,td{
 }
 
 .tableClass{
+    border-spacing:5px;
+    margin:auto;
+    width:75%;
+}
+
+.userTable{
+    border-spacing:5px;
+    margin:auto;
+    width:75%;
+}
+
+.userAssess th, .userAssess td{
+    text-align:left;
+    padding:5px;
+    color:#747474;
+    width:33%;
+}
+
+.userAssess{
     border-spacing:5px;
     margin:auto;
     width:75%;
