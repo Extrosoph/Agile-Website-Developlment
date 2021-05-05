@@ -158,62 +158,67 @@ $(document).ready(function() {
         })
     }
 
-})
-
-$('#sb').click(function(){
-    $('#ahome').hide(),
-    $('#sb').hide(),
-    $('#abase').show(),
-    $('#but').show();
-})
-
-$('#next').click(function(){
-    // NextPage function
-    if($('#abase').css('display') !== 'none'){
-        $('#abase').hide(),
-        $('#page1').show();
-    } else if($('#page1').css('display')!=='none'){
-        $('#page1').hide(),
-        $('#page2').show();
-    } else if($('#page2').css('display')!=='none'){
-        $('#page2').hide(),
-        $('#page3').show();
+    if(lastPathSegment == 'assessment'){
+        $('#sb').click(function(){
+            $('#ahome').hide(),
+            $('#sb').hide(),
+            $('#abase').show(),
+            $('#but').show();
+        })
+    
+        $('#next').click(function(){
+            // NextPage function
+            if($('#abase').css('display') !== 'none'){
+                $('#abase').hide(),
+                $('#page1').show();
+            } else if($('#page1').css('display')!=='none'){
+                $('#page1').hide(),
+                $('#page2').show();
+            } else if($('#page2').css('display')!=='none'){
+                $('#page2').hide(),
+                $('#page3').show();
+            }
+            //needs to continue for whole assessment - loop?
+        })
+    
+        $('#prev').click(function(){
+            // PrevPage function
+            if($('#page3').css('display')!=='none'){
+                $('#page3').hide(),
+                $('#page2').show();
+            }else if($('#page2').css('display')!=='none'){
+                $('#page2').hide(),
+                $('#page1').show();
+            } else if($('#page1').css('display')!=='none'){
+                $('#abase').show(),
+                $('#page1').hide();
+            } else if($('#abase').css('display') !== 'none'){
+                $('#abase').hide(),
+                $('#but').hide(),
+                $("#sb").show(),
+                $('#ahome').show();
+            }
+            //needs to continue for whole assessment - loop?
+        })
+    
+        $('.uBlock').click(function(){
+            window.location.replace('/login');
+        })
     }
-    //needs to continue for whole assessment - loop?
-})
 
-$('#prev').click(function(){
-    // PrevPage function
-    if($('#page3').css('display')!=='none'){
-        $('#page3').hide(),
-        $('#page2').show();
-    }else if($('#page2').css('display')!=='none'){
-        $('#page2').hide(),
-        $('#page1').show();
-    } else if($('#page1').css('display')!=='none'){
-        $('#abase').show(),
-        $('#page1').hide();
-    } else if($('#abase').css('display') !== 'none'){
-        $('#abase').hide(),
-        $('#but').hide(),
-        $("#sb").show(),
-        $('#ahome').show();
+    if(lastPathSegment == ''){
+        $('.lBlock').click(function(){
+            window.location.replace('/login');
+        })
+        
+        $('.sgBlock').click(function(){
+            window.location.replace('/signup');
+        })
+        
+        $('.asBlock').click(function(){
+            window.location.replace('/assessment');
+        })
     }
-    //needs to continue for whole assessment - loop?
+
 })
 
-$('.lBlock').click(function(){
-    window.location.replace('/login');
-})
-
-$('.sgBlock').click(function(){
-    window.location.replace('/signup');
-})
-
-$('.asBlock').click(function(){
-    window.location.replace('/assessment');
-})
-
-$('.uBlock').click(function(){
-    window.location.replace('/login');
-})
