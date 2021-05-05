@@ -2,6 +2,6 @@
 venv/
 LICENSE
 baseModel.sqlite3
-webapp/app/_pycache_/
+__pycache__/
 
 
