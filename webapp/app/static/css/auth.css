@@ -1,5 +1,11 @@
 body {
   background-image: url('/static/images/loginBackground.jpg');
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -70,4 +76,10 @@ h1{
     background: transparent;
     color: #fff;
     font-size: 16px;
+}
+
+.rememberMe {
+    text-align: center;
+    margin: 31px auto;
+    width: 80%;
 }

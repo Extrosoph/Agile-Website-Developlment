@@ -54,7 +54,15 @@
     color: #808080;
 }
 
-.category {
+.categoryNew {
+    text-align: center;
+    border-color: #808080;
+    border-style: solid;
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.categoryAssessment {
     text-align: center;
     border-color: #808080;
     border-style: solid;
@@ -134,8 +142,9 @@ h1{
 }
 
 #numQuestions {
-    width: 100%;
-    max-width: 100%;
+    width: 89%;
+    max-width: 89%;
+    margin-left: auto;
 }
 
 .center {
@@ -157,4 +166,30 @@ h1{
     width: 24.75%;
     color: black;
     border-width: thin;
+}
+
+#score {
+    width: 10%;
+    max-width: 10%;
+    float: right;
+}
+
+.searchBox {
+    margin: 31px auto;
+    width: 80%;
+    border-style:solid;
+    padding: 8px;
+    padding-top: 7px;
+    padding-bottom: 3px;
+    border-radius: 25px;
+}
+
+.searchBox input {
+    width: 99%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #000000;
+    border-width: thin;
+    border-radius: 25px;
 }
