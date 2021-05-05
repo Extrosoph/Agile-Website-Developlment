@@ -84,7 +84,7 @@ h1{
     width: 90%;
     border: none;
     outline: none;
-    background: transparent;
+    background: white;
     color: #000000;
     border-width: thin;
     border-radius: 25px;
@@ -127,7 +127,7 @@ h1{
     width: 99%;
     border: none;
     outline: none;
-    background: transparent;
+    background: white;
     color: #000000;
     border-width: thin;
     border-radius: 25px;
@@ -155,6 +155,6 @@ h1{
 
 .answerBox textarea {
     width: 24.75%;
-    color: #000000;
+    color: black;
     border-width: thin;
 }
