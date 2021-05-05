@@ -9,6 +9,14 @@ function stringManipulations(data) {
     return value;
 }
 
+// Date manipulation function to assist
+function dateManipulations(data) {
+    var value = data.replace(',', ' ')
+    value = data.split(' ');
+    return value;
+}
+
+
 $(document).ready(function() {
     var href = document.location.href;
     var lastPathSegment = href.substr(href.lastIndexOf('/') + 1);
@@ -269,13 +277,52 @@ $(document).ready(function() {
         })
     }
 
-    //Js for adminAssessment page
+    //Js for adminUser page
     if (lastPathSegment == 'adminUser') {
 
         $('#search').click(function() {
             console.log($('#query').val());
             $.post(`${window.origin}/getUser`, {'query': $('#query').val()}, function(data, status) {
-                console.log(data);
+            console.log(data);
+            const username = data['username'];
+            const email = data['email'];
+            const admin = data['Admin'];
+            const date = dateManipulations(data['dateJoined']);
+            $('.searchBox').remove();
+            $('#search').remove();
+            var table = `<table class="user" >
+                                <tr>
+                                    <th>username</th>
+                                    <th>Email</th>
+                                    <th>Admin Privileges</th>
+                                    <th>Date Joined</th>
+                                <tr>`;
+
+            // Add username to table
+            table = table.concat('<tr><td>');
+            table = table.concat(username);
+            table = table.concat('</td>');
+
+            // Add email to table
+            table = table.concat('<td>');
+            table = table.concat(email);
+            table = table.concat('</td>');
+
+            // Add admin privileges to table
+            table = table.concat('<td>');
+            table = table.concat(admin);
+            table = table.concat('</td>');
+
+            // Add admin privileges to table
+            table = table.concat('<td>');
+            table = table.concat(date[0]);
+            table = table.concat(date[1]);
+            table = table.concat(date[2]);
+            table = table.concat(date[3]);
+            table = table.concat('</td>');
+
+            $('main').append(table);
+
             })
         })
 

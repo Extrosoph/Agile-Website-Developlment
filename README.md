@@ -13,7 +13,7 @@
 1. pip install virtualenv
 2. virtualenv venv
 3. venv\Scripts\activate.bat 
-4. set FLASK_APP=app
+4. set FLASK_APP=webapp\app
 5. set FLASK_ENV=development
 6. flask run
    
