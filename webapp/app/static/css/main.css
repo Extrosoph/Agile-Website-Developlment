@@ -4,7 +4,7 @@ body{
 .gen{
     margin-left:3em;
 }
-h1{
+h1, h2, h3{
     color:#ff652f;
 }
 
@@ -45,10 +45,6 @@ h1{
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-}
-
-h2{
-    color:#ff652f;
 }
 
 .uBlock:hover, .sgBlock:hover{
@@ -101,6 +97,23 @@ p{
     padding:3em;
 }
 
+table, th, td{
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+th,td{
+    text-align:left;
+    padding:5px;
+    color:#747474;
+    width:50%;
+}
+
+.tableClass{
+    border-spacing:5px;
+    margin:auto;
+    width:75%;
+}
 /*colors for later
 #14A76C Aqua-ish Green
 #61892F Forest Green

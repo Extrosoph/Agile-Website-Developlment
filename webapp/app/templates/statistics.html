@@ -4,7 +4,40 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/statistic.css')}}">
 <div class = "gen">
     <h1>Statistics</h1>
+    <br>
+    <h3>Overall</h3>
+    <table class="tableClass">
+        <tr>
+            <th>Catergory</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Number of Users</td>
+            <td>1337</td><!--link to db-->
+        </tr>
+        <tr>
+            <td>Number of Assesments Completed</td>
+            <td>420</td><!--link to db-->
+        </tr>
+    </table>
+    <br>
+    <h3>Assessment 1</h3>
+    <table class="tableClass">
+        <tr>
+            <th>Catergory</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Highest Score</td>
+            <td>99</td><!--link to db-->
+        </tr>
+        <tr>
+            <td>Average Score</td>
+            <td>69</td><!--link to db-->
+        </tr>
+    </table>
 </div>
+<br>
 <!-- add table to take statistics from db -->
 <!-- number of users, number of assessments completed
 for assessments: highest score, average score -->
