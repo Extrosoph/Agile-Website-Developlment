@@ -7,15 +7,7 @@ body{
 h1{
     color:#ff652f;
 }
-/*colors for later
-#FFE400 Yellow
-#14A76C Aqua-ish Green
-#61892F Forest Green
-#86C232 Fluroish Green
-#222629 Dark Grey
-#474B4F Mid Grey
-#6B6E70 Light Grey
-*/
+
 .hBlock{
     width:40%;
     margin:auto;
@@ -36,7 +28,7 @@ h1{
     background-position: center;
     background-repeat:no-repeat;
     position:relative;
-    /* border/padding */
+    /* border/padding? */
 }
 
 .lBlock{
@@ -95,7 +87,7 @@ h2{
     border:2px solid white;
 }
 
-.aBlock p, .startBlock p, .gen p{
+p{
     color:#747474;
 }
 
@@ -108,3 +100,11 @@ h2{
     float:right;
     padding:3em;
 }
+
+/*colors for later
+#14A76C Aqua-ish Green
+#61892F Forest Green
+#222629 Dark Grey
+#474B4F Mid Grey
+#6B6E70 Light Grey
+*/

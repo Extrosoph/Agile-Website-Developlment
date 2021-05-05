@@ -112,19 +112,19 @@ $(document).ready(function() {
     })
 
     $('.lBlock').click(function(){
-        //Change to Login Page
+        window.location.replace('/login');
     })
 
     $('.sgBlock').click(function(){
-        //Change to Sign-up Page
+        window.location.replace('/signup');
     })
 
     $('.asBlock').click(function(){
-        //Change to Assessments Page
+        window.location.replace('/assessment');
     })
 
     $('.uBlock').click(function(){
-        //Change to Login Page
+        window.location.replace('/login');
     })
 })
 
