@@ -9,10 +9,43 @@ adminAssessment_bp = Blueprint('adminAseessment_bp', __name__)
 adminUser_bp = Blueprint('adminUser_bp', __name__)
 getAssessment_bp = Blueprint('getAssessment_bp', __name__)
 getUser_bp = Blueprint('getUser_bp', __name__)
+makeAdmin_bp = Blueprint('makeAdmin_bp', __name__)
+removeUser_bp = Blueprint('removeUser_bp', __name__)
+
 
 @admin_bp.route("/admin", methods=["POST", "GET"])
 def admin():
     return render_template("admin.html", page='admin')
+
+@makeAdmin_bp.route("/makeAdmin", methods=["POST"])
+def makeAdmin():
+    # Function to get user details from ajax
+    req = request.get_json()
+    username = request.form['username']
+
+    current_user_username = User.query.filter_by(username=username).first()
+
+    current_user_username.admin = True
+    db.session.commit()
+
+    response = make_response(jsonify({'return': 'complete'}), 200)
+
+    return response
+
+@removeUser_bp.route("/removeUser", methods=["POST"])
+def removeUser():
+    # Function to get user details from ajax
+    req = request.get_json()
+    username = request.form['username']
+
+    current_user_username = User.query.filter_by(username=username).first()
+
+    db.session.delete(current_user_username)
+    db.session.commit()
+
+    response = make_response(jsonify({'return': 'complete'}), 200)
+
+    return response
 
 @getUser_bp.route("/getUser", methods=["POST"])
 def getUser():
@@ -61,7 +94,6 @@ def getAssessment():
     for question in assessment.questions:
         questions.append(question.question)
 
-    print(answers)
 
     # Get answers from db
     for answer in assessment.answer:
@@ -70,7 +102,6 @@ def getAssessment():
         answers.append(answer.answer3)
         answers.append(answer.answer4)
 
-    print(answers)
 
     # Get correct answer from db
     for correct_answer in assessment.correctAnswer:

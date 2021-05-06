@@ -202,3 +202,9 @@ h1{
     margin-left: auto;
     margin-right: auto;
 }
+
+#userMessage {
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: bolder;
+}
