@@ -92,7 +92,7 @@ h1{
     width: 90%;
     border: none;
     outline: none;
-    background: transparent;
+    background: white;
     color: #000000;
     border-width: thin;
     border-radius: 25px;
@@ -135,7 +135,7 @@ h1{
     width: 99%;
     border: none;
     outline: none;
-    background: transparent;
+    background: white;
     color: #000000;
     border-width: thin;
     border-radius: 25px;
@@ -164,7 +164,7 @@ h1{
 
 .answerBox textarea {
     width: 24.75%;
-    color: #000000;
+    color: black;
     border-width: thin;
 }
 
@@ -182,6 +182,7 @@ h1{
     padding-top: 7px;
     padding-bottom: 3px;
     border-radius: 25px;
+    border-color: #FFFFFF;
 }
 
 .searchBox input {
@@ -189,7 +190,15 @@ h1{
     border: none;
     outline: none;
     background: transparent;
-    color: #000000;
+    color: #FFFFFF;
     border-width: thin;
     border-radius: 25px;
+    border-color: #FFFFFF;
+}
+
+.user {
+    color: #FFFFFF;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
