@@ -99,7 +99,7 @@ $(document).ready(function() {
     //Js for adminAssessment page
     if (lastPathSegment == 'adminAssessment') {
 
-        // Fix for a POST sumbit after refreshing a page
+        // Fix for a POST submit after refreshing a page
         if ( window.history.replaceState ) {
             window.history.replaceState( null, null, window.location.href );
         }
@@ -157,7 +157,8 @@ $(document).ready(function() {
                 }
 
                 $('form').append(`<div style="width:60%;margin:40px auto;" >
-                                  <p style="float:left" id="reset" class="button">Reset</p>
+                                  <p style="margin-left: -100px margin-right: 10px" id="reset" class="button">Reset</p>
+                                  <p style="text-align:center vertical-align: middle" id="Delete" class="button">Delete</p>
                                   <button style="float:right" type="submit" id="update" class="button">Update</button>
                                   </div>`);
 
