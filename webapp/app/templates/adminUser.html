@@ -7,13 +7,7 @@
   <div class="searchBox">
     <input id="query" name="query" placeholder="Username or Email" maxlength="256">
   </div>
+    <p id="userMessage"></p>
   <p style="text-align: center" id="search" class="button">Search</p>
-  {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for msg in messages %}
-                <p class="center">{{msg}}</p>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
 </div>
 {% endblock %}

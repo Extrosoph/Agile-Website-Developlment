@@ -9,13 +9,6 @@ function stringManipulations(data) {
     return value;
 }
 
-// Date manipulation function to assist
-function dateManipulations(data) {
-    var value = data.replace(',', ' ')
-    value = data.split(' ');
-    return value;
-}
-
 
 $(document).ready(function() {
     var href = document.location.href;
@@ -283,46 +276,69 @@ $(document).ready(function() {
         $('#search').click(function() {
             console.log($('#query').val());
             $.post(`${window.origin}/getUser`, {'query': $('#query').val()}, function(data, status) {
-            console.log(data);
-            const username = data['username'];
-            const email = data['email'];
-            const admin = data['Admin'];
-            const date = dateManipulations(data['dateJoined']);
-            $('.searchBox').remove();
-            $('#search').remove();
-            var table = `<table class="user" >
-                                <tr>
-                                    <th>username</th>
-                                    <th>Email</th>
-                                    <th>Admin Privileges</th>
-                                    <th>Date Joined</th>
-                                <tr>`;
+            if (Object.keys(data).length == 1) {
+                $('#userMessage').text('No such user!');
+            }
 
-            // Add username to table
-            table = table.concat('<tr><td>');
-            table = table.concat(username);
-            table = table.concat('</td>');
+            else {
+                console.log(data);
+                const username = data['username'];
+                const email = data['email'];
+                const admin = data['Admin'];
+                const date = data['dateJoined'];
+                $('.searchBox').remove();
+                $('#search').remove();
+                var table = `<table class="user" >
+                                    <tr>
+                                        <th>username</th>
+                                        <th>Email</th>
+                                        <th>Admin Privileges</th>
+                                        <th>Date Joined</th>
+                                    <tr>`;
 
-            // Add email to table
-            table = table.concat('<td>');
-            table = table.concat(email);
-            table = table.concat('</td>');
+                // Add username to table
+                table = table.concat('<tr><td>');
+                table = table.concat(username);
+                table = table.concat('</td>');
 
-            // Add admin privileges to table
-            table = table.concat('<td>');
-            table = table.concat(admin);
-            table = table.concat('</td>');
+                // Add email to table
+                table = table.concat('<td>');
+                table = table.concat(email);
+                table = table.concat('</td>');
 
-            // Add admin privileges to table
-            table = table.concat('<td>');
-            table = table.concat(date[0]);
-            table = table.concat(date[1]);
-            table = table.concat(date[2]);
-            table = table.concat(date[3]);
-            table = table.concat('</td>');
+                // Add admin privileges to table
+                table = table.concat('<td>');
+                table = table.concat(admin);
+                table = table.concat('</td>');
 
-            $('main').append(table);
+                // Add admin privileges to table
+                console.log(date);
+                table = table.concat('<td>');
+                table = table.concat(date.substring(0,3));
+                table = table.concat(',');
+                table = table.concat(date.substring(4,16));
+                table = table.concat('</td>');
 
+                $('main').append(table);
+
+                $('main').append(`<div style="width:60%;margin:40px auto;" >
+                                      <p style="float:left" id="remove" class="button">Remove</p>
+                                      <p style="float:right" id="makeAdmin" class="button">Make Admin</p>
+                                      </div>`);
+
+                $('#remove').click(function() {
+                    $.post(`${window.origin}/removeUser`, {'username': username},  function(data, status) {
+                        window.location.replace(`${window.origin}/adminUser`);
+                    })
+                })
+
+                $('#makeAdmin').click(function() {
+                    $.post(`${window.origin}/makeAdmin`, {'username': username},  function(data, status) {
+                    window.location.replace(`${window.origin}/adminUser`);
+                    })
+                })
+
+            }
             })
         })
 
