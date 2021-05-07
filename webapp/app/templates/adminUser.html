@@ -2,12 +2,21 @@
 {% block title %}Admin{% endblock %}
 {% block content %}
 <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-<div id="main">
+<div id="main2">
   <h1>Users</h1>
+  {% if userLen > 0 %}
+  <h2>Search for Users</h2>
   <div class="searchBox">
     <input id="query" name="query" placeholder="Username or Email" maxlength="256">
   </div>
-    <p id="userMessage"></p>
+  <p id="userMessage"></p>
   <p style="text-align: center" id="search" class="button">Search</p>
+  <h2>Latest Users</h2>
+  <table id="assessmentTable" class="center">
+    {{user|safe}}
+  </table>
+  {% else %}
+   <h2>No user signed up!</h2>
+  {% endif %}
 </div>
 {% endblock %}

@@ -174,26 +174,30 @@ def adminAssessment():
         newAssessment.score = result
         db.session.commit()
 
-        assessment = Assessment.query.all()
-        if assessment is not None:
-            categories = ""
-            for items in assessment:
-                categories += '<tr><th><p class="categoryAssessment" id="Assessment>' + items.category + '</p></th></tr>'
-
-        return render_template("adminAssessment.html", page='admin', assessmentLen=len(assessment), assessment=categories)
+        assessments = Assessment.query.order_by(Assessment.dateCreated.desc())[:10]
+        category = []
+        for assessment in assessments:
+            category.append(assessment.category)
+        return render_template("adminAssessment.html", page='admin', assessmentLen=len(assessments), assessment=category)
 
     else:
-        assessment = Assessment.query.all()
+        assessments = Assessment.query.order_by(Assessment.dateCreated.desc())[:10]
+        category = []
+        for assessment in assessments:
+            category.append(assessment.category)
         if assessment is not None:
-            categories = ""
-            counter = 0
-            for items in assessment:
-                categories += '<tr><th><p class="categoryAssessment" id="Assessment" >' + items.category + '</p></th></tr>'
-
-            return render_template("adminAssessment.html", page='admin', assessmentLen=len(assessment), assessment=categories)
+            return render_template("adminAssessment.html", page='admin', assessmentLen=len(assessments), assessment=category)
         else:
             return render_template("adminAssessment.html", page='admin', assessmentLen=0)
 
 @adminUser_bp.route("/adminUser", methods=["POST", "GET"])
 def adminUser():
-    return render_template("adminUser.html", page='admin')
+    users = User.query.order_by(User.dateJoined.desc())[:10]
+    if users is not None:
+        usernames = ""
+        for user in users:
+            usernames += '<tr><th><p class="categoryAssessment" id="User" >' + user.username + '</p></th></tr>'
+        return render_template("adminUser.html", page='admin', userLen=len(users), user=usernames)
+
+    else:
+        return render_template("adminUser.html", page='admin', userLen=0)
