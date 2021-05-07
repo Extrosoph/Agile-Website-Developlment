@@ -5,8 +5,7 @@
     <h1>User</h1>
 </div>
 <br>
-<!--needs to only be accessed when logged in-->
-<!--link to database for values, have a base table, assessments needs to be dynamic-->
+{% if session['logged_in'] == True %}
 <div class = "userBlock">
     <table class ="userTable">
         <tr>
@@ -15,17 +14,24 @@
         </tr>
         <tr>
             <td>Username</td>
-            <td>IsaacC</td>
+            <td>{{user.username}}</td>
         </tr>
         <tr>
             <td>Email</td>
-            <td>notReal@fakemail.com</td>
+            <td>{{user.email}}</td>
         </tr>
         <tr>
             <td>Joined on</td>
-            <td>04/05/2021</td>
+            <td>{{user.dateJoined.date()}}</td>
         </tr>
     </table>
+{% else %}
+
+{% endif %}
+<br>
+<!--needs to only be accessed when logged in-->
+<!--link to database for values, have a base table, assessments needs to be dynamic-->
+
     <br>
     <!--user info-->
     <!--link to db, but have fields set-->
