@@ -337,6 +337,7 @@ $(document).ready(function() {
         $('.uBlock').click(function(){
             window.location.replace('/login');
         })
+
     }
 
     if(lastPathSegment == ''){
@@ -353,19 +354,48 @@ $(document).ready(function() {
         })
     }
 
-    if(lastPathSegment == 'user'){
-        $(function changeFormat(inputDate){
-            var splitDate = inputDate.split('-');
-            if(splitDate.count == 0){
-                return null;
-            }
-            var year = splitDate[0];
-            var month = splitDate[1];
-            var day = splitDate[2];
+    //get this to work
+    // if(lastPathSegment == 'statistics'){
+    //     $('#numUsers').ready(function(){
+    //         var numUsers=0;
+    //         var usersNum = db.exec("SELECT userId FROM Users")
+    //         console.log(usersNum);
+    //         for (users in usersNum) 
+    //             numUsers=+1;
+    //         $('#numUsers').html(numUsers);
+    //     })
+    // }
 
-            return day + '-' + month + '-' + year;
-        })
-    }
+    //get this to work - low prio
+    // if(lastPathSegment == 'user'){
+    //     $(function changeFormat(inputDate){
+    //         var splitDate = inputDate.split('-');
+    //         if(splitDate.count == 0){
+    //             return null;
+    //         }
+    //         var year = splitDate[0];
+    //         var month = splitDate[1];
+    //         var day = splitDate[2];
+
+    //         return day + '-' + month + '-' + year;
+    //     })
+
+        //get this to work - can just hard code
+        // $('userAssess').onload = function createAssessTable(){
+        //     console.log("1");
+        //     var assessTable = $('#assessTable');
+        //     var count = 1;
+        //     // //for each row in assessment where userId = {{user.Id}}
+        //     //     var newRow = assessTable.insertRow(count);
+        //     //     var nRow1 = newRow.insertCell(0);
+        //     //     var nRow2 = newRow.insertCell(1);
+        //     //     var nRow3 = newRow.insertCell(2);
+        //     //     nRow1.innerHTML = 0;//assessment.name
+        //     //     nRow2.innerHTML = 1;//in progress/completed
+        //     //     nRow3.innerHTML = 2;//assessment.score
+        //     //     count+=1;
+        // }
+    // }
 
 })
 

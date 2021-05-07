@@ -5,6 +5,7 @@
     <h1>User</h1>
 </div>
 <br>
+<!--figure out what breaks becasuse of this-->
 {% if session['logged_in'] == True %}
 <div class = "userBlock">
     <table class ="userTable">
@@ -25,49 +26,18 @@
             <td>{{user.dateJoined.date()}}</td>
         </tr>
     </table>
-{% else %}
-
-{% endif %}
-<br>
-<!--needs to only be accessed when logged in-->
-<!--link to database for values, have a base table, assessments needs to be dynamic-->
-
     <br>
-    <!--user info-->
-    <!--link to db, but have fields set-->
-    <!-- fields: username, email-->
-    <!--button to change password?-->
-
-    <table class = "userAssess">
+</div>
+<div class ="userAssess">
+    <table class = "userTable" id = "assessTable">
         <tr>
-            <th>Assessment</th>
+            <th>Asessment</th>
             <th>Progress</th>
             <th>Score</th>
         </tr>
-        <tr>
-            <td>HTML</td>
-            <td>Completed</td>
-            <td>100</td>
-        </tr>
-        <tr>
-            <td>CSS</td>
-            <td>Completed</td>
-            <td>100</td>
-        </tr>
-        <tr>
-            <td>Jquery/Javascript</td>
-            <td>In Progress</td>
-            <td>60</td>
-        </tr>
-        <tr>
-            <td>Databases</td>
-            <td>Not Started</td>
-            <td>0</td>
-        </tr>
     </table>
-    <!--Assessment info-->
-    <!-- link to db-->
-    <!--progess/score/etc-->
 </div>
-    <!-- need to add layout for user information and link to db -->
+{% else %}
+
+{% endif %}
 {% endblock %}
