@@ -54,7 +54,15 @@
     color: #808080;
 }
 
-.category {
+.categoryNew {
+    text-align: center;
+    border-color: #808080;
+    border-style: solid;
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.categoryAssessment {
     text-align: center;
     border-color: #808080;
     border-style: solid;
@@ -72,6 +80,12 @@ h1{
     margin-bottom: 40px;
 }
 
+h2{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
 .input-box {
     margin: 31px auto;
     width: 20%;
@@ -84,7 +98,7 @@ h1{
     width: 90%;
     border: none;
     outline: none;
-    background: transparent;
+    background: white;
     color: #000000;
     border-width: thin;
     border-radius: 25px;
@@ -127,15 +141,16 @@ h1{
     width: 99%;
     border: none;
     outline: none;
-    background: transparent;
+    background: white;
     color: #000000;
     border-width: thin;
     border-radius: 25px;
 }
 
 #numQuestions {
-    width: 100%;
-    max-width: 100%;
+    width: 89%;
+    max-width: 89%;
+    margin-left: auto;
 }
 
 .center {
@@ -155,6 +170,47 @@ h1{
 
 .answerBox textarea {
     width: 24.75%;
-    color: #000000;
+    color: black;
     border-width: thin;
+}
+
+#score {
+    width: 10%;
+    max-width: 10%;
+    float: right;
+}
+
+.searchBox {
+    margin: 31px auto;
+    width: 80%;
+    border-style:solid;
+    padding: 8px;
+    padding-top: 7px;
+    padding-bottom: 3px;
+    border-radius: 25px;
+    border-color: #FFFFFF;
+}
+
+.searchBox input {
+    width: 99%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #FFFFFF;
+    border-width: thin;
+    border-radius: 25px;
+    border-color: #FFFFFF;
+}
+
+.user {
+    color: #FFFFFF;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#userMessage {
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: bolder;
 }
