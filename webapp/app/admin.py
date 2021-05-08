@@ -185,7 +185,7 @@ def adminAssessment():
         category = []
         for assessment in assessments:
             category.append(assessment.category)
-        if assessment is not None:
+        if assessments is not None:
             return render_template("adminAssessment.html", page='admin', assessmentLen=len(assessments), assessment=category)
         else:
             return render_template("adminAssessment.html", page='admin', assessmentLen=0)

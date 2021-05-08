@@ -40,5 +40,10 @@
 4. pip3 install -e .
 5. flask run
 
+# Testing with selenium
+
+1. pip install selenium
+1. run test.py
+
 
 *Will create a simple ERD soon too :)

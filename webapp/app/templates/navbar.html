@@ -7,21 +7,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link {% if page == 'home' %}active{% endif %}" href="/">Home</a>
+          <a class="nav-link {% if page == 'home' %}active{% endif %}" id="home" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if page == 'assessment' %}active{% endif %} " href="/assessment">Assessment</a>
+          <a class="nav-link {% if page == 'assessment' %}active{% endif %}" id="assessment" href="/assessment">Assessment</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% if page == 'statistics'%}active{% endif %} " href="/statistics">Statistics</a>
+          <a class="nav-link {% if page == 'statistics'%}active{% endif %}" id="statistic" href="/statistics">Statistics</a>
         </li>
 <!--Need to add a jinja if statement to check if the user is an admin-->
         <li class="nav-item">
-          <a class="nav-link {% if page == 'admin'%}active{% endif %} " href="/admin">Admin</a>
+          <a class="nav-link {% if page == 'admin'%}active{% endif %}" id="admin" href="/admin">Admin</a>
         </li>
         {% if session['logged_in'] == True %}
         <li class="nav-item">
-          <a class="nav-link {% if page == 'user' %}active{% endif %} " href="/user">User</a>
+          <a class="nav-link {% if page == 'user' %}active{% endif %}" id="user" href="/user">User</a>
         </li>
         {% endif %}
       </ul>
@@ -29,11 +29,11 @@
       <div class="navbar-nav ml-auto" style="padding-right: 10px;">
       {% if session['logged_in'] == True %}
       <div class="nav-item">
-          <a class="nav-link" href="/logout">Logout</a>
+          <a class="nav-link" id="logout" href="/logout">Logout</a>
       </div>
       {% else %}
       <div class="nav-item">
-          <a class="nav-link {% if page == 'login' %}active{% endif %}" href="/login">Login</a>
+          <a class="nav-link {% if page == 'login' %}active{% endif %}" id="login" href="/login">Login</a>
       </div>
       {% endif %}
       </div>
