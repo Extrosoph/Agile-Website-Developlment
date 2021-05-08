@@ -33,11 +33,12 @@ class User(db.Model):
     userAnswers = db.relationship('userAnswers', cascade='all, delete-orphan')
     dateJoined = db.Column(db.DateTime, default=datetime.now)
 
-    def __init__(self, username, email, password):
+    def __init__(self, username, email, password, id):
         salt = gensalt(rounds=12)
         self.username = username
         self.email = email
         self.password = hashpw(password.encode(), salt)
+        self.id = id
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -58,6 +59,11 @@ class Assessment(db.Model):
 
     def __repr__(self):
         return '<assessment name: {}>'.format(self.category)
+
+    def userAsessment(userId):
+        if userId:
+            return Assessment.query.filter_by(userId=userId)
+        return Assessment.query.all()
 
 class Questions(db.Model):
     __tablename__ = 'questions'

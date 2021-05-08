@@ -28,13 +28,16 @@
     </table>
     <br>
 </div>
+{{uAssess}}
 <div class ="userAssess">
     <table class = "userTable" id = "assessTable">
         <tr>
             <th>Asessment</th>
-            <th>Progress</th>
             <th>Score</th>
         </tr>
+        {% for user in uAssess %} 
+        <tr><td>{{user.catergory}}</td><td>{{user.score}}</td></tr>
+        {% endfor %}
     </table>
 </div>
 {% else %}
