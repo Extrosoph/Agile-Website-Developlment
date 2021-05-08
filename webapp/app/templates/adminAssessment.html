@@ -3,11 +3,14 @@
 {% block content %}
 <div id="main" >
   <h1>Assessments</h1>
+  <h2>Latest Assessments</h2>
   <table id="assessmentTable" class="center">
+    <tr><th><p class="categoryNew" id="newCategory">Create a new Assessment</p></th></tr>
     {% if assessmentLen > 0 %}
-    {{assessment|safe}}
+      {% for category in assessment %}
+        <tr><th><p class="categoryAssessment" id="Assessment" >{{category}}</p></th></tr>
+      {% endfor %}
     {% endif %}
-    <tr><th><p class="categoryNew" id="newCategory">Create a new category</p></th></tr>
   </table>
 </div>
 {% endblock %}

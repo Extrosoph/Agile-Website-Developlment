@@ -9,6 +9,41 @@ function stringManipulations(data) {
     return value;
 }
 
+// Function to create table for users
+function createTable(username, email, admin, date) {
+    var table = `<table class="user" >
+                <tr>
+                    <th>username</th>
+                    <th>Email</th>
+                    <th>Admin Privileges</th>
+                    <th>Date Joined</th>
+                <tr>`;
+
+    // Add username to table
+    table = table.concat('<tr><td>');
+    table = table.concat(username);
+    table = table.concat('</td>');
+
+    // Add email to table
+    table = table.concat('<td>');
+    table = table.concat(email);
+    table = table.concat('</td>');
+
+    // Add admin privileges to table
+    table = table.concat('<td>');
+    table = table.concat(admin);
+    table = table.concat('</td>');
+
+    // Add admin privileges to table
+    table = table.concat('<td>');
+    table = table.concat(date.substring(0,3));
+    table = table.concat(',');
+    table = table.concat(date.substring(4,16));
+    table = table.concat('</td>');
+
+    return table;
+}
+
 
 $(document).ready(function() {
     var href = document.location.href;
@@ -99,17 +134,15 @@ $(document).ready(function() {
     //Js for adminAssessment page
     if (lastPathSegment == 'adminAssessment') {
 
-        // Fix for a POST sumbit after refreshing a page
+        // Fix for a POST submit after refreshing a page
         if ( window.history.replaceState ) {
             window.history.replaceState( null, null, window.location.href );
         }
 
         $('.categoryAssessment').click(function() {
             $.post(`${window.origin}/getAssessment`, {'category': $(this).html()}, function(data, status) {
-                console.log(data);
                 var html = '<div class="questionBox"><textarea id="numQuestions" placeholder="Question';
                 $('table').remove();
-                console.log(data['name']);
                 $('h1').html(data['name']);
                 var first = `<form method="post" id="myform">
                              <div class="input-box">
@@ -157,7 +190,8 @@ $(document).ready(function() {
                 }
 
                 $('form').append(`<div style="width:60%;margin:40px auto;" >
-                                  <p style="float:left" id="reset" class="button">Reset</p>
+                                  <p style="margin-left: -100px margin-right: 10px" id="reset" class="button">Reset</p>
+                                  <p style="text-align:center vertical-align: middle" id="Delete" class="button">Delete</p>
                                   <button style="float:right" type="submit" id="update" class="button">Update</button>
                                   </div>`);
 
@@ -199,7 +233,7 @@ $(document).ready(function() {
 
                 // Check if the number of question field is empty
                 if (!$('#numQuestions').val()) {
-                    alert('Please speicify the number of questions!');
+                    alert('Please specify the number of questions!');
                     return false;
                 }
 
@@ -274,71 +308,83 @@ $(document).ready(function() {
     if (lastPathSegment == 'adminUser') {
 
         $('#search').click(function() {
-            console.log($('#query').val());
             $.post(`${window.origin}/getUser`, {'query': $('#query').val()}, function(data, status) {
-            if (Object.keys(data).length == 1) {
-                $('#userMessage').text('No such user!');
-            }
+                if (Object.keys(data).length == 1) {
+                    $('#userMessage').text('No such user!');
+                }
 
-            else {
-                console.log(data);
-                const username = data['username'];
-                const email = data['email'];
-                const admin = data['Admin'];
-                const date = data['dateJoined'];
-                $('.searchBox').remove();
-                $('#search').remove();
-                var table = `<table class="user" >
-                                    <tr>
-                                        <th>username</th>
-                                        <th>Email</th>
-                                        <th>Admin Privileges</th>
-                                        <th>Date Joined</th>
-                                    <tr>`;
+                else {
 
-                // Add username to table
-                table = table.concat('<tr><td>');
-                table = table.concat(username);
-                table = table.concat('</td>');
+                    const username = data['username'];
+                    const email = data['email'];
+                    const admin = data['Admin'];
+                    const date = data['dateJoined'];
 
-                // Add email to table
-                table = table.concat('<td>');
-                table = table.concat(email);
-                table = table.concat('</td>');
+                    $('#main2').empty();
+                    var header = '<h1>';
+                    header = header.concat(username);
+                    header = header.concat('</h1>')
+                    $('#main2').append(header);
 
-                // Add admin privileges to table
-                table = table.concat('<td>');
-                table = table.concat(admin);
-                table = table.concat('</td>');
+                    var table = createTable(username, email, admin, date)
 
-                // Add admin privileges to table
-                console.log(date);
-                table = table.concat('<td>');
-                table = table.concat(date.substring(0,3));
-                table = table.concat(',');
-                table = table.concat(date.substring(4,16));
-                table = table.concat('</td>');
+                    $('#main2').append(table);
 
-                $('main').append(table);
+                    $('#main2').append(`<div style="width:60%;margin:40px auto;" >
+                                          <p style="float:left" id="remove" class="button">Remove</p>
+                                          <p style="float:right" id="makeAdmin" class="button">Make Admin</p>
+                                          </div>`);
 
-                $('main').append(`<div style="width:60%;margin:40px auto;" >
-                                      <p style="float:left" id="remove" class="button">Remove</p>
-                                      <p style="float:right" id="makeAdmin" class="button">Make Admin</p>
-                                      </div>`);
+                    $('#remove').click(function() {
+                        $.post(`${window.origin}/removeUser`, {'username': username},  function(data, status) {
+                            window.location.replace(`${window.origin}/adminUser`);
+                        })
+                    })
 
-                $('#remove').click(function() {
-                    $.post(`${window.origin}/removeUser`, {'username': username},  function(data, status) {
+                    $('#makeAdmin').click(function() {
+                        $.post(`${window.origin}/makeAdmin`, {'username': username},  function(data, status) {
                         window.location.replace(`${window.origin}/adminUser`);
+                        })
                     })
-                })
 
-                $('#makeAdmin').click(function() {
-                    $.post(`${window.origin}/makeAdmin`, {'username': username},  function(data, status) {
+                }
+            })
+        })
+
+        $('.categoryAssessment').click(function() {
+            $.post(`${window.origin}/getUser`, {'query': $(this).html()}, function(data, status) {
+
+            const username = data['username'];
+            const email = data['email'];
+            const admin = data['Admin'];
+            const date = data['dateJoined'];
+
+            $('#main2').empty();
+            var header = '<h1>';
+            header = header.concat(username);
+            header = header.concat('</h1>')
+            $('#main2').append(header);
+
+            var table = createTable(username, email, admin, date);
+
+            $('main').append(table);
+
+            $('main').append(`<div style="width:60%;margin:40px auto;" >
+                                  <p style="float:left" id="remove" class="button">Remove</p>
+                                  <p style="float:right" id="makeAdmin" class="button">Make Admin</p>
+                                  </div>`);
+
+            $('#remove').click(function() {
+                $.post(`${window.origin}/removeUser`, {'username': username},  function(data, status) {
                     window.location.replace(`${window.origin}/adminUser`);
-                    })
                 })
+            })
 
-            }
+            $('#makeAdmin').click(function() {
+                $.post(`${window.origin}/makeAdmin`, {'username': username},  function(data, status) {
+                window.location.replace(`${window.origin}/adminUser`);
+                })
+            })
             })
         })
 
