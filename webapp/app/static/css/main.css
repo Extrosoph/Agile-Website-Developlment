@@ -143,6 +143,10 @@ table, th, td{
     border-spacing:5px;
     margin:auto;
 }
+
+.exit{
+    text-align:center;
+}
 /*colors for later
 #14A76C Aqua-ish Green
 #61892F Forest Green

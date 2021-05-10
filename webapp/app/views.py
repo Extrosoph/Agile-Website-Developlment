@@ -1,6 +1,6 @@
 from app import app
 from flask import  redirect, url_for, render_template, request, session, flash, Blueprint
-from app.models import Assessment
+from app.models import Assessment, User, Score#, Questions, Answers, correctAnswer, userAnswers
 
 home_bp = Blueprint('home_bp', __name__)
 user_bp = Blueprint('user_bp', __name__)
@@ -13,12 +13,11 @@ def home():
 
 @user_bp.route("/user")
 def user():
-    return render_template("user.html", page='user')
+    return render_template("user.html", page='user', users = User.userInfo(), score = Score.allScores())
 
 @statistics_bp.route("/statistics")
 def statistic():
-    current_user_id = User.query.filter_by(id=current_user.id).first()
-    return render_template("statistics.html", page='statistics', uAssess=Assessment.userAssessment(userId=current_user_id.id))
+    return render_template("statistics.html", page='statistics', users = User.userInfo(), score = Score.allScores())
 
 @assessment_bp.route("/assessment")
 def assessment():

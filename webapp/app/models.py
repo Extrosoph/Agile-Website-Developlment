@@ -1,6 +1,7 @@
 from app import app
 from flask_sqlalchemy import SQLAlchemy
 from bcrypt import gensalt, hashpw
+from sqlalchemy import func
 
 # Preparation for migration
 # from flask_script import Manager
@@ -43,6 +44,9 @@ class User(db.Model):
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
+    def userInfo():
+        return User.query.all()
+
 class Assessment(db.Model):
     __tablename__ = 'assessment'
     id = db.Column(db.Integer, primary_key=True)
@@ -60,9 +64,9 @@ class Assessment(db.Model):
     def __repr__(self):
         return '<assessment name: {}>'.format(self.category)
 
-    def userAsessment(userId):
-        if userId:
-            return Assessment.query.filter_by(userId=userId)
+    def userAsessment(uId):
+        if uId:
+            return Assessment.query.filter_by(userId=uId)
         return Assessment.query.all()
 
 class Questions(db.Model):
@@ -140,6 +144,15 @@ class Score(db.Model):
 
     def __repr__(self):
         return '<user: {} assessment: {} score: {}'.format(self.user, self.assessmentId, self.score)
+
+    def allScores():
+        return Score.query.with_entities(Score.score, Score.userId, Score.assessmentId)
+
+    def maxScores():
+        return Score.query.with_entities(func.max(Score.score), Score.userId, Score.AssessmentId)
+    
+    def avgScores():
+        return Score.query.with_entities(func.avg(Score.score), Score.userId, Score.AssessmentId)
 
 db.create_all()
 

@@ -7,13 +7,18 @@
                 <p>Select an assessment from the list below to start the module</p>
                 {% if session['logged_in'] == True %}
                 <!--put assessment list into array, then iterate over to create enough boxes-->
-                <div class="startBlock" id="sb">
+                <div class="startBlock" id="sb1">
                         <!-- needs to glow/highlight when hovered - green? -->
                         <h1>Assessment name</h1>
-                        <p class = "text" id="descripton"></p>
-                        <!-- <script>
-                                $('#description').load("/static/content/testAssessment/description.txt #description");
-                        </script> -->
+                        <p>Put a single line descriptions</p>
+                        <br>
+                        <p>if logged in show if complete/in-progress/etc?</p>
+                </div>
+                <br>
+                <div class="startBlock" id="sb2">
+                        <!-- needs to glow/highlight when hovered - green? -->
+                        <h1>Assessment name</h1>
+                        <p>Put a single line descriptions</p>
                         <br>
                         <p>if logged in show if complete/in-progress/etc?</p>
                 </div>
@@ -33,19 +38,17 @@
         </div>
 </div>
 <br>
-<!--for testing-->
 <br>
-<!-- link boxes to db to load learning, questions and user data -->
-
-<!-- make sure the box is easily differentiated from bg
-decide if txt loads straight into box or if popup
-work out forms to both load and import into db -->
-<div class="aBlock hidden" id="abase">
+<div class="aBlock hidden" id="1P0">
+        <!-- load next bit of assessment -->
+        <p>Intro</p>
+</div>
+<div class="aBlock hidden" id="1P1">
         <!-- load assessment here -->
-        <p>Other test text</p>
+        <p>First Bit of Content goes here</p>
         <br>
         <br>
-        <br>
+        <br>1P
         <p>does the scroll work?</p>
         <br>
         <p>or</p>
@@ -58,23 +61,63 @@ work out forms to both load and import into db -->
         <br>
         <p>test that scroll!</p>
 </div>
-<div class="aBlock hidden" id="page1">
+<div class="aBlock hidden" id="1P2">
         <!-- load next bit of assessment -->
-        <p>test text test</p>
+        <p>First Q form goes here</p>
 </div>
-<div class="aBlock hidden" id="page2">
+<div class="aBlock hidden" id="1P3">
         <!-- load next bit of assessment -->
-        <p>test text test2</p>
+        <p>2nd content</p>
 </div>
-<div class="aBlock hidden" id="page3">
+<div class="aBlock hidden" id="1P4">
         <!-- load next bit of assessment -->
-        <p>test text test3</p>
+        <p>2nd Q</p>
         <br>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam consequuntur beatae ab iste nulla ullam dolorem unde soluta provident natus magni architecto, esse, eum rem accusantium itaque veritatis est dolor.</p>
         <br>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam consequuntur beatae ab iste nulla ullam dolorem unde soluta provident natus magni architecto, esse, eum rem accusantium itaque veritatis est dolor.</p>
         <br>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam consequuntur beatae ab iste nulla ullam dolorem unde soluta provident natus magni architecto, esse, eum rem accusantium itaque veritatis est dolor.</p>
+</div>
+<div class="aBlock hidden" id="1P5">
+        <!-- load next bit of assessment -->
+        <p>3rd content</p>
+</div>
+<div class="aBlock hidden" id="1P6">
+        <!-- load next bit of assessment -->
+        <p>3rd Q</p>
+</div>
+<div class="aBlock hidden" id="1P7">
+        <!-- load next bit of assessment -->
+        <p>4th content</p>
+</div>
+<div class="aBlock hidden" id="1P8">
+        <!-- load next bit of assessment -->
+        <p>4th Q</p>
+</div>
+<div class="aBlock hidden" id="1P9">
+        <!-- load next bit of assessment -->
+        <br>
+        <br>
+        <h3 style='text-align:center'>Congratulations on Finishing "Assessment 1"</h3>
+        <p style='text-align:center'>Press the button below to return to the list of assessments</p>
+        <br>
+        <br>
+        <div class= 'exit'>
+                <button id='ex1'>Back to Assessments</button>
+        </div>
+</div>
+<div class="aBlock hidden" id="2P0">
+        <!-- load next bit of assessment -->
+        <p>2nd intro</p>
+</div>
+<div class="aBlock hidden" id="2P1">
+        <!-- load next bit of assessment -->
+        <p>2nd C1</p>
+</div>
+<div class="aBlock hidden" id="2P2">
+        <!-- load next bit of assessment -->
+        <p>2nd Q1</p>
 </div>
 <div class="hidden" id="but">
     <button id="prev">Previous</button>
