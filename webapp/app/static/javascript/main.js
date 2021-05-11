@@ -449,6 +449,12 @@ $(document).ready(function() {
     }
 
     if(lastPathSegment == ''){
+        //Ajax query to create an admin account
+        $.post(`${window.origin}/adminAccount`, {'query': 'make'},  function(data, status) {
+            // Do nothing
+            console.log(data);
+        })
+
         $('.lBlock').click(function(){
             window.location.replace('/login');
         })

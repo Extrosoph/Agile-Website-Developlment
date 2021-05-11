@@ -21,3 +21,4 @@ def statistic():
 @assessment_bp.route("/assessment")
 def assessment():
     return render_template("assessment.html", page='assessment')
+
