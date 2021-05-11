@@ -56,7 +56,7 @@ def getUser():
     current_user_email = User.query.filter_by(email=query).first()
     current_user_username = User.query.filter_by(username=query).first()
 
-    # If there is no such username or email
+    # If there is no such us`ername or email
     if current_user_email is None and current_user_username is None:
         response = make_response(jsonify({'result': 'none'}), 200)
 
