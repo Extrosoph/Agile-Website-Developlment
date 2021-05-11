@@ -7,43 +7,25 @@ PATH = r"C:\Users\theor\OneDrive\Documents\CITS3403\CITS3403-Website-Project\chr
 driver = webdriver.Chrome(PATH)
 
 driver.get("http://127.0.0.1:5000/")
-print(driver.title)
-time.sleep(5)
 
-driver.get("http://127.0.0.1:5000/user")
-print(driver.title)
-time.sleep(5)
+# Go to each page by using navbar buttons
+time.sleep(2)
+driver.find_element_by_id('assessment').click()
+time.sleep(2)
+driver.find_element_by_id('statistic').click()
+time.sleep(2)
+driver.find_element_by_id('loginpage').click()
 
-driver.get("http://127.0.0.1:5000/statistics")
-print(driver.title)
-time.sleep(5)
+# Insert the admin username and password
+username = driver.find_element_by_id('email')
+password = driver.find_element_by_id('passwordInput')
+username.send_keys('admin')
+password.send_keys('admin')
+time.sleep(2)
 
-driver.get("http://127.0.0.1:5000/assessment")
-print(driver.title)
-time.sleep(5)
+# Log into the admin account
+driver.find_element_by_id('login').click()
+time.sleep(10)
 
-driver.get("http://127.0.0.1:5000/login")
-print(driver.title)
-time.sleep(5)
-
-driver.get("http://127.0.0.1:5000/signup")
-print(driver.title)
-time.sleep(5)
-
-driver.get("http://127.0.0.1:5000/admin")
-print(driver.title)
-time.sleep(5)
-
-driver.get("http://127.0.0.1:5000/adminAssessment")
-print(driver.title)
-time.sleep(5)
-
-driver.get("http://127.0.0.1:5000/adminUser")
-print(driver.title)
-time.sleep(5)
-#for input objects
-#search = driver.find_elemtn_by_id(idname)
-#search.send_keys('text to input')
-#search.sen_keys(Keys.RETURN)
-
+# Close browser
 driver.quit()

@@ -22,7 +22,3 @@ def statistic():
 def assessment():
     return render_template("assessment.html", page='assessment')
 
-@createAdmin_bp.route("/assessment", methods= ["GET"])
-def assessment():
-    admin = User(username='admin', email='')
-    return render_template("assessment.html", page='assessment')

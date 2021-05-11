@@ -11,6 +11,7 @@ getAssessment_bp = Blueprint('getAssessment_bp', __name__)
 getUser_bp = Blueprint('getUser_bp', __name__)
 makeAdmin_bp = Blueprint('makeAdmin_bp', __name__)
 removeUser_bp = Blueprint('removeUser_bp', __name__)
+adminAccount_bp = Blueprint('adminAccount_bp', __name__)
 
 
 @admin_bp.route("/admin", methods=["POST", "GET"])
@@ -201,3 +202,17 @@ def adminUser():
 
     else:
         return render_template("adminUser.html", page='admin', userLen=0)
+
+@adminAccount_bp.route("/adminAccount", methods=["POST"])
+def adminAccount():
+    admin = User.query.filter_by(username='admin').first()
+    if admin is None:
+        new_admin = User(username='admin', email='admin@admin.com', password='admin')
+        new_admin.admin = True
+        db.session.add(new_admin)
+        db.session.commit()
+        response = make_response(jsonify({'result': 'completed'}), 200)
+
+    else:
+        response = make_response(jsonify({'result': 'completed'}), 200)
+    return response

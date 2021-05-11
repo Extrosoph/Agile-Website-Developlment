@@ -15,10 +15,11 @@
         <li class="nav-item">
           <a class="nav-link {% if page == 'statistics'%}active{% endif %}" id="statistic" href="/statistics">Statistics</a>
         </li>
-<!--Need to add a jinja if statement to check if the user is an admin-->
+        {% if session['admin'] == True %}
         <li class="nav-item">
           <a class="nav-link {% if page == 'admin'%}active{% endif %}" id="admin" href="/admin">Admin</a>
         </li>
+        {% endif %}
         {% if session['logged_in'] == True %}
         <li class="nav-item">
           <a class="nav-link {% if page == 'user' %}active{% endif %}" id="user" href="/user">User</a>
@@ -33,7 +34,7 @@
       </div>
       {% else %}
       <div class="nav-item">
-          <a class="nav-link {% if page == 'login' %}active{% endif %}" id="login" href="/login">Login</a>
+          <a class="nav-link {% if page == 'login' %}active{% endif %}" id="loginpage" href="/login">Login</a>
       </div>
       {% endif %}
       </div>

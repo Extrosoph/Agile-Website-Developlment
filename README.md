@@ -45,5 +45,11 @@
 1. pip install selenium
 1. run test.py
 
+# Account with admin privileges for testing:
+## This account will be created once the server starts
+
+username: admin
+password: admin
+email: admin@admin.com
 
 *Will create a simple ERD soon too :)
