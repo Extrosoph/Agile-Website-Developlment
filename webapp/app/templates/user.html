@@ -5,7 +5,6 @@
     <h1>User</h1>
 </div>
 <br>
-<!--figure out what breaks becasuse of this-->
 {% if session['logged_in'] == True %}
 {{users[session['id']-1]}}
 <div class = "userBlock">
@@ -31,14 +30,13 @@
 </div>
 <br>
 <br>
-<!--need to get this to work-->
 <table class = 'tableClass'>
     <tr><th>Asessment</th><th>Score</th></tr>
     {% for score in scores %}
     {% if score.userId == session['id']%}
     {% for assess in assess %}
     {% if score.assessmentId == assess.id %}   
-        <tr><td>{{assess.category}} - Catergory</td><td>{{score.score}}</td></tr>
+        <tr><td>{{assess.category}}</td><td>{{score.score}}</td></tr>
     {% endif %}
     {% endfor %}
     {% endif %}

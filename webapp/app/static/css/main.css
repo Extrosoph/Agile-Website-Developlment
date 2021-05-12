@@ -120,31 +120,6 @@ table, th, td{
     width:50%;
 }
 
-.tableClass4 th, .tableClass4 td{
-    text-align:left;
-    padding:5px;
-    color:#9E9E9E;
-    width:25%;
-}
-
-.tableClass4{
-    border-spacing:5px;
-    margin:auto;
-    width:75%;
-}
-
-.tableClass10 th, .tableClass10 td{
-    text-align:left;
-    padding:5px;
-    color:#9E9E9E;
-    width:10%;
-}
-
-.tableClass10{
-    border-spacing:5px;
-    margin:auto;
-    width:75%;
-}
 .tableClass{
     border-spacing:5px;
     margin:auto;

@@ -54,8 +54,8 @@
         <p>Due to the orbit of the moon, from a specific location on Earth, the moon seems to change shape as it orbits. This is due to the sunlight hitting the Moon at different angles and due to the Earth’s shadow, causing different parts of the moon to be illuminated as it orbits the Earth. The different shapes are known as ‘phases’ of the Moon. </p>
         <br>
         <p>The moon’s phases are shown in the photo below. The phases start with a New Moon, where the Moon is not visible at all, and go from a crescent moon towards a full Moon and back to the New Moon.</p>
-        <img src="Phases1.png" width="500" height="333">
-        <img src="Phases2.jpg" width="500" height="333">
+        <img src="/static/images/Phases1.png" width="500" height="333">
+        <img src="/static/images/Phases2.jpg" width="500" height="333">
 </div>
 
 <div class="aBlock hidden" id="1P2">
@@ -207,29 +207,5 @@
     <button id="prev">Previous</button>
     <button id="next">Next</button>
 </div>
-<p>Q's 8C8C8C</p>
-<p style='color: #8C8C8C;'>{{answers}}</p>
-<p>Ans 9E9E9E</p>
-<p style='color: #9E9E9E;'>{{answers}}</p>
-<p>Correct 747474</p>
-<p>{{correctAnswers[0]}}</p>
 <br>
-<table class = 'tableClass10'>
-{% for ans in correctAnswers %}
-<tr>
-        <td>{{ans.id}} - ans id</td>
-        <td>{{ans.question}}</td>
-        <td>{{ans.correctAnswer}} - ans ans</td>
-        <td>{{ans.mark}} - ans mark</td>
-        <td>{{ans.assessmentId}} ans assessId</td>
-</tr>
-{% endfor %}
-</table>
-<br>
-<table class = 'tableClass'>
-        <tr><td>Finished Q's</td></tr>
-        {% for ans in answers %}
-        <tr><td>{{ans.answer1}}</td><td>{{ans.answer2}}</td><td>{{ans.answer3}}</td><td>{{ans.answer4}}</td></tr>
-        {% endfor %}
-</table>
 {% endblock %}
