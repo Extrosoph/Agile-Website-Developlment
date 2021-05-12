@@ -179,7 +179,7 @@ def adminAssessment():
             a4 += 4
 
         # Sum up scores to get the final result
-        result = Score(score=sum([int(i) for i in scores]))
+        result = sum([int(i) for i in scores])
         newAssessment.score = result
         db.session.commit()
 
