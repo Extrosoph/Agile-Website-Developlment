@@ -81,25 +81,38 @@ class Questions(db.Model):
     def __repr__(self):
         return '<assessment: {} questions: {} correct answer: {}>'.format(self.assessmentId, self.question, self.correctAnswer)
 
+    def allQuestions():
+        return Questions.query.all()
+
 class Answers(db.Model):
     __tablename__ = 'answers'
     id = db.Column(db.Integer, primary_key=True)
+    #question = db.Column('question', db.String(100), nullable=False)
     answer1 = db.Column('answer1', db.String(100), nullable=False)
     answer2 = db.Column('answer2', db.String(100), nullable=False)
     answer3 = db.Column('answer3', db.String(100), nullable=False)
     answer4 = db.Column('answer4', db.String(100), nullable=False)
+    #correctAnswer = db.Column('correctAnswer', db.String(100), nullable=False)
     questionId = db.Column(db.Integer, db.ForeignKey('questions.id'))
     assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
-    correctAnswer = db.relationship('correctAnswer', uselist=False, cascade='all, delete-orphan')
+    #correctAnswer = db.relationship('correctAnswer', uselist=False, cascade='all, delete-orphan')
 
-    def __init__(self, answer1, answer2, answer3, answer4):
+    def __init__(self, question, answer1, answer2, answer3, answer4, correctAnswer):
+        self.question = question
         self.answer1 = answer1
         self.answer2 = answer2
         self.answer3 = answer3
         self.answer4 = answer4
+        self.correctAnswer = correctAnswer
 
     def __repr__(self):
         return '<answer1: {} answer2: {} answer3: {} answer4: {}>'.format(self.answer1, self.answer2, self.answer3, self.answer4)
+
+    def returnQuestion(qNumber):
+        return Answers.query.all().filter_by(Answers.id==qNumber).first()
+
+    def allAnswers():
+        return Answers.query.all()
 
 class userAnswers(db.Model):
     __tablename__ = 'userAnswers'
@@ -130,6 +143,9 @@ class correctAnswer(db.Model):
     def __repr__(self):
         return '<assessment: {} question: {} correct answer: {}>'.format(self.assessmentId, self.questionId, self.answer)
 
+    def allAns():
+        return correctAnswer.query.all()
+
 class Score(db.Model):
     __tablename__ = 'score'
     id = db.Column(db.Integer, primary_key=True)
@@ -137,7 +153,7 @@ class Score(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey('user.id'))
     assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
     assessment = db.relationship('Assessment', back_populates='score')
-    timeAttempted = db.Column(db.DateTime, default=datetime.now)
+    #timeAttempted = db.Column(db.DateTime, default=datetime.now)
 
     def __init__(self, score):
         self.score = score
@@ -148,11 +164,14 @@ class Score(db.Model):
     def allScores():
         return Score.query.with_entities(Score.score, Score.userId, Score.assessmentId)
 
-    def maxScores():
-        return Score.query.with_entities(func.max(Score.score), Score.userId, Score.AssessmentId)
+    def totalScores():
+        return Score.query.all()
+
+    def maxScores(id):
+        return Score.query.with_entities(func.max(Score.score).label('max'), Score.userId, Score.assessmentId).filter(Score.assessmentId==id)
     
-    def avgScores():
-        return Score.query.with_entities(func.avg(Score.score), Score.userId, Score.AssessmentId)
+    def avgScores(id):
+        return Score.query.with_entities(func.avg(Score.score).label('avg'), Score.userId, Score.assessmentId).filter(Score.assessmentId==id)
 
 db.create_all()
 

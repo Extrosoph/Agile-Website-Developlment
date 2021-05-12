@@ -1,6 +1,6 @@
 from app import app
 from flask import  redirect, url_for, render_template, request, session, flash, Blueprint
-from app.models import Assessment, User, Score#, Questions, Answers, correctAnswer, userAnswers
+from app.models import Assessment, User, Score, Answers, Questions, correctAnswer
 
 home_bp = Blueprint('home_bp', __name__)
 user_bp = Blueprint('user_bp', __name__)
@@ -13,12 +13,20 @@ def home():
 
 @user_bp.route("/user")
 def user():
-    return render_template("user.html", page='user', users = User.userInfo(), score = Score.allScores())
+    return render_template("user.html", page='user', user = User.userInfo(), scores = Score.allScores())
+    #need to somehow return current user as user
 
 @statistics_bp.route("/statistics")
 def statistic():
-    return render_template("statistics.html", page='statistics', users = User.userInfo(), score = Score.allScores())
+    return render_template("statistics.html", 
+        page='statistics', users = User.userInfo(), 
+        scores = Score.allScores(), maxScore1 = Score.maxScores(1), 
+        maxScore2 = Score.maxScores(2), avgScore1 = Score.avgScores(1), 
+        avgScore2 = Score.avgScores(2), numUsers = len(User.userInfo()),
+        numAssess = len(Score.totalScores()))
 
 @assessment_bp.route("/assessment")
 def assessment():
-    return render_template("assessment.html", page='assessment')
+    return render_template("assessment.html", page='assessment', 
+    questions = Questions.allQuestions(), answers = Answers.allAnswers(),
+    correctAnswers = correctAnswer.allAns())

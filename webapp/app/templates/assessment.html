@@ -61,9 +61,28 @@
         <br>
         <p>test that scroll!</p>
 </div>
+
 <div class="aBlock hidden" id="1P2">
         <!-- load next bit of assessment -->
         <p>First Q form goes here</p>
+        <form class = "questionForm">
+                <div><!--Question-->
+                        <h3 style='text-align: center'>{{questions[0].question}}</h3>
+                </div>
+                <div>
+                        <input type='radio' id='1P2-1' name='1P2-1' value='{{answers[0].answer1}}'>
+                        <label for ='1p2-1'>{{answers[0].answer1}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-2' value='{{answers[0].answer2}}'>
+                        <label for ='1p2-2'>{{answers[0].answer2}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-3' value='{{answers[0].answer3}}'>
+                        <label for ='1p2-3'>{{answers[0].answer3}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-4' value='{{answers[0].answer4}}'>
+                        <label for ='1p2-4'>{{answers[0].answer4}}</label>
+                </div>
+                <div style='float: right;'><!--submit button-->
+                        <button class = 'ansButton'>Submit</button>
+                </div>
+        </form>
 </div>
 <div class="aBlock hidden" id="1P3">
         <!-- load next bit of assessment -->
@@ -86,6 +105,24 @@
 <div class="aBlock hidden" id="1P6">
         <!-- load next bit of assessment -->
         <p>3rd Q</p>
+        <form class = 'questionForm'>
+                <div><!--Question-->
+                        <h3 style='text-align: center'>{{questions[2].question}}</h3>
+                </div>
+                <div>
+                        <input type='radio' id='1P2-1' name='1P2-1' value='{{answers[2].answer1}}'>
+                        <label for ='1p2-1'>{{answers[2].answer1}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-2' value='{{answers[2].answer2}}'>
+                        <label for ='1p2-2'>{{answers[2].answer2}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-3' value='{{answers[2].answer3}}'>
+                        <label for ='1p2-3'>{{answers[2].answer3}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-4' value='{{answers[2].answer4}}'>
+                        <label for ='1p2-4'>{{answers[2].answer4}}</label>
+                </div>
+                <div style='float: right;'><!--submit button-->
+                        <button class = 'ansButton'>Submit</button>
+                </div>
+        </form>
 </div>
 <div class="aBlock hidden" id="1P7">
         <!-- load next bit of assessment -->
@@ -118,9 +155,74 @@
 <div class="aBlock hidden" id="2P2">
         <!-- load next bit of assessment -->
         <p>2nd Q1</p>
+        <form class = 'questionForm'>
+                <div><!--Question-->
+                        <h3 style='text-align: center'>{{questions[4].question}}</h3>
+                </div>
+                <div>
+                        <input type='radio' id='1P2-1' name='1P2-1' value='{{answers[4].answer1}}'>
+                        <label for ='1p2-1'>{{answers[4].answer1}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-2' value='{{answers[4].answer2}}'>
+                        <label for ='1p2-2'>{{answers[4].answer2}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-3' value='{{answers[4].answer3}}'>
+                        <label for ='1p2-3'>{{answers[4].answer3}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-4' value='{{answers[4].answer4}}'>
+                        <label for ='1p2-4'>{{answers[4].answer4}}</label>
+                </div>
+                <div style='float: right;'><!--submit button-->
+                        <button class = 'ansButton'>Submit</button>
+                </div>
+        </form>
+</div>
+<div class="aBlock hidden" id="2P3">
+        <!-- load next bit of assessment -->
+        <br>
+        <br>
+        <h3 style='text-align:center'>Congratulations on Finishing "Assessment 2"</h3>
+        <p style='text-align:center'>Press the button below to return to the list of assessments</p>
+        <br>
+        <br>
+        <div class= 'exit'>
+                <button id='ex2'>Back to Assessments</button>
+        </div>
 </div>
 <div class="hidden" id="but">
     <button id="prev">Previous</button>
     <button id="next">Next</button>
 </div>
+<p>Q's 8C8C8C</p>
+<p style='color: #8C8C8C;'>{{questions}}</p>
+<p>Ans 9E9E9E</p>
+<p style='color: #9E9E9E;'>{{answers}}</p>
+<p>Correct 747474</p>
+<p>{{correctAnswers}}</p>
+<br>
+<table class = 'tableClass10'>
+{% for ans in correctAnswers %}
+<tr>
+        <td>{{ans.id}}</td>
+        <td>{{ans.answer}}</td>
+        <td>{{ans.mark}}</td>
+        <td>{{ans.questionId}}</td>
+        <td>{{ans.answerId}}</td>
+        <td>{{ans.assessmentId}}</td>
+</tr>
+{% endfor %}
+</table>
+<br>
+<table class = 'tableClass4'>
+        {% for question in questions %}
+                {% for ans in correctAnswers %}
+                        {% if question.id == ans.questionId %} 
+                                <tr><td>{{question.question}}</td><td>{{ans.answer}}</td></tr>
+                        {% endif %}
+                {% endfor %}
+        {% endfor %}
+</table>
+<table class = 'tableClass'>
+        <tr><td>Finished Q's</td></tr>
+        {% for ans in answers %}
+        <tr><td>{{ans.answer1}}</td><td>{{ans.answer2}}</td><td>{{ans.answer3}}</td><td>{{ans.answer4}}</td></tr>
+        {% endfor %}
+</table>
 {% endblock %}

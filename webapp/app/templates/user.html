@@ -33,38 +33,13 @@
 <p>{{user.email}}</p>
 
 <br>
-{{score}}
+<br>
+<!--need to get this to work-->
 <table class = 'tableClass'>
     <tr><td>Asessment</td><td>Score</td></tr>
-    {% for score in score %}
+    {% for score in scores %}
     <tr><td>{{score.assessmentId}}</td><td>{{score.score}}</td></tr>
     {% endfor %}
 </table>
-<!-- <table class='tableClass'>
-{% for allUsers in Users %}
-    if({{user.id}}=={{allUser.id}}{
-       
-            <tr><td>{{allUser.id}}</td>{{allUser.username}}<td>{{user.id}}</td><td>{{user.username}}</td></tr>
-        
-    }
-{% endfor %}
-</table> -->
-<!-- {{uAssess}}
-<div class ="userAssess">
-    <table class = "userTable" id = "assessTable">
-        <tr>
-            <th>Asessment</th>
-            <th>Score</th>
-        </tr>
-        {% for user in uAssess %} 
-        <tr><td>{{user.catergory}}</td><td>{{user.score}}</td></tr>
-        {% endfor %}
-    </table>
-</div> -->
-{% else %}
-
 {% endif %}
-<br>
-
-
 {% endblock %}

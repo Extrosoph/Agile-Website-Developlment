@@ -25,6 +25,7 @@ def login():
         else:
             if current_user_email is not None and checkpw(request.form['password'].encode(), current_user_email.password) == True:
                 session['logged_in'] = True
+                #session['username'] = current_user_username
                 session.permanent = False
                 if len(request.form) > 2:
                     session.permanent = True
@@ -32,6 +33,7 @@ def login():
 
             elif current_user_username is not None and checkpw(request.form['password'].encode(), current_user_username.password) == True:
                 session['logged_in'] = True
+                #session['username'] = current_user_username
                 session.permanent = False
                 if len(request.form) > 2:
                     session.permanent = True
@@ -71,6 +73,7 @@ def signup():
 
             # Logged them in and redirect to the user html
             session['logged_in'] = True
+            #session['username'] = current_user_username
             session.permanent = False
             if len(request.form) > 3:
                 session.permanent = True
