@@ -13,32 +13,50 @@
         </tr>
         <tr>
             <td>Number of Users</td>
-            <td>1337</td><!--link to db-->
+            <td>{{numUsers}}</td>
         </tr>
         <tr>
             <td>Number of Assesments Completed</td>
-            <td>420</td><!--link to db-->
+            <td>{{numAssess}}</td>
         </tr>
     </table>
     <br>
+    <div style="text-align: center">
+        <button id='shide'>Show/Hide Users</button>
+    </div>
+    <br>
+    <div id="userStats" class='hidden'>
+        <h3>List of Users</h3>
+        <table class="tableClass">
+            <tr>
+                <td>Username</td><td>Email</td>
+            </tr>
+            {% for user in users %}
+            <tr><td>{{user.username}}</td><td>{{user.email}}</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br>
     <h3>Assessment 1</h3>
-    <table class="tableClass">
-        <tr>
-            <th>Catergory</th>
-            <th>Value</th>
-        </tr>
-        <tr>
-            <td>Highest Score</td>
-            <td>99</td><!--link to db-->
-        </tr>
-        <tr>
-            <td>Average Score</td>
-            <td>69</td><!--link to db-->
-        </tr>
+    <table class = "tableClass">
+        <tr><td></td><td>Score</td></tr>
+        {% for score in maxScore1 %}
+        <tr><td>Max Score</td><td>{{score.max}}</td></tr>
+        {% endfor %}
+        {% for score in avgScore1 %}
+        <tr><td>Average Score</td><td>{{score.avg}}</td></tr>
+        {% endfor %}
     </table>
-</div>
-<br>
-<!-- add table to take statistics from db -->
-<!-- number of users, number of assessments completed
-for assessments: highest score, average score -->
+    <br>
+    <br>
+    <h3>Assessment 2</h3>
+    <table class = 'tableClass'>
+        <tr><td></td><td>Score</td></tr>
+        {% for score in maxScore2 %}
+        <tr><td>Max Score</td><td>{{score.max}}</td></tr>
+        {% endfor %}
+        {% for score in avgScore2 %}
+        <tr><td>Average Score</td><td>{{score.avg}}</td></tr>
+        {% endfor %}
+    </table>
 {% endblock %}

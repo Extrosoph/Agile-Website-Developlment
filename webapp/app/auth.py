@@ -24,22 +24,28 @@ def login():
         # Check if the given password is correct
         else:
             if current_user_email is not None and checkpw(request.form['password'].encode(), current_user_email.password) == True:
+                if current_user_email.admin == True:
+                    session['admin'] = True
                 session['logged_in'] = True
+                session['id'] = current_user_username.id
                 session.permanent = False
                 if len(request.form) > 2:
                     session.permanent = True
-                return render_template("user.html", page='user', user=current_user_email)
+                return redirect(url_for("home_bp.home", page=''))
 
             elif current_user_username is not None and checkpw(request.form['password'].encode(), current_user_username.password) == True:
+                if current_user_username.admin == True:
+                    session['admin'] = True
                 session['logged_in'] = True
+                session['id'] = current_user_username.id
                 session.permanent = False
                 if len(request.form) > 2:
                     session.permanent = True
-                return render_template("user.html", page='user', user=current_user_username)
+                return redirect(url_for("home_bp.home"))
 
             else:
                 flash("Incorrect password given!")
-                return redirect(url_for("login_bp.login", page='login'))
+                return redirect(url_for("home_bp.home", page=''))
     else:
        return render_template("login.html", page='login')
 
@@ -71,10 +77,11 @@ def signup():
 
             # Logged them in and redirect to the user html
             session['logged_in'] = True
+            session['id'] = current_user_username.id
             session.permanent = False
             if len(request.form) > 3:
                 session.permanent = True
-            return render_template("user.html", username=username, page='user')
+            return redirect(url_for("home_bp.home", page=''))
 
     else:
         return render_template("signup.html", page='signup')
@@ -83,4 +90,5 @@ def signup():
 def logout():
     flash(f"You have been logged out!", "info")
     session.pop("logged_in", None)
+    session.pop("admin", None)
     return redirect(url_for("login_bp.login", page='login'))

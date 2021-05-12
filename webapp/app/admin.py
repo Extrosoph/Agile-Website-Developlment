@@ -1,6 +1,6 @@
 from app import app
 from flask import  redirect, url_for, render_template, request, session, flash, Blueprint, jsonify, make_response
-from app.models import Assessment, Questions, Answers, correctAnswer, Score, db, User
+from app.models import Assessment, Answers, Score, db, User
 from datetime import datetime
 from json import dumps
 
@@ -11,6 +11,8 @@ getAssessment_bp = Blueprint('getAssessment_bp', __name__)
 getUser_bp = Blueprint('getUser_bp', __name__)
 makeAdmin_bp = Blueprint('makeAdmin_bp', __name__)
 removeUser_bp = Blueprint('removeUser_bp', __name__)
+adminAccount_bp = Blueprint('adminAccount_bp', __name__)
+deleteAssessment_bp = Blueprint('deleteAssessment_bp', __name__)
 
 
 @admin_bp.route("/admin", methods=["POST", "GET"])
@@ -26,6 +28,21 @@ def makeAdmin():
     current_user_username = User.query.filter_by(username=username).first()
 
     current_user_username.admin = True
+    db.session.commit()
+
+    response = make_response(jsonify({'return': 'complete'}), 200)
+
+    return response
+
+@deleteAssessment_bp.route("/deleteAssessment", methods=["POST"])
+def deleteAssessment():
+    # Function to get user details from ajax
+    req = request.get_json()
+    name = request.form['category']
+
+    assessment = Assessment.query.filter_by(category=name).first()
+
+    db.session.delete(assessment)
     db.session.commit()
 
     response = make_response(jsonify({'return': 'complete'}), 200)
@@ -56,7 +73,7 @@ def getUser():
     current_user_email = User.query.filter_by(email=query).first()
     current_user_username = User.query.filter_by(username=query).first()
 
-    # If there is no such username or email
+    # If there is no such us`ername or email
     if current_user_email is None and current_user_username is None:
         response = make_response(jsonify({'result': 'none'}), 200)
 
@@ -91,7 +108,7 @@ def getAssessment():
     mark = []
 
     # Get questions from db
-    for question in assessment.questions:
+    for question in assessment.answer:
         questions.append(question.question)
 
 
@@ -104,8 +121,8 @@ def getAssessment():
 
 
     # Get correct answer from db
-    for correct_answer in assessment.correctAnswer:
-        correctAnswer.append(correct_answer.answer)
+    for correct_answer in assessment.answer:
+        correctAnswer.append(correct_answer.correctAnswer)
         mark.append(correct_answer.mark)
 
     response = make_response(jsonify({'name': assessment.category,
@@ -132,9 +149,8 @@ def adminAssessment():
 
             # Add questions to db
             if 'question' in key:
-                newQuestion = Questions(question=request.form[key])
+                newQuestion = request.form[key]
                 questions_from_form.append(newQuestion)
-                db.session.add(newQuestion)
                 number_of_question += 1
 
         # Get the scores
@@ -151,26 +167,19 @@ def adminAssessment():
         for i in range(number_of_question):
 
             # Add answers and correct answers to db
-            answer = Answers(answer1=answers[a1], answer2=answers[a2], answer3=answers[a3], answer4=answers[a4])
+            answer = Answers(question=questions_from_form[i], answer1=answers[a1], answer2=answers[a2], answer3=answers[a3], answer4=answers[a4], correctAnswer=answers[a4], mark=scores[i])
             db.session.add(answer)
-            correct_answer = correctAnswer(given=answers[a4], mark=int(scores[i]))
-            db.session.add(correct_answer)
-            answer.correctAnswer = correct_answer
 
             # Set the values for DB
-            questions_from_form[i].answers.append(answer)
-            questions_from_form[i].correctAnswer = correct_answer
-
             newAssessment.answer.append(answer)
-            newAssessment.correctAnswer.append(correct_answer)
-            newAssessment.questions.append(questions_from_form[i])
+
             a1 += 4
             a2 += 4
             a3 += 4
             a4 += 4
 
         # Sum up scores to get the final result
-        result = Score(score=sum([int(i) for i in scores]))
+        result = sum([int(i) for i in scores])
         newAssessment.score = result
         db.session.commit()
 
@@ -185,7 +194,7 @@ def adminAssessment():
         category = []
         for assessment in assessments:
             category.append(assessment.category)
-        if assessment is not None:
+        if assessments is not None:
             return render_template("adminAssessment.html", page='admin', assessmentLen=len(assessments), assessment=category)
         else:
             return render_template("adminAssessment.html", page='admin', assessmentLen=0)
@@ -201,3 +210,17 @@ def adminUser():
 
     else:
         return render_template("adminUser.html", page='admin', userLen=0)
+
+@adminAccount_bp.route("/adminAccount", methods=["POST"])
+def adminAccount():
+    admin = User.query.filter_by(username='admin').first()
+    if admin is None:
+        new_admin = User(username='admin', email='admin@admin.com', password='admin')
+        new_admin.admin = True
+        db.session.add(new_admin)
+        db.session.commit()
+        response = make_response(jsonify({'result': 'completed'}), 200)
+
+    else:
+        response = make_response(jsonify({'result': 'completed'}), 200)
+    return response

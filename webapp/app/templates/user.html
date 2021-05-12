@@ -5,8 +5,8 @@
     <h1>User</h1>
 </div>
 <br>
-<!--needs to only be accessed when logged in-->
-<!--link to database for values, have a base table, assessments needs to be dynamic-->
+{% if session['logged_in'] == True %}
+{{users[session['id']-1]}}
 <div class = "userBlock">
     <table class ="userTable">
         <tr>
@@ -15,53 +15,32 @@
         </tr>
         <tr>
             <td>Username</td>
-            <td>IsaacC</td>
+            <td>{{users[session['id']-1].username}}</td>
         </tr>
         <tr>
             <td>Email</td>
-            <td>notReal@fakemail.com</td>
+            <td>{{users[session['id']-1].email}}</td>
         </tr>
         <tr>
             <td>Joined on</td>
-            <td>04/05/2021</td>
+            <td>{{users[session['id']-1].dateJoined.date()}}</td>
         </tr>
     </table>
     <br>
-    <!--user info-->
-    <!--link to db, but have fields set-->
-    <!-- fields: username, email-->
-    <!--button to change password?-->
-
-    <table class = "userAssess">
-        <tr>
-            <th>Assessment</th>
-            <th>Progress</th>
-            <th>Score</th>
-        </tr>
-        <tr>
-            <td>HTML</td>
-            <td>Completed</td>
-            <td>100</td>
-        </tr>
-        <tr>
-            <td>CSS</td>
-            <td>Completed</td>
-            <td>100</td>
-        </tr>
-        <tr>
-            <td>Jquery/Javascript</td>
-            <td>In Progress</td>
-            <td>60</td>
-        </tr>
-        <tr>
-            <td>Databases</td>
-            <td>Not Started</td>
-            <td>0</td>
-        </tr>
-    </table>
-    <!--Assessment info-->
-    <!-- link to db-->
-    <!--progess/score/etc-->
 </div>
-    <!-- need to add layout for user information and link to db -->
+<br>
+<br>
+<table class = 'tableClass'>
+    <tr><th>Asessment</th><th>Score</th></tr>
+    {% for score in scores %}
+    {% if score.userId == session['id']%}
+    {% for assess in assess %}
+    {% if score.assessmentId == assess.id %}   
+        <tr><td>{{assess.category}}</td><td>{{score.score}}</td></tr>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+</table>
+{% endif %}
 {% endblock %}
