@@ -190,14 +190,20 @@ $(document).ready(function() {
                 }
 
                 $('form').append(`<div style="width:60%;margin:40px auto;" >
-                                  <p style="margin-left: -100px margin-right: 10px" id="reset" class="button">Reset</p>
-                                  <p style="text-align:center vertical-align: middle" id="Delete" class="button">Delete</p>
+                                  <p style="margin-left: -100px margin-right: 10px" id="reset" class="Adminbutton">Reset</p>
+                                  <p style="text-align:center vertical-align: middle" id="Delete" class="Adminbutton">Delete</p>
                                   <button style="float:right" type="submit" id="update" class="button">Update</button>
                                   </div>`);
 
                 $('#reset').click(function() {
                         $('textarea').val('');
                         $('#name').val('');
+                })
+
+                $('#Delete').click(function() {
+                    $.post(`${window.origin}/deleteAssessment`, {'category': data['name']}, function(data, status) {
+                        location.reload();
+                    })
                 })
 
                 $('#update').click(function() {
@@ -330,9 +336,9 @@ $(document).ready(function() {
 
                     $('#main2').append(table);
 
-                    $('#main2').append(`<div style="width:60%;margin:40px auto;" >
-                                          <p style="float:left" id="remove" class="button">Remove</p>
-                                          <p style="float:right" id="makeAdmin" class="button">Make Admin</p>
+                    $('#main2').append(`<div style="width:60%;margin:20px auto;" >
+                                          <p style="float:left" id="remove" class="Adminbutton">Remove</p>
+                                          <p style="float:right" id="makeAdmin" class="Adminbutton">Make Admin</p>
                                           </div>`);
 
                     $('#remove').click(function() {
@@ -370,8 +376,8 @@ $(document).ready(function() {
             $('main').append(table);
 
             $('main').append(`<div style="width:60%;margin:40px auto;" >
-                                  <p style="float:left" id="remove" class="button">Remove</p>
-                                  <p style="float:right" id="makeAdmin" class="button">Make Admin</p>
+                                  <p style="float:left" id="remove" class="Adminbutton">Remove</p>
+                                  <p style="float:right" id="makeAdmin" class="Adminbutton">Make Admin</p>
                                   </div>`);
 
             $('#remove').click(function() {

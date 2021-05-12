@@ -29,17 +29,15 @@ class User(db.Model):
     email = db.Column('email', db.String(120), unique=True, nullable=False)
     password = db.Column('password', db.String(120), nullable=False)
     admin = db.Column('admin', db.Boolean(), default=False)
-    assessments = db.relationship('Assessment')
     score = db.relationship('Score')
     userAnswers = db.relationship('userAnswers', cascade='all, delete-orphan')
     dateJoined = db.Column(db.DateTime, default=datetime.now)
 
-    def __init__(self, username, email, password, id):
+    def __init__(self, username, email, password):
         salt = gensalt(rounds=12)
         self.username = username
         self.email = email
         self.password = hashpw(password.encode(), salt)
-        self.id = id
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -51,11 +49,8 @@ class Assessment(db.Model):
     __tablename__ = 'assessment'
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String(250), nullable=False)
-    userId = db.Column(db.Integer, db.ForeignKey('user.id'))
-    questions = db.relationship('Questions', cascade='all, delete-orphan')
     answer = db.relationship('Answers', cascade='all, delete-orphan')
     userAnswers = db.relationship('userAnswers', cascade='all, delete-orphan')
-    correctAnswer = db.relationship('correctAnswer', cascade='all, delete-orphan')
     score = db.relationship('Score', uselist=False, back_populates='assessment', cascade='all, delete-orphan')
     dateCreated = db.Column(db.DateTime, default=datetime.now)
 
@@ -70,41 +65,26 @@ class Assessment(db.Model):
             return Assessment.query.filter_by(userId=uId)
         return Assessment.query.all()
 
-class Questions(db.Model):
-    __tablename__ = 'questions'
-    id = db.Column(db.Integer, primary_key=True)
-    question = db.Column('question', db.String(100), nullable=False)
-    answers = db.relationship('Answers')
-    assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
-    correctAnswer = db.relationship('correctAnswer', uselist=False, cascade='all, delete-orphan')
-    userAnswers = db.relationship('userAnswers', cascade='all, delete-orphan')
-
-    def __repr__(self):
-        return '<assessment: {} questions: {} correct answer: {}>'.format(self.assessmentId, self.question, self.correctAnswer)
-
-    def allQuestions():
-        return Questions.query.all()
-
 class Answers(db.Model):
     __tablename__ = 'answers'
     id = db.Column(db.Integer, primary_key=True)
-    #question = db.Column('question', db.String(100), nullable=False)
+    question = db.Column('question', db.String(100), nullable=False)
     answer1 = db.Column('answer1', db.String(100), nullable=False)
     answer2 = db.Column('answer2', db.String(100), nullable=False)
     answer3 = db.Column('answer3', db.String(100), nullable=False)
     answer4 = db.Column('answer4', db.String(100), nullable=False)
-    #correctAnswer = db.Column('correctAnswer', db.String(100), nullable=False)
-    questionId = db.Column(db.Integer, db.ForeignKey('questions.id'))
+    correctAnswer = db.Column('correctAnswer', db.String(100), nullable=False)
+    mark = db.Column('mark', db.Integer, nullable=False)
     assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
-    #correctAnswer = db.relationship('correctAnswer', uselist=False, cascade='all, delete-orphan')
 
-    def __init__(self, question, answer1, answer2, answer3, answer4, correctAnswer):
+    def __init__(self, question, answer1, answer2, answer3, answer4, correctAnswer, mark):
         self.question = question
         self.answer1 = answer1
         self.answer2 = answer2
         self.answer3 = answer3
         self.answer4 = answer4
         self.correctAnswer = correctAnswer
+        self.mark = mark
 
     def __repr__(self):
         return '<answer1: {} answer2: {} answer3: {} answer4: {}>'.format(self.answer1, self.answer2, self.answer3, self.answer4)
@@ -120,32 +100,12 @@ class userAnswers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     answer = db.Column('answer', db.String(100), nullable=False)
     score = db.Column('score', db.Integer, nullable=True)
-    questionId = db.Column(db.Integer, db.ForeignKey('questions.id'))
     assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
     userId = db.Column(db.Integer, db.ForeignKey('user.id'))
     timeAttempted = db.Column(db.DateTime, default=datetime.now)
 
     def __repr__(self):
-        return '<user: {} assessment: {} question: {} my answer: {}>'.format(self.userId, self.assessmentId, self.questionId, self.answer)
-
-class correctAnswer(db.Model):
-    __tablename__ = 'correctanswer'
-    id = db.Column(db.Integer, primary_key=True)
-    answer = db.Column('answer', db.String(100), nullable=False)
-    mark = db.Column('mark', db.Integer, nullable=True)
-    questionId = db.Column(db.Integer, db.ForeignKey('questions.id'))
-    answerId = db.Column(db.Integer, db.ForeignKey('answers.id'))
-    assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
-
-    def __init__(self, given, mark):
-        self.answer = given
-        self.mark = mark
-
-    def __repr__(self):
-        return '<assessment: {} question: {} correct answer: {}>'.format(self.assessmentId, self.questionId, self.answer)
-
-    def allAns():
-        return correctAnswer.query.all()
+        return '<user: {} assessment: {}  my answer: {}>'.format(self.userId, self.assessmentId, self.answer)
 
 class Score(db.Model):
     __tablename__ = 'score'

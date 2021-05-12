@@ -27,7 +27,7 @@ def login():
                 if current_user_email.admin == True:
                     session['admin'] = True
                 session['logged_in'] = True
-                #session['username'] = current_user_username
+                #session['id'] = current_user_username.id
                 session.permanent = False
                 if len(request.form) > 2:
                     session.permanent = True

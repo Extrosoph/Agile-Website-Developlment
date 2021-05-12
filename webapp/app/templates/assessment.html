@@ -63,7 +63,7 @@
         <p>First Q form goes here</p>
         <form class = "questionForm">
                 <div><!--Question-->
-                        <h3 style='text-align: center'>{{questions[0].question}}</h3>
+                        <h3 style='text-align: center'>{{answers[0].question}}</h3>
                 </div>
                 <div>
                         <input type='radio' id='1P2-1' name='1P2-1' value='{{answers[0].answer1}}'>
@@ -115,7 +115,7 @@
         <p>3rd Q</p>
         <form class = 'questionForm'>
                 <div><!--Question-->
-                        <h3 style='text-align: center'>{{questions[2].question}}</h3>
+                        <h3 style='text-align: center'>{{answers[2].question}}</h3>
                 </div>
                 <div>
                         <input type='radio' id='1P2-1' name='1P2-1' value='{{answers[2].answer1}}'>
@@ -174,7 +174,7 @@
         <p>2nd Q1</p>
         <form class = 'questionForm'>
                 <div><!--Question-->
-                        <h3 style='text-align: center'>{{questions[4].question}}</h3>
+                        <h3 style='text-align: center'>{{answers[4].question}}</h3>
                 </div>
                 <div>
                         <input type='radio' id='1P2-1' name='1P2-1' value='{{answers[4].answer1}}'>
@@ -208,34 +208,24 @@
     <button id="next">Next</button>
 </div>
 <p>Q's 8C8C8C</p>
-<p style='color: #8C8C8C;'>{{questions}}</p>
+<p style='color: #8C8C8C;'>{{answers}}</p>
 <p>Ans 9E9E9E</p>
 <p style='color: #9E9E9E;'>{{answers}}</p>
 <p>Correct 747474</p>
-<p>{{correctAnswers}}</p>
+<p>{{correctAnswers[0]}}</p>
 <br>
 <table class = 'tableClass10'>
 {% for ans in correctAnswers %}
 <tr>
-        <td>{{ans.id}}</td>
-        <td>{{ans.answer}}</td>
-        <td>{{ans.mark}}</td>
-        <td>{{ans.questionId}}</td>
-        <td>{{ans.answerId}}</td>
-        <td>{{ans.assessmentId}}</td>
+        <td>{{ans.id}} - ans id</td>
+        <td>{{ans.question}}</td>
+        <td>{{ans.correctAnswer}} - ans ans</td>
+        <td>{{ans.mark}} - ans mark</td>
+        <td>{{ans.assessmentId}} ans assessId</td>
 </tr>
 {% endfor %}
 </table>
 <br>
-<table class = 'tableClass4'>
-        {% for question in questions %}
-                {% for ans in correctAnswers %}
-                        {% if question.id == ans.questionId %} 
-                                <tr><td>{{question.question}}</td><td>{{ans.answer}}</td></tr>
-                        {% endif %}
-                {% endfor %}
-        {% endfor %}
-</table>
 <table class = 'tableClass'>
         <tr><td>Finished Q's</td></tr>
         {% for ans in answers %}
