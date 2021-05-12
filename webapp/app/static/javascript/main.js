@@ -143,6 +143,7 @@ $(document).ready(function() {
             $.post(`${window.origin}/getAssessment`, {'category': $(this).html()}, function(data, status) {
                 var html = '<div class="questionBox"><textarea id="numQuestions" placeholder="Question';
                 $('table').remove();
+                $('h2').remove();
                 $('h1').html(data['name']);
                 var first = `<form method="post" id="myform">
                              <div class="input-box">
