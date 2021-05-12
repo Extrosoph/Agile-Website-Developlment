@@ -27,6 +27,7 @@ def login():
                 if current_user_email.admin == True:
                     session['admin'] = True
                 session['logged_in'] = True
+                #session['id'] = current_user_username.id
                 session.permanent = False
                 if len(request.form) > 2:
                     session.permanent = True
@@ -36,6 +37,7 @@ def login():
                 if current_user_username.admin == True:
                     session['admin'] = True
                 session['logged_in'] = True
+                #session['username'] = current_user_username
                 session.permanent = False
                 if len(request.form) > 2:
                     session.permanent = True
@@ -75,10 +77,11 @@ def signup():
 
             # Logged them in and redirect to the user html
             session['logged_in'] = True
+            #session['username'] = current_user_username
             session.permanent = False
             if len(request.form) > 3:
                 session.permanent = True
-            return render_template("user.html", username=username, page='user')
+            return render_template("user.html", user=newUser, page='user')
 
     else:
         return render_template("signup.html", page='signup')
