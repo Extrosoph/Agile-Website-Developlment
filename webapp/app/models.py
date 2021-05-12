@@ -53,6 +53,7 @@ class Assessment(db.Model):
     userAnswers = db.relationship('userAnswers', cascade='all, delete-orphan')
     score = db.Column('score', db.Integer, nullable=True)
     dateCreated = db.Column(db.DateTime, default=datetime.now)
+    scores = db.relationship('Score', cascade='all, delete-orphan')
 
     def __init__(self, category):
         self.category = category
@@ -111,7 +112,6 @@ class Score(db.Model):
     score = db.Column('score', db.Integer, nullable=True)
     userId = db.Column(db.Integer, db.ForeignKey('user.id'))
     assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
-    assessment = db.relationship('Assessment', back_populates='score')
 
     def __init__(self, score):
         self.score = score
