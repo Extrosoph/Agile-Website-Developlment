@@ -13,8 +13,8 @@ def home():
 
 @user_bp.route("/user")
 def user():
-    return render_template("user.html", page='user', user = User.userInfo(), scores = Score.allScores())
-    #need to somehow return current user as user
+    return render_template("user.html", page='user', users = User.userInfo(), 
+    scores = Score.allScores(), assess= Assessment.allAssessment())
 
 @statistics_bp.route("/statistics")
 def statistic():

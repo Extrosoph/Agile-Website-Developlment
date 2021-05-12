@@ -62,10 +62,8 @@ class Assessment(db.Model):
     def __repr__(self):
         return '<assessment name: {}>'.format(self.category)
 
-    def userAsessment(uId):
-        if uId:
-            return Assessment.query.filter_by(userId=uId)
-        return Assessment.query.all()
+    def allAssessment():
+        return Assessment.query.with_entities(Assessment.id, Assessment.category)
 
 class Answers(db.Model):
     __tablename__ = 'answers'
@@ -79,7 +77,7 @@ class Answers(db.Model):
     mark = db.Column('mark', db.Integer, nullable=False)
     assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
 
-    def __init__(self, question, answer1, answer2, answer3, answer4, correctAnswer):
+    def __init__(self, question, answer1, answer2, answer3, answer4, correctAnswer, mark):
         self.question = question
         self.answer1 = answer1
         self.answer2 = answer2

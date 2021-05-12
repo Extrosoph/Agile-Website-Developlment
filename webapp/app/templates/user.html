@@ -7,6 +7,7 @@
 <br>
 <!--figure out what breaks becasuse of this-->
 {% if session['logged_in'] == True %}
+{{users[session['id']-1]}}
 <div class = "userBlock">
     <table class ="userTable">
         <tr>
@@ -15,30 +16,32 @@
         </tr>
         <tr>
             <td>Username</td>
-            <td>{{user.username}}</td>
+            <td>{{users[session['id']-1].username}}</td>
         </tr>
         <tr>
             <td>Email</td>
-            <td>{{user.email}}</td>
+            <td>{{users[session['id']-1].email}}</td>
         </tr>
         <tr>
             <td>Joined on</td>
-            <td>{{user.dateJoined.date()}}</td>
+            <td>{{users[session['id']-1].dateJoined.date()}}</td>
         </tr>
     </table>
     <br>
 </div>
-<p>{{user}}</p>
-<p>{{user.id}}</p>
-<p>{{user.email}}</p>
-
 <br>
 <br>
 <!--need to get this to work-->
 <table class = 'tableClass'>
-    <tr><td>Asessment</td><td>Score</td></tr>
+    <tr><th>Asessment</th><th>Score</th></tr>
     {% for score in scores %}
-    <tr><td>{{score.assessmentId}}</td><td>{{score.score}}</td></tr>
+    {% if score.userId == session['id']%}
+    {% for assess in assess %}
+    {% if score.assessmentId == assess.id %}   
+        <tr><td>{{assess.category}} - Catergory</td><td>{{score.score}}</td></tr>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
     {% endfor %}
 </table>
 {% endif %}
