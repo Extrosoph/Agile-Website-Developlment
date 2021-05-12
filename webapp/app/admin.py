@@ -1,6 +1,6 @@
 from app import app
 from flask import  redirect, url_for, render_template, request, session, flash, Blueprint, jsonify, make_response
-from app.models import Assessment, Questions, Answers, correctAnswer, Score, db, User
+from app.models import Assessment, Answers, correctAnswer, Score, db, User
 from datetime import datetime
 from json import dumps
 
@@ -133,9 +133,8 @@ def adminAssessment():
 
             # Add questions to db
             if 'question' in key:
-                newQuestion = Questions(question=request.form[key])
+                newQuestion = request.form[key]
                 questions_from_form.append(newQuestion)
-                db.session.add(newQuestion)
                 number_of_question += 1
 
         # Get the scores
@@ -152,7 +151,7 @@ def adminAssessment():
         for i in range(number_of_question):
 
             # Add answers and correct answers to db
-            answer = Answers(answer1=answers[a1], answer2=answers[a2], answer3=answers[a3], answer4=answers[a4])
+            answer = Answers(question=number_of_question[i], answer1=answers[a1], answer2=answers[a2], answer3=answers[a3], answer4=answers[a4])
             db.session.add(answer)
             correct_answer = correctAnswer(given=answers[a4], mark=int(scores[i]))
             db.session.add(correct_answer)

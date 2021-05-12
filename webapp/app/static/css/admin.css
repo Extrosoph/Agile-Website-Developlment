@@ -112,19 +112,18 @@ h2{
    margin-right: 10px
 }
 
-.button {
+.Adminbutton {
     text-align: center;
-    margin: 40px auto 20px;
-    width: 5%;
+    height:30px;
+    width: 20%;
     display: block;
-    outline: none;
-    padding: 10px 0;
-    border: 1px solid #000000;
+    border: 1px solid white;
     border-radius: 5px;
     cursor: pointer;
-    background: transparent;
-    color: #000000;
+    color: #9E9E9E;
     font-size: 16px;
+    overflow:hidden;
+    text-overflow: ellipsis;
 }
 
 .questionBox {

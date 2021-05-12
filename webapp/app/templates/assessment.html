@@ -67,7 +67,7 @@
         <p>First Q form goes here</p>
         <form class = "questionForm">
                 <div><!--Question-->
-                        <h3 style='text-align: center'>{{questions[0].question}}</h3>
+                        <h3 style='text-align: center'>{{answers[0].question}}</h3>
                 </div>
                 <div>
                         <input type='radio' id='1P2-1' name='1P2-1' value='{{answers[0].answer1}}'>
@@ -107,7 +107,7 @@
         <p>3rd Q</p>
         <form class = 'questionForm'>
                 <div><!--Question-->
-                        <h3 style='text-align: center'>{{questions[2].question}}</h3>
+                        <h3 style='text-align: center'>{{answers[2].question}}</h3>
                 </div>
                 <div>
                         <input type='radio' id='1P2-1' name='1P2-1' value='{{answers[2].answer1}}'>
@@ -157,7 +157,7 @@
         <p>2nd Q1</p>
         <form class = 'questionForm'>
                 <div><!--Question-->
-                        <h3 style='text-align: center'>{{questions[4].question}}</h3>
+                        <h3 style='text-align: center'>{{answers[4].question}}</h3>
                 </div>
                 <div>
                         <input type='radio' id='1P2-1' name='1P2-1' value='{{answers[4].answer1}}'>
@@ -191,7 +191,7 @@
     <button id="next">Next</button>
 </div>
 <p>Q's 8C8C8C</p>
-<p style='color: #8C8C8C;'>{{questions}}</p>
+<p style='color: #8C8C8C;'>{{answers}}</p>
 <p>Ans 9E9E9E</p>
 <p style='color: #9E9E9E;'>{{answers}}</p>
 <p>Correct 747474</p>
@@ -211,7 +211,7 @@
 </table>
 <br>
 <table class = 'tableClass4'>
-        {% for question in questions %}
+        {% for question in answers %}
                 {% for ans in correctAnswers %}
                         {% if question.id == ans.questionId %} 
                                 <tr><td>{{question.question}}</td><td>{{ans.answer}}</td></tr>

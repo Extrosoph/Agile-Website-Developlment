@@ -1,6 +1,6 @@
 from app import app
 from flask import  redirect, url_for, render_template, request, session, flash, Blueprint
-from app.models import Assessment, User, Score, Answers, Questions, correctAnswer
+from app.models import Assessment, User, Score, Answers, correctAnswer
 
 home_bp = Blueprint('home_bp', __name__)
 user_bp = Blueprint('user_bp', __name__)
@@ -28,6 +28,6 @@ def statistic():
 @assessment_bp.route("/assessment")
 def assessment():
     return render_template("assessment.html", page='assessment', 
-    questions = Questions.allQuestions(), answers = Answers.allAnswers(),
+    questions = Answers.allQuestions(), answers = Answers.allAnswers(),
     correctAnswers = correctAnswer.allAns())
 
