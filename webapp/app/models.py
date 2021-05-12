@@ -111,7 +111,7 @@ class Score(db.Model):
     score = db.Column('score', db.Integer, nullable=True)
     userId = db.Column(db.Integer, db.ForeignKey('user.id'))
     assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
-    assessment = db.relationship('Assessment', back_populates='score')
+    #assessment = db.relationship('Assessment', back_populates='score')
 
     def __init__(self, score):
         self.score = score
