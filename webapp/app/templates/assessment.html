@@ -6,7 +6,22 @@
         <div id="ahome">
                 <p>Select an assessment from the list below to start the module</p>
                 {% if session['logged_in'] == True %}
-                <!-- add the list of assessments here -->
+                <!--put assessment list into array, then iterate over to create enough boxes-->
+                <div class="startBlock" id="sb1">
+                        <!-- needs to glow/highlight when hovered - green? -->
+                        <h1>Assessment name</h1>
+                        <p>Put a single line descriptions</p>
+                        <br>
+                        <p>if logged in show if complete/in-progress/etc?</p>
+                </div>
+                <br>
+                <div class="startBlock" id="sb2">
+                        <!-- needs to glow/highlight when hovered - green? -->
+                        <h1>Assessment name</h1>
+                        <p>Put a single line descriptions</p>
+                        <br>
+                        <p>if logged in show if complete/in-progress/etc?</p>
+                </div>
                 {% else %}
                 <p style="color:red; font-weight:bold">You must be logged in to attempt Assessments</p>
                 <div class = "hBlock">
@@ -23,25 +38,17 @@
         </div>
 </div>
 <br>
-<!--for testing-->
 <br>
-<!-- link boxes to db to load learning, questions and user data -->
-<div class="startBlock" id="sb">
-        <!-- needs to glow/highlight when hovered - green? -->
-        <h1>Assessment name</h1>
-        <p>Maybe a description</p>
-        <br>
-        <p>if logged in show if complete/in-progress/etc?</p>
+<div class="aBlock hidden" id="1P0">
+        <!-- load next bit of assessment -->
+        <p>Intro</p>
 </div>
-<!-- make sure the box is easily differentiated from bg
-decide if txt loads straight into box or if popup
-work out forms to both load and import into db -->
-<div class="aBlock hidden" id="abase">
+<div class="aBlock hidden" id="1P1">
         <!-- load assessment here -->
-        <p>Other test text</p>
+        <p>First Bit of Content goes here</p>
         <br>
         <br>
-        <br>
+        <br>1P
         <p>does the scroll work?</p>
         <br>
         <p>or</p>
@@ -54,26 +61,168 @@ work out forms to both load and import into db -->
         <br>
         <p>test that scroll!</p>
 </div>
-<div class="aBlock hidden" id="page1">
+
+<div class="aBlock hidden" id="1P2">
         <!-- load next bit of assessment -->
-        <p>test text test</p>
+        <p>First Q form goes here</p>
+        <form class = "questionForm">
+                <div><!--Question-->
+                        <h3 style='text-align: center'>{{questions[0].question}}</h3>
+                </div>
+                <div>
+                        <input type='radio' id='1P2-1' name='1P2-1' value='{{answers[0].answer1}}'>
+                        <label for ='1p2-1'>{{answers[0].answer1}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-2' value='{{answers[0].answer2}}'>
+                        <label for ='1p2-2'>{{answers[0].answer2}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-3' value='{{answers[0].answer3}}'>
+                        <label for ='1p2-3'>{{answers[0].answer3}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-4' value='{{answers[0].answer4}}'>
+                        <label for ='1p2-4'>{{answers[0].answer4}}</label>
+                </div>
+                <div style='float: right;'><!--submit button-->
+                        <button class = 'ansButton'>Submit</button>
+                </div>
+        </form>
 </div>
-<div class="aBlock hidden" id="page2">
+<div class="aBlock hidden" id="1P3">
         <!-- load next bit of assessment -->
-        <p>test text test2</p>
+        <p>2nd content</p>
 </div>
-<div class="aBlock hidden" id="page3">
+<div class="aBlock hidden" id="1P4">
         <!-- load next bit of assessment -->
-        <p>test text test3</p>
+        <p>2nd Q</p>
         <br>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam consequuntur beatae ab iste nulla ullam dolorem unde soluta provident natus magni architecto, esse, eum rem accusantium itaque veritatis est dolor.</p>
         <br>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam consequuntur beatae ab iste nulla ullam dolorem unde soluta provident natus magni architecto, esse, eum rem accusantium itaque veritatis est dolor.</p>
         <br>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam consequuntur beatae ab iste nulla ullam dolorem unde soluta provident natus magni architecto, esse, eum rem accusantium itaque veritatis est dolor.</p>
+</div>
+<div class="aBlock hidden" id="1P5">
+        <!-- load next bit of assessment -->
+        <p>3rd content</p>
+</div>
+<div class="aBlock hidden" id="1P6">
+        <!-- load next bit of assessment -->
+        <p>3rd Q</p>
+        <form class = 'questionForm'>
+                <div><!--Question-->
+                        <h3 style='text-align: center'>{{questions[2].question}}</h3>
+                </div>
+                <div>
+                        <input type='radio' id='1P2-1' name='1P2-1' value='{{answers[2].answer1}}'>
+                        <label for ='1p2-1'>{{answers[2].answer1}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-2' value='{{answers[2].answer2}}'>
+                        <label for ='1p2-2'>{{answers[2].answer2}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-3' value='{{answers[2].answer3}}'>
+                        <label for ='1p2-3'>{{answers[2].answer3}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-4' value='{{answers[2].answer4}}'>
+                        <label for ='1p2-4'>{{answers[2].answer4}}</label>
+                </div>
+                <div style='float: right;'><!--submit button-->
+                        <button class = 'ansButton'>Submit</button>
+                </div>
+        </form>
+</div>
+<div class="aBlock hidden" id="1P7">
+        <!-- load next bit of assessment -->
+        <p>4th content</p>
+</div>
+<div class="aBlock hidden" id="1P8">
+        <!-- load next bit of assessment -->
+        <p>4th Q</p>
+</div>
+<div class="aBlock hidden" id="1P9">
+        <!-- load next bit of assessment -->
+        <br>
+        <br>
+        <h3 style='text-align:center'>Congratulations on Finishing "Assessment 1"</h3>
+        <p style='text-align:center'>Press the button below to return to the list of assessments</p>
+        <br>
+        <br>
+        <div class= 'exit'>
+                <button id='ex1'>Back to Assessments</button>
+        </div>
+</div>
+<div class="aBlock hidden" id="2P0">
+        <!-- load next bit of assessment -->
+        <p>2nd intro</p>
+</div>
+<div class="aBlock hidden" id="2P1">
+        <!-- load next bit of assessment -->
+        <p>2nd C1</p>
+</div>
+<div class="aBlock hidden" id="2P2">
+        <!-- load next bit of assessment -->
+        <p>2nd Q1</p>
+        <form class = 'questionForm'>
+                <div><!--Question-->
+                        <h3 style='text-align: center'>{{questions[4].question}}</h3>
+                </div>
+                <div>
+                        <input type='radio' id='1P2-1' name='1P2-1' value='{{answers[4].answer1}}'>
+                        <label for ='1p2-1'>{{answers[4].answer1}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-2' value='{{answers[4].answer2}}'>
+                        <label for ='1p2-2'>{{answers[4].answer2}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-3' value='{{answers[4].answer3}}'>
+                        <label for ='1p2-3'>{{answers[4].answer3}}</label><br>
+                        <input type='radio' id='1P2-1' name='1P2-4' value='{{answers[4].answer4}}'>
+                        <label for ='1p2-4'>{{answers[4].answer4}}</label>
+                </div>
+                <div style='float: right;'><!--submit button-->
+                        <button class = 'ansButton'>Submit</button>
+                </div>
+        </form>
+</div>
+<div class="aBlock hidden" id="2P3">
+        <!-- load next bit of assessment -->
+        <br>
+        <br>
+        <h3 style='text-align:center'>Congratulations on Finishing "Assessment 2"</h3>
+        <p style='text-align:center'>Press the button below to return to the list of assessments</p>
+        <br>
+        <br>
+        <div class= 'exit'>
+                <button id='ex2'>Back to Assessments</button>
+        </div>
 </div>
 <div class="hidden" id="but">
     <button id="prev">Previous</button>
     <button id="next">Next</button>
 </div>
+<p>Q's 8C8C8C</p>
+<p style='color: #8C8C8C;'>{{questions}}</p>
+<p>Ans 9E9E9E</p>
+<p style='color: #9E9E9E;'>{{answers}}</p>
+<p>Correct 747474</p>
+<p>{{correctAnswers}}</p>
+<br>
+<table class = 'tableClass10'>
+{% for ans in correctAnswers %}
+<tr>
+        <td>{{ans.id}}</td>
+        <td>{{ans.answer}}</td>
+        <td>{{ans.mark}}</td>
+        <td>{{ans.questionId}}</td>
+        <td>{{ans.answerId}}</td>
+        <td>{{ans.assessmentId}}</td>
+</tr>
+{% endfor %}
+</table>
+<br>
+<table class = 'tableClass4'>
+        {% for question in questions %}
+                {% for ans in correctAnswers %}
+                        {% if question.id == ans.questionId %} 
+                                <tr><td>{{question.question}}</td><td>{{ans.answer}}</td></tr>
+                        {% endif %}
+                {% endfor %}
+        {% endfor %}
+</table>
+<table class = 'tableClass'>
+        <tr><td>Finished Q's</td></tr>
+        {% for ans in answers %}
+        <tr><td>{{ans.answer1}}</td><td>{{ans.answer2}}</td><td>{{ans.answer3}}</td><td>{{ans.answer4}}</td></tr>
+        {% endfor %}
+</table>
 {% endblock %}

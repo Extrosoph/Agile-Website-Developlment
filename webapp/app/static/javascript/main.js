@@ -401,50 +401,130 @@ $(document).ready(function() {
     }
 
     if(lastPathSegment == 'assessment'){
-        $('#sb').click(function(){
+        $('#sb1').click(function(){
             $('#ahome').hide(),
-            $('#sb').hide(),
-            $('#abase').show(),
+            $('#sb1').hide(),
+            $('#sb2').hide(),
+            $('#1P0').show(),
+            $('#but').show();
+        })
+        $('#sb2').click(function(){
+            $('#ahome').hide(),
+            $('#sb1').hide(),
+            $('#sb2').hide(),
+            $('#2P0').show(),
             $('#but').show();
         })
     
         $('#next').click(function(){
             // NextPage function
-            if($('#abase').css('display') !== 'none'){
-                $('#abase').hide(),
-                $('#page1').show();
-            } else if($('#page1').css('display')!=='none'){
-                $('#page1').hide(),
-                $('#page2').show();
-            } else if($('#page2').css('display')!=='none'){
-                $('#page2').hide(),
-                $('#page3').show();
+            if($('#1P0').css('display') !== 'none'){
+                $('#1P0').hide(),
+                $('#1P1').show();
+            } else if($('#1P1').css('display')!=='none'){
+                $('#1P1').hide(),
+                $('#1P2').show();
+            } else if($('#1P2').css('display')!=='none'){
+                $('#1P2').hide(),
+                $('#1P3').show();
+            }else if($('#1P3').css('display')!=='none'){
+                $('#1P3').hide(),
+                $('#1P4').show();
+            }else if($('#1P4').css('display')!=='none'){
+                $('#1P4').hide(),
+                $('#1P5').show();
+            }else if($('#1P5').css('display')!=='none'){
+                $('#1P5').hide(),
+                $('#1P6').show();
+            }else if($('#1P6').css('display')!=='none'){
+                $('#1P6').hide(),
+                $('#1P7').show();
+            }else if($('#1P7').css('display')!=='none'){
+                $('#1P7').hide(),
+                $('#1P8').show();
+            }else if($('#1P8').css('display')!=='none'){
+                $('#1P8').hide(),
+                $('#1P9').show(),
+                $('#but').hide();
+            }else if($('#2P0').css('display')!=='none'){
+                $('#2P0').hide(),
+                $('#2P1').show();
+            }else if($('#2P1').css('display')!=='none'){
+                $('#2P1').hide(),
+                $('#2P2').show();
+            }else if($('#2P2').css('display')!=='none'){
+                $('#2P2').hide(),
+                $('#2P3').show();
+                $('#but').hide();
             }
-            //needs to continue for whole assessment - loop?
         })
     
         $('#prev').click(function(){
             // PrevPage function
-            if($('#page3').css('display')!=='none'){
-                $('#page3').hide(),
-                $('#page2').show();
-            }else if($('#page2').css('display')!=='none'){
-                $('#page2').hide(),
-                $('#page1').show();
-            } else if($('#page1').css('display')!=='none'){
-                $('#abase').show(),
-                $('#page1').hide();
-            } else if($('#abase').css('display') !== 'none'){
-                $('#abase').hide(),
+            if($('#2P3').css('display')!=='none'){
+                $('#2P3').hide(),
+                $('#2P2').show();
+            }else if($('#2P1').css('display')!=='none'){
+                $('#2P1').hide(),
+                $('#2P0').show();
+            }else if($('#2P2').css('display')!=='none'){
+                $('#2P2').hide(),
+                $('#2P1').show();
+            }else if($('#1P9').css('display')!=='none'){
+                $('#1P9').hide(),
+                $('#1P8').show();
+            }else if($('#1P8').css('display')!=='none'){
+                $('#1P8').hide(),
+                $('#1P7').show();
+            }else if($('#1P7').css('display')!=='none'){
+                $('#1P7').hide(),
+                $('#1P6').show();
+            }else if($('#1P6').css('display')!=='none'){
+                $('#1P6').hide(),
+                $('#1P5').show();
+            }else if($('#1P5').css('display')!=='none'){
+                $('#1P5').hide(),
+                $('#1P4').show();
+            }else if($('#1P4').css('display')!=='none'){
+                $('#1P4').hide(),
+                $('#1P3').show();
+            }else if($('#1P3').css('display')!=='none'){
+                $('#1P3').hide(),
+                $('#1P2').show();
+            }else if($('#1P3').css('display')!=='none'){
+                $('#1P3').hide(),
+                $('#1P2').show();
+            }else if($('#1P2').css('display')!=='none'){
+                $('#1P2').hide(),
+                $('#1P1').show();
+            } else if($('#1P1').css('display')!=='none'){
+                $('#1P0').show(),
+                $('#1P1').hide();
+            } else if($('#1P0').css('display') !== 'none'){
+                $('#1P0').hide(),
                 $('#but').hide(),
-                $("#sb").show(),
+                $('#sb1').show(),
+                $('#sb2').show(),
+                $('#ahome').show();
+            } else if($('#2P0').css('display') !== 'none'){
+                $('#2P0').hide(),
+                $('#but').hide(),
+                $('#sb1').show(),
+                $('#sb2').show(),
                 $('#ahome').show();
             }
-            //needs to continue for whole assessment - loop?
         })
     
         $('.uBlock').click(function(){
             window.location.replace('/login');
+        })
+
+        $('#ex1').click(function(){
+            window.location.replace('/assessment');
+        })
+
+        $('#ex2').click(function(){
+            window.location.replace('/assessment');
         })
     }
 
@@ -465,6 +545,18 @@ $(document).ready(function() {
         
         $('.asBlock').click(function(){
             window.location.replace('/assessment');
+        })
+    }
+
+    if(lastPathSegment == 'statistics'){
+        $('#shide').click(function(){
+            if($('#userStats').css('display')!=='none'){
+                console.log('hide')
+                $('#userStats').hide();
+            } else {
+                console.log('show')
+                $('#userStats').show();
+            }
         })
     }
 

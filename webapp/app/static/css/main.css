@@ -120,6 +120,31 @@ table, th, td{
     width:50%;
 }
 
+.tableClass4 th, .tableClass4 td{
+    text-align:left;
+    padding:5px;
+    color:#747474;
+    width:25%;
+}
+
+.tableClass4{
+    border-spacing:5px;
+    margin:auto;
+    width:75%;
+}
+
+.tableClass10 th, .tableClass10 td{
+    text-align:left;
+    padding:5px;
+    color:#747474;
+    width:10%;
+}
+
+.tableClass10{
+    border-spacing:5px;
+    margin:auto;
+    width:75%;
+}
 .tableClass{
     border-spacing:5px;
     margin:auto;
@@ -142,7 +167,23 @@ table, th, td{
 .userAssess{
     border-spacing:5px;
     margin:auto;
-    width:75%;
+}
+
+.exit{
+    text-align:center;
+}
+
+#shide{
+    text-align:center;
+    width:30%;
+}
+
+label{
+    color:#747474
+}
+
+.questionForm{
+    padding: 3em 10em
 }
 /*colors for later
 #14A76C Aqua-ish Green
