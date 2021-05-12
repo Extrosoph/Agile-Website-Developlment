@@ -1,6 +1,6 @@
 from app import app
 from flask import  redirect, url_for, render_template, request, session, flash, Blueprint, jsonify, make_response
-from app.models import Assessment, Answers, correctAnswer, Score, db, User
+from app.models import Assessment, Answers, Score, db, User
 from datetime import datetime
 from json import dumps
 
@@ -105,8 +105,8 @@ def getAssessment():
 
 
     # Get correct answer from db
-    for correct_answer in assessment.correctAnswer:
-        correctAnswer.append(correct_answer.answer)
+    for correct_answer in assessment.answer:
+        Answers.append(correct_answer.correctAnswer)
         mark.append(correct_answer.mark)
 
     response = make_response(jsonify({'name': assessment.category,
