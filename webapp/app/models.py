@@ -60,10 +60,8 @@ class Assessment(db.Model):
     def __repr__(self):
         return '<assessment name: {}>'.format(self.category)
 
-    def userAsessment(uId):
-        if uId:
-            return Assessment.query.filter_by(userId=uId)
-        return Assessment.query.all()
+    def allAssessment():
+        return Assessment.query.with_entities(Assessment.id, Assessment.category)
 
 class Answers(db.Model):
     __tablename__ = 'answers'

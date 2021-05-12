@@ -551,6 +551,7 @@ $(document).ready(function() {
         })
         
         $('.asBlock').click(function(){
+            console.log('click'),
             window.location.replace('/assessment');
         })
     }
