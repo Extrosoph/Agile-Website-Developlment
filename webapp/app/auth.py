@@ -24,6 +24,8 @@ def login():
         # Check if the given password is correct
         else:
             if current_user_email is not None and checkpw(request.form['password'].encode(), current_user_email.password) == True:
+                if current_user_email.admin == True:
+                    session['admin'] = True
                 session['logged_in'] = True
                 #session['username'] = current_user_username
                 session.permanent = False
@@ -32,6 +34,8 @@ def login():
                 return render_template("user.html", page='user', user=current_user_email)
 
             elif current_user_username is not None and checkpw(request.form['password'].encode(), current_user_username.password) == True:
+                if current_user_username.admin == True:
+                    session['admin'] = True
                 session['logged_in'] = True
                 #session['username'] = current_user_username
                 session.permanent = False
@@ -86,4 +90,5 @@ def signup():
 def logout():
     flash(f"You have been logged out!", "info")
     session.pop("logged_in", None)
+    session.pop("admin", None)
     return redirect(url_for("login_bp.login", page='login'))

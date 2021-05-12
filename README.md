@@ -10,9 +10,12 @@
 
 ## windows:
 
-1. venv\Scripts\activate.bat
-2. set FLASK_ENV=development
-3. flask run
+1. pip install virtualenv
+2. virtualenv venv
+3. venv\Scripts\activate.bat 
+4. set FLASK_APP=webapp\app
+5. set FLASK_ENV=development
+6. flask run
    
 ## mac/linux:
 
@@ -31,11 +34,22 @@
 5. flask run
 
 ## mac/linux:
-1. export FLASK_APP=webapp
+1. export FLASK_APP=app
 2. export FLASK_ENV=development
 3. cd webapp 
 4. pip3 install -e .
 5. flask run
 
+# Testing with selenium
+
+1. pip install selenium
+1. run test.py
+
+# Account with admin privileges for testing:
+## This account will be created once the server starts
+
+username: admin
+password: admin
+email: admin@admin.com
 
 *Will create a simple ERD soon too :)

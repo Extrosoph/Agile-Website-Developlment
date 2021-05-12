@@ -30,3 +30,4 @@ def assessment():
     return render_template("assessment.html", page='assessment', 
     questions = Questions.allQuestions(), answers = Answers.allAnswers(),
     correctAnswers = correctAnswer.allAns())
+

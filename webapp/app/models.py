@@ -57,6 +57,7 @@ class Assessment(db.Model):
     userAnswers = db.relationship('userAnswers', cascade='all, delete-orphan')
     correctAnswer = db.relationship('correctAnswer', cascade='all, delete-orphan')
     score = db.relationship('Score', uselist=False, back_populates='assessment', cascade='all, delete-orphan')
+    dateCreated = db.Column(db.DateTime, default=datetime.now)
 
     def __init__(self, category):
         self.category = category
@@ -153,7 +154,6 @@ class Score(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey('user.id'))
     assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
     assessment = db.relationship('Assessment', back_populates='score')
-    #timeAttempted = db.Column(db.DateTime, default=datetime.now)
 
     def __init__(self, score):
         self.score = score

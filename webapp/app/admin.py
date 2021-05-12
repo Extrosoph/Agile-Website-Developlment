@@ -9,10 +9,44 @@ adminAssessment_bp = Blueprint('adminAseessment_bp', __name__)
 adminUser_bp = Blueprint('adminUser_bp', __name__)
 getAssessment_bp = Blueprint('getAssessment_bp', __name__)
 getUser_bp = Blueprint('getUser_bp', __name__)
+makeAdmin_bp = Blueprint('makeAdmin_bp', __name__)
+removeUser_bp = Blueprint('removeUser_bp', __name__)
+adminAccount_bp = Blueprint('adminAccount_bp', __name__)
+
 
 @admin_bp.route("/admin", methods=["POST", "GET"])
 def admin():
     return render_template("admin.html", page='admin')
+
+@makeAdmin_bp.route("/makeAdmin", methods=["POST"])
+def makeAdmin():
+    # Function to get user details from ajax
+    req = request.get_json()
+    username = request.form['username']
+
+    current_user_username = User.query.filter_by(username=username).first()
+
+    current_user_username.admin = True
+    db.session.commit()
+
+    response = make_response(jsonify({'return': 'complete'}), 200)
+
+    return response
+
+@removeUser_bp.route("/removeUser", methods=["POST"])
+def removeUser():
+    # Function to get user details from ajax
+    req = request.get_json()
+    username = request.form['username']
+
+    current_user_username = User.query.filter_by(username=username).first()
+
+    db.session.delete(current_user_username)
+    db.session.commit()
+
+    response = make_response(jsonify({'return': 'complete'}), 200)
+
+    return response
 
 @getUser_bp.route("/getUser", methods=["POST"])
 def getUser():
@@ -23,7 +57,7 @@ def getUser():
     current_user_email = User.query.filter_by(email=query).first()
     current_user_username = User.query.filter_by(username=query).first()
 
-    # If there is no such username or email
+    # If there is no such us`ername or email
     if current_user_email is None and current_user_username is None:
         response = make_response(jsonify({'result': 'none'}), 200)
 
@@ -61,7 +95,6 @@ def getAssessment():
     for question in assessment.questions:
         questions.append(question.question)
 
-    print(answers)
 
     # Get answers from db
     for answer in assessment.answer:
@@ -70,7 +103,6 @@ def getAssessment():
         answers.append(answer.answer3)
         answers.append(answer.answer4)
 
-    print(answers)
 
     # Get correct answer from db
     for correct_answer in assessment.correctAnswer:
@@ -143,26 +175,44 @@ def adminAssessment():
         newAssessment.score = result
         db.session.commit()
 
-        assessment = Assessment.query.all()
-        if assessment is not None:
-            categories = ""
-            for items in assessment:
-                categories += '<tr><th><p class="categoryAssessment" id="Assessment>' + items.category + '</p></th></tr>'
-
-        return render_template("adminAssessment.html", page='admin', assessmentLen=len(assessment), assessment=categories)
+        assessments = Assessment.query.order_by(Assessment.dateCreated.desc())[:10]
+        category = []
+        for assessment in assessments:
+            category.append(assessment.category)
+        return render_template("adminAssessment.html", page='admin', assessmentLen=len(assessments), assessment=category)
 
     else:
-        assessment = Assessment.query.all()
-        if assessment is not None:
-            categories = ""
-            counter = 0
-            for items in assessment:
-                categories += '<tr><th><p class="categoryAssessment" id="Assessment" >' + items.category + '</p></th></tr>'
-
-            return render_template("adminAssessment.html", page='admin', assessmentLen=len(assessment), assessment=categories)
+        assessments = Assessment.query.order_by(Assessment.dateCreated.desc())[:10]
+        category = []
+        for assessment in assessments:
+            category.append(assessment.category)
+        if assessments is not None:
+            return render_template("adminAssessment.html", page='admin', assessmentLen=len(assessments), assessment=category)
         else:
             return render_template("adminAssessment.html", page='admin', assessmentLen=0)
 
 @adminUser_bp.route("/adminUser", methods=["POST", "GET"])
 def adminUser():
-    return render_template("adminUser.html", page='admin')
+    users = User.query.order_by(User.dateJoined.desc())[:10]
+    if users is not None:
+        usernames = ""
+        for user in users:
+            usernames += '<tr><th><p class="categoryAssessment" id="User" >' + user.username + '</p></th></tr>'
+        return render_template("adminUser.html", page='admin', userLen=len(users), user=usernames)
+
+    else:
+        return render_template("adminUser.html", page='admin', userLen=0)
+
+@adminAccount_bp.route("/adminAccount", methods=["POST"])
+def adminAccount():
+    admin = User.query.filter_by(username='admin').first()
+    if admin is None:
+        new_admin = User(username='admin', email='admin@admin.com', password='admin')
+        new_admin.admin = True
+        db.session.add(new_admin)
+        db.session.commit()
+        response = make_response(jsonify({'result': 'completed'}), 200)
+
+    else:
+        response = make_response(jsonify({'result': 'completed'}), 200)
+    return response
