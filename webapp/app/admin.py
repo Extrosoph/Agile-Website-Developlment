@@ -12,6 +12,7 @@ getUser_bp = Blueprint('getUser_bp', __name__)
 makeAdmin_bp = Blueprint('makeAdmin_bp', __name__)
 removeUser_bp = Blueprint('removeUser_bp', __name__)
 adminAccount_bp = Blueprint('adminAccount_bp', __name__)
+deleteAssessment_bp = Blueprint('deleteAssessment_bp', __name__)
 
 
 @admin_bp.route("/admin", methods=["POST", "GET"])
@@ -27,6 +28,21 @@ def makeAdmin():
     current_user_username = User.query.filter_by(username=username).first()
 
     current_user_username.admin = True
+    db.session.commit()
+
+    response = make_response(jsonify({'return': 'complete'}), 200)
+
+    return response
+
+@deleteAssessment_bp.route("/deleteAssessment", methods=["POST"])
+def deleteAssessment():
+    # Function to get user details from ajax
+    req = request.get_json()
+    name = request.form['category']
+
+    assessment = Assessment.query.filter_by(category=name).first()
+
+    db.session.delete(assessment)
     db.session.commit()
 
     response = make_response(jsonify({'return': 'complete'}), 200)
@@ -92,7 +108,7 @@ def getAssessment():
     mark = []
 
     # Get questions from db
-    for question in assessment.questions:
+    for question in assessment.answer:
         questions.append(question.question)
 
 
@@ -106,7 +122,7 @@ def getAssessment():
 
     # Get correct answer from db
     for correct_answer in assessment.answer:
-        Answers.append(correct_answer.correctAnswer)
+        correctAnswer.append(correct_answer.correctAnswer)
         mark.append(correct_answer.mark)
 
     response = make_response(jsonify({'name': assessment.category,
@@ -151,19 +167,12 @@ def adminAssessment():
         for i in range(number_of_question):
 
             # Add answers and correct answers to db
-            answer = Answers(question=number_of_question[i], answer1=answers[a1], answer2=answers[a2], answer3=answers[a3], answer4=answers[a4])
+            answer = Answers(question=questions_from_form[i], answer1=answers[a1], answer2=answers[a2], answer3=answers[a3], answer4=answers[a4], correctAnswer=answers[a4], mark=scores[i])
             db.session.add(answer)
-            correct_answer = correctAnswer(given=answers[a4], mark=int(scores[i]))
-            db.session.add(correct_answer)
-            answer.correctAnswer = correct_answer
 
             # Set the values for DB
-            questions_from_form[i].answers.append(answer)
-            questions_from_form[i].correctAnswer = correct_answer
-
             newAssessment.answer.append(answer)
-            newAssessment.correctAnswer.append(correct_answer)
-            newAssessment.questions.append(questions_from_form[i])
+
             a1 += 4
             a2 += 4
             a3 += 4

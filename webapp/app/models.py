@@ -29,7 +29,6 @@ class User(db.Model):
     email = db.Column('email', db.String(120), unique=True, nullable=False)
     password = db.Column('password', db.String(120), nullable=False)
     admin = db.Column('admin', db.Boolean(), default=False)
-    assessments = db.relationship('Assessment')
     score = db.relationship('Score')
     userAnswers = db.relationship('userAnswers', cascade='all, delete-orphan')
     dateJoined = db.Column(db.DateTime, default=datetime.now)
@@ -50,7 +49,6 @@ class Assessment(db.Model):
     __tablename__ = 'assessment'
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String(250), nullable=False)
-    userId = db.Column(db.Integer, db.ForeignKey('user.id'))
     answer = db.relationship('Answers', cascade='all, delete-orphan')
     userAnswers = db.relationship('userAnswers', cascade='all, delete-orphan')
     score = db.relationship('Score', uselist=False, back_populates='assessment', cascade='all, delete-orphan')
@@ -79,13 +77,14 @@ class Answers(db.Model):
     mark = db.Column('mark', db.Integer, nullable=False)
     assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
 
-    def __init__(self, question, answer1, answer2, answer3, answer4, correctAnswer):
+    def __init__(self, question, answer1, answer2, answer3, answer4, correctAnswer, mark):
         self.question = question
         self.answer1 = answer1
         self.answer2 = answer2
         self.answer3 = answer3
         self.answer4 = answer4
         self.correctAnswer = correctAnswer
+        self.mark = mark
 
     def __repr__(self):
         return '<answer1: {} answer2: {} answer3: {} answer4: {}>'.format(self.answer1, self.answer2, self.answer3, self.answer4)

@@ -200,6 +200,12 @@ $(document).ready(function() {
                         $('#name').val('');
                 })
 
+                $('#Delete').click(function() {
+                    $.post(`${window.origin}/deleteAssessment`, {'category': data['name']}, function(data, status) {
+                        location.reload();
+                    })
+                })
+
                 $('#update').click(function() {
 
                     // Check if any fields are empty
