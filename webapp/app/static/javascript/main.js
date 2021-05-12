@@ -451,7 +451,10 @@ $(document).ready(function() {
                 $('#1P8').show();
             }else if($('#1P8').css('display')!=='none'){
                 $('#1P8').hide(),
-                $('#1P9').show(),
+                $('#1P9').show();
+            }else if($('#1P9').css('display')!=='none'){
+                $('#1P9').hide(),
+                $('#1P10').show(),
                 $('#but').hide();
             }else if($('#2P0').css('display')!=='none'){
                 $('#2P0').hide(),
@@ -462,13 +465,19 @@ $(document).ready(function() {
             }else if($('#2P2').css('display')!=='none'){
                 $('#2P2').hide(),
                 $('#2P3').show();
+            }else if($('#2P3').css('display')!=='none'){
+                $('#2P3').hide(),
+                $('#2P4').show(),
                 $('#but').hide();
             }
         })
     
         $('#prev').click(function(){
             // PrevPage function
-            if($('#2P3').css('display')!=='none'){
+            if($('#2P4').css('display')!=='none'){
+                $('#2P4').hide(),
+                $('#2P3').show();
+            }else if($('#2P3').css('display')!=='none'){
                 $('#2P3').hide(),
                 $('#2P2').show();
             }else if($('#2P1').css('display')!=='none'){
@@ -477,6 +486,9 @@ $(document).ready(function() {
             }else if($('#2P2').css('display')!=='none'){
                 $('#2P2').hide(),
                 $('#2P1').show();
+            }else if($('#1P10').css('display')!=='none'){
+                $('#1P10').hide(),
+                $('#1P9').show();    
             }else if($('#1P9').css('display')!=='none'){
                 $('#1P9').hide(),
                 $('#1P8').show();

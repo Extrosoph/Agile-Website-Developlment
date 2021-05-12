@@ -85,8 +85,8 @@ h1, h2, h3{
 }
 
 .aBlock{
-    height:400px;
-    width:85%;
+    height:600px;
+    width:90%;
     display:block;
     overflow-y:auto;
     margin:auto;
