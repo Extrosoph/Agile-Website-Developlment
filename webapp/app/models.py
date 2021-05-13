@@ -17,8 +17,6 @@ db = SQLAlchemy(app)
 # Preparation for migration
 migrate = Migrate(app, db)
 manager = Manager(app)
-# manager.add_command('db', MigrateCommand)
-# manager.run()
 
 class User(db.Model):
     __tablename__ = 'user'
