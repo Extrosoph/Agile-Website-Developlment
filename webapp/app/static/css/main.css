@@ -85,7 +85,7 @@ h1, h2, h3{
 }
 
 .aBlock{
-    height:500px;
+    height:450px;
     width:90%;
     display:block;
     overflow-y:auto;
@@ -108,28 +108,29 @@ p{
     padding:3em;
 }
 
-table, th, td{
-    border: 1px solid white;
-    border-collapse: collapse;
-}
-
 .tableClass th, .tableClass td, .userTable th, .userTable td{
     text-align:left;
     padding:5px;
     color:#9E9E9E;
     width:50%;
+    border: 1px solid white;
+    border-collapse: collapse;
 }
 
 .tableClass{
     border-spacing:5px;
     margin:auto;
     width:75%;
+    border: 1px solid white;
+    border-collapse: collapse;
 }
 
 .userTable{
     border-spacing:5px;
     margin:auto;
     width:75%;
+    border: 1px solid white;
+    border-collapse: collapse;
 }
 
 .userAssess th, .userAssess td{
@@ -137,11 +138,15 @@ table, th, td{
     padding:5px;
     color:#9E9E9E;
     width:33%;
+    border: 1px solid white;
+    border-collapse: collapse;
 }
 
 .userAssess{
     border-spacing:5px;
     margin:auto;
+    border: 1px solid white;
+    border-collapse: collapse;
 }
 
 .exit{
@@ -160,6 +165,7 @@ label{
 .questionForm{
     padding: 3em 10em
 }
+
 /*colors for later
 #14A76C Aqua-ish Green
 #61892F Forest Green
