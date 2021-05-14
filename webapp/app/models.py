@@ -5,12 +5,9 @@ from sqlalchemy import func
 
 # Preparation for migration
 from flask_script import Manager
-from flask_migrate import Migrate, MigrateCommand
+from flask_migrate import Migrate
 from datetime import datetime
 
-# App configuration for the database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///baseModel.sqlite3'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 

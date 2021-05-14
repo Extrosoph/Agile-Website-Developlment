@@ -1,17 +1,11 @@
-from flask import Flask, session, Blueprint
-from datetime import timedelta
-from secrets import token_urlsafe
+from flask import Flask
+from config import Config
 
 app = Flask(__name__)
+app.config.from_object(Config)
 
-#Set a safe secret key
-app.secret_key = token_urlsafe(18)
-
-#Set session variable to last only for 5 mintues instead of 30 days.
-app.permanent_session_lifetime = timedelta(minutes=60)
 
 # Import the blueprints and models
-from app import models
 from app.views import home_bp, user_bp, statistics_bp, assessment_bp
 from app.auth import login_bp, signup_bp, logout_bp
 from app.admin import admin_bp, adminAssessment_bp, adminUser_bp, getAssessment_bp, getUser_bp, makeAdmin_bp, removeUser_bp, adminAccount_bp, deleteAssessment_bp
