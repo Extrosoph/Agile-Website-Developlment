@@ -1,47 +1,75 @@
 # How to run with venv:
 
-## How to install venv through pip and create the venv folder
+## windows:
+
+### How to install venv through pip:
+
 1. pip install virtualenv
 2. virtualenv venv
 
-## windows:
+### Must install requirements!
 
-1. venv\Scripts\activate.bat 
-2. set FLASK_APP=webapp\app
-3. set FLASK_ENV=development
-4. flask run
+* pip install -r requirements.txt
+
+#### Must create the DB file first!
+
+1. flask db migrate
+2. flask db upgrade
+3. venv\Scripts\activate.bat
+4. set FLASK_APP=webapp\app
+5. set FLASK_ENV=development
+6. flask run
    
 ## mac/linux:
 
-1. source venv/bin/activate 
-2. export FLASK_APP=webapp\app
-3. export FLASK_ENV=development
-4. flask run
+### Must install requirements!
 
-## How to deactivate venv
+* pip3 install -r requirements.txt
+
+#### Must create the DB file first!
+
+1. flask db migrate
+2. flask db upgrade
+3. source venv/bin/activate
+4. export FLASK_APP=webapp\app
+5. export FLASK_ENV=development
+6. flask run
+
+## How to deactivate venv:
 
 * deactivate
 
 # How to run without venv:
 
-## Must create the DB file first!
+## windows:
+
+### Must install requirements!
+
+* pip3 install -r requirements.txt
+
+#### Must create the DB file first!
 
 1. flask db migrate
 2. flask db upgrade
-
-## windows:
-
-1. set FLASK_APP=webapp\app
-2. set FLASK_ENV=development
-3. flask run
+3. set FLASK_APP=webapp\app
+4. set FLASK_ENV=development
+5. flask run
 
 ## mac/linux:
 
-1. export FLASK_APP=webapp\app
-2. export FLASK_ENV=development
-3. flask run
+### Must install requirements!
 
-# Testing with selenium
+* pip install -r requirements.txt
+
+#### Must create the DB file first!
+
+1. flask db migrate
+2. flask db upgrade
+3. export FLASK_APP=webapp\app
+4. export FLASK_ENV=development
+5. flask run
+
+# Testing with selenium:
 
 1. run test.py
 
