@@ -5,7 +5,7 @@ from sqlalchemy import func
 
 # Preparation for migration
 from flask_script import Manager
-from flask_migrate import Migrate, MigrateCommand
+from flask_migrate import Migrate
 from datetime import datetime
 
 # App configuration for the database
