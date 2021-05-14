@@ -4,8 +4,8 @@ from bcrypt import gensalt, hashpw
 from sqlalchemy import func
 
 # Preparation for migration
-# from flask_script import Manager
-# from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager
+from flask_migrate import Migrate, MigrateCommand
 from datetime import datetime
 
 # App configuration for the database
@@ -15,12 +15,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Preparation for migration
-# migrate = Migrate(app, db)
-#
-#
-# manager = Manager(app)
-# manager.add_command('db', MigrateCommand)
-# manager.run()
+migrate = Migrate(app, db)
+manager = Manager(app)
 
 class User(db.Model):
     __tablename__ = 'user'
@@ -131,7 +127,6 @@ class Score(db.Model):
     def avgScores(id):
         return Score.query.with_entities(func.avg(Score.score).label('avg'), Score.userId, Score.assessmentId).filter(Score.assessmentId==id)
 
-db.create_all()
 
 
 
