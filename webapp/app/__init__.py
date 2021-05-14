@@ -1,4 +1,3 @@
-from flask import Flask
 from flask import Flask, session, Blueprint
 from datetime import timedelta
 from secrets import token_urlsafe
