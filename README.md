@@ -13,10 +13,10 @@
 
 #### Must create the DB file first!
 
-1. flask db migrate
-2. flask db upgrade
-3. venv\Scripts\activate.bat
-4. set FLASK_APP=webapp\app
+1. venv\Scripts\activate.bat
+2. set FLASK_APP=webapp\app
+3. flask db migrate
+4. flask db upgrade
 5. set FLASK_ENV=development
 6. flask run
    
@@ -28,10 +28,10 @@
 
 #### Must create the DB file first!
 
-1. flask db migrate
-2. flask db upgrade
-3. source venv/bin/activate
-4. export FLASK_APP=webapp\app
+1. source venv/bin/activate
+2. export FLASK_APP=webapp\app
+3. flask db migrate
+4. flask db upgrade
 5. export FLASK_ENV=development
 6. flask run
 
@@ -49,9 +49,9 @@
 
 #### Must create the DB file first!
 
-1. flask db migrate
-2. flask db upgrade
-3. set FLASK_APP=webapp\app
+1. set FLASK_APP=webapp\app
+2. flask db migrate
+3. flask db upgrade
 4. set FLASK_ENV=development
 5. flask run
 
@@ -63,9 +63,9 @@
 
 #### Must create the DB file first!
 
-1. flask db migrate
-2. flask db upgrade
-3. export FLASK_APP=webapp\app
+1. export FLASK_APP=webapp\app
+2. flask db migrate
+3. flask db upgrade
 4. export FLASK_ENV=development
 5. flask run
 
