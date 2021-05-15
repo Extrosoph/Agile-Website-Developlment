@@ -67,7 +67,7 @@ class Answers(db.Model):
     correctAnswer = db.Column('correctAnswer', db.String(100), nullable=False)
     mark = db.Column('mark', db.Integer, nullable=False)
     assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
-    userAnswers = db.relationship('userAnswers', uselist = False, back_populates='answers')
+    userAnswers = db.relationship('userAnswers')
 
     def __init__(self, question, answer1, answer2, answer3, answer4, correctAnswer, mark):
         self.question = question
@@ -95,7 +95,7 @@ class userAnswers(db.Model):
     assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
     userId = db.Column(db.Integer, db.ForeignKey('user.id'))
     timeAttempted = db.Column(db.DateTime, default=datetime.now)
-    answers = db.relationship('answers', back_populates = 'userAnswers')
+    answersId = db.Column(db.Integer, db.ForeignKey('answers.id'))
 
     def __repr__(self):
         return '<user: {} assessment: {}  my answer: {}>'.format(self.userId, self.assessmentId, self.answer)
