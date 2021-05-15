@@ -338,7 +338,7 @@ $(document).ready(function() {
                     $('#main2').append(table);
 
                     $('#main2').append(`<div style="width:60%;margin:20px auto;" >
-                                          <p style="float:left" id="remove" class="Adminbutton">Remove</p>
+                                          <p style="float:left" id="remove" class="Adminbutton">Remove User</p>
                                           <p style="float:right" id="makeAdmin" class="Adminbutton">Make Admin</p>
                                           </div>`);
 
@@ -461,7 +461,7 @@ $(document).ready(function() {
                 $('#2P2').show();
             }else if($('#2P2').css('display')!=='none'){
                 $('#2P2').hide(),
-                $('#2P3').show();
+                $('#2P3').show(),
                 $('#but').hide();
             }
         })
