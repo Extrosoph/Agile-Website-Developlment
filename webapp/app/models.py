@@ -4,8 +4,8 @@ from bcrypt import gensalt, hashpw
 from sqlalchemy import func
 
 # Preparation for migration
-# from flask_script import Manager
-# from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager
+from flask_migrate import Migrate
 from datetime import datetime
 
 # App configuration for the database
@@ -15,12 +15,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Preparation for migration
-# migrate = Migrate(app, db)
-#
-#
-# manager = Manager(app)
-# manager.add_command('db', MigrateCommand)
-# manager.run()
+migrate = Migrate(app, db)
+manager = Manager(app)
 
 class User(db.Model):
     __tablename__ = 'user'
@@ -53,6 +49,7 @@ class Assessment(db.Model):
     userAnswers = db.relationship('userAnswers', cascade='all, delete-orphan')
     score = db.Column('score', db.Integer, nullable=True)
     dateCreated = db.Column(db.DateTime, default=datetime.now)
+    scores = db.relationship('Score', cascade='all, delete-orphan')
 
     def __init__(self, category):
         self.category = category
@@ -111,7 +108,6 @@ class Score(db.Model):
     score = db.Column('score', db.Integer, nullable=True)
     userId = db.Column(db.Integer, db.ForeignKey('user.id'))
     assessmentId = db.Column(db.Integer, db.ForeignKey('assessment.id'))
-    #assessment = db.relationship('Assessment', back_populates='score')
 
     def __init__(self, score):
         self.score = score
@@ -131,7 +127,6 @@ class Score(db.Model):
     def avgScores(id):
         return Score.query.with_entities(func.avg(Score.score).label('avg'), Score.userId, Score.assessmentId).filter(Score.assessmentId==id)
 
-db.create_all()
 
 
 
