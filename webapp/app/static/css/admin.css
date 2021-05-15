@@ -121,6 +121,19 @@ h2{
     text-overflow: ellipsis;
 }
 
+.Adminbutton2 {
+    text-align: center;
+    height:30px;
+    width: 80%;
+    display: block;
+    border: 1px solid white;
+    cursor: pointer;
+    color: #9E9E9E;
+    font-size: 16px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+
 .questionBox {
     margin: 31px auto;
     width: 80%;
