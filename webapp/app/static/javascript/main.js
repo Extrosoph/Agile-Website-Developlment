@@ -416,6 +416,24 @@ $(document).ready(function() {
     }
 
     if(lastPathSegment == 'assessment'){
+        $('#check').click(function() {
+            $.post(`${window.origin}/getValues`, {'query': 'question'},  function(data, status) {
+                console.log(data);
+                var correct_answers = stringManipulations(data);
+                var mark = 0;
+                var i = 0;
+                $('.questions').each({
+                    if ($('input[name='+correct_answers[i]+']:checked').length > 0) {
+                        mark = mark + 1;
+                    }
+                })
+                $('1P5').empty();
+                var html = '<p>You got ';
+                html = html.concat(mark);
+                html = html.concat('/4 !');
+                $('1P5').append(html);
+            })
+        })
         $('#sb1').click(function(){
             $('#ahome').hide(),
             $('#sb1').hide(),

@@ -1,11 +1,13 @@
 from app import app
 from flask import  redirect, url_for, render_template, request, session, flash, Blueprint
 from app.models import Assessment, User, Score, Answers
+from json import dumps
 
 home_bp = Blueprint('home_bp', __name__)
 user_bp = Blueprint('user_bp', __name__)
 statistics_bp = Blueprint('statistics_bp', __name__)
 assessment_bp = Blueprint('assessments_bp', __name__)
+getValue_bp = Blueprint('getValue_bp', __name__)
 
 @home_bp.route("/")
 def home():
@@ -63,4 +65,19 @@ def assessment():
 
         return render_template("assessment.html", page='assessment', questions1=0, answers1=0,
                                questions2=0, answers2=0)
+
+@getValue_bp.route("/getValue", methods=["POST"])
+def getValue():
+    req = request.get_json()
+    query = request.form['query']
+
+    questions = Answers.query.all()
+    correct_answers = []
+
+    for i in range(5):
+        correct_answers.append(questions[i].correctAnswer)
+
+    response = make_response(jsonify({'username': dumps(correct_answers)}), 200)
+
+    return response
 
