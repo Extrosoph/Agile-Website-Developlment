@@ -87,6 +87,10 @@ class Answers(db.Model):
     def allAnswers():
         return Answers.query.all()
 
+    def checkAnswer(questionId, answer):
+        ans = Answers.query.filter_by(id=questionId).first()
+        return 1 if ans.answer == answer else 0
+
 class userAnswers(db.Model):
     __tablename__ = 'userAnswers'
     id = db.Column(db.Integer, primary_key=True)
@@ -99,6 +103,11 @@ class userAnswers(db.Model):
 
     def __repr__(self):
         return '<user: {} assessment: {}  my answer: {}>'.format(self.userId, self.assessmentId, self.answer)
+
+    def updateTable(self, question, answer):
+        self.answersId = question
+        self.answer = answer
+        self.score = Answers.checkAnswer(question, answer)
 
 class Score(db.Model):
     __tablename__ = 'score'
@@ -125,6 +134,5 @@ class Score(db.Model):
     def avgScores(id):
         return Score.query.with_entities(func.avg(Score.score).label('avg'), Score.userId, Score.assessmentId).filter(Score.assessmentId==id)
 
-
-
-
+    def getScore(score1, score2, score3, score4):
+        return sum([score1, score2, score3, score4])

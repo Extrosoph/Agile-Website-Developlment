@@ -1,4 +1,4 @@
-from app import app
+from app import app, form
 from flask import  redirect, url_for, render_template, request, session, flash, Blueprint
 from app.models import Assessment, User, Score, Answers
 
@@ -27,7 +27,7 @@ def statistic():
 
 @assessment_bp.route("/assessment")
 def assessment():
-    return render_template("assessment.html", page='assessment', 
-    questions = Answers.allAnswers(), answers = Answers.allAnswers(),
-    correctAnswers = Answers.allAnswers())
+    form1 = form.AssessmentAttempt1()
+    form2 = form.AssessmentAttempt2()
+    return render_template("assessment.html", page='assessment', form1=form1, form2=form2)
 

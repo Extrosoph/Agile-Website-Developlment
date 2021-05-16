@@ -191,9 +191,17 @@ $(document).ready(function() {
                 }
 
                 $('form').append(`<div style="width:60%;margin:40px auto;" >
-                                  <p style="margin-left: -100px margin-right: 10px" id="reset" class="Adminbutton">Reset</p>
-                                  <p style="text-align:center vertical-align: middle" id="Delete" class="Adminbutton">Delete</p>
-                                  <button style="float:right" type="submit" id="update" class="button">Update</button>
+                                    <div class = 'row'>
+                                        <div class = 'col-sm'>
+                                            <p id="reset" class="Adminbutton2">Reset</p>
+                                        </div>
+                                        <div class = 'col-sm'>
+                                            <p id="Delete" class="Adminbutton2">Delete</p>
+                                        </div>
+                                        <div class = 'col-sm'>
+                                            <p id="update" class="Adminbutton2">Update</p>
+                                        </div>
+                                    </div>
                                   </div>`);
 
                 $('#reset').click(function() {
@@ -234,7 +242,7 @@ $(document).ready(function() {
                               <div class="input-box" id="initial">
                               <input id="numQuestions" placeholder="Number of Questions" maxlength="3" >
                               </div>
-                              <p id="createQs" class="button">Create</p>`);
+                              <p id="createQs" class="Adminbutton" style="text-align:center; margin:auto">Create</p>`);
 
             $('#createQs').click(function() {
 
@@ -442,16 +450,7 @@ $(document).ready(function() {
                 $('#1P5').show();
             }else if($('#1P5').css('display')!=='none'){
                 $('#1P5').hide(),
-                $('#1P6').show();
-            }else if($('#1P6').css('display')!=='none'){
-                $('#1P6').hide(),
-                $('#1P7').show();
-            }else if($('#1P7').css('display')!=='none'){
-                $('#1P7').hide(),
-                $('#1P8').show();
-            }else if($('#1P8').css('display')!=='none'){
-                $('#1P8').hide(),
-                $('#1P9').show(),
+                $('#1P6').show(),
                 $('#but').hide();
             }else if($('#2P0').css('display')!=='none'){
                 $('#2P0').hide(),
@@ -477,15 +476,6 @@ $(document).ready(function() {
             }else if($('#2P2').css('display')!=='none'){
                 $('#2P2').hide(),
                 $('#2P1').show();
-            }else if($('#1P9').css('display')!=='none'){
-                $('#1P9').hide(),
-                $('#1P8').show();
-            }else if($('#1P8').css('display')!=='none'){
-                $('#1P8').hide(),
-                $('#1P7').show();
-            }else if($('#1P7').css('display')!=='none'){
-                $('#1P7').hide(),
-                $('#1P6').show();
             }else if($('#1P6').css('display')!=='none'){
                 $('#1P6').hide(),
                 $('#1P5').show();
@@ -555,18 +545,5 @@ $(document).ready(function() {
             window.location.replace('/assessment');
         })
     }
-
-    if(lastPathSegment == 'statistics'){
-        $('#shide').click(function(){
-            if($('#userStats').css('display')!=='none'){
-                console.log('hide')
-                $('#userStats').hide();
-            } else {
-                console.log('show')
-                $('#userStats').show();
-            }
-        })
-    }
-
 })
 
