@@ -1,4 +1,5 @@
 {%extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 {% block title %}Assessments{% endblock %}
 {% block content %}
 <div class="gen">
@@ -6,21 +7,17 @@
         <div id="ahome">
                 <p>Select an assessment from the list below to start the module</p>
                 {% if session['logged_in'] == True %}
-                <!--put assessment list into array, then iterate over to create enough boxes-->
-                <div class="startBlock" id="sb1">
-                        <!-- needs to glow/highlight when hovered - green? -->
-                        <h1>Module 1 - The Earth, Moon and Sun</h1>
-                        <p>Put a single line description</p>
+                <div class="startBlock" id="sb1" style='text-align: center;'>
                         <br>
-                        <p>if logged in show if complete/in-progress/etc?</p>
+                        <h1>The Moon</h1>
+                        <p>Learn some interesting facts about our moon!</p>
                 </div>
                 <br>
-                <div class="startBlock" id="sb2">
-                        <!-- needs to glow/highlight when hovered - green? -->
-                        <h1>The Moon</h1>
-                        <p>Fascination about our Moon</p>
+                <div class="startBlock" id="sb2" style='text-align: center;'>
                         <br>
-                        <p>if logged in show if complete/in-progress/etc?</p>
+                        <h1>The Sun</h1>
+                        <p>Learn about our closest star!</p>
+                        <br>
                 </div>
                 {% else %}
                 <p style="color:red; font-weight:bold">You must be logged in to attempt Assessments</p>
@@ -31,126 +28,146 @@
                                 </div>
                         </div>
                 </div>
-                <!-- add redict box to login here -->
-                <!-- box centered and glows blue when hovered
-                has an outline of person and box that says login -->
                 {% endif %} 
         </div>
 </div>
 <br>
 <br>
+
 <div class="aBlock hidden" id="1P0">
-        <!-- load next bit of assessment -->
-        <p>The Moon is a body that orbits the Earth. It is about ¼ the size of the Earth and is about 384,400 km away. It is Earth’s only natural satellite and has many interesting features. 
-                The moon orbits around the Earth once every 27 days. The Moon also spins around its axis, but the spin is such that one side always faces towards the Earth. This is known as a spin-orbit locking, an illustration is provided below. The side we don’t see is known as the ‘dark side’ of the Moon.
-                </p>
+        <br>
+        <h3 style='text-align: center;'>Introduction</h3>
+        <br>
+        <div style='padding-left:2em;'>
+                <img src="/static/images/Dark Side.gif" width="40%" height="280" 
+                style='float:right; padding-right:2em;'>
+                <div style='padding-right: 2em; width:60%'>
+                        <p>The Moon is a body that orbits the Earth. It is about ¼ the size of the Earth 
+                                and is about 384,400 km away. It is Earth’s only natural satellite and has 
+                                many interesting features.</p>
+                        <br>
+                        <p>The moon orbits around the Earth once every 27 days. The Moon also spins around 
+                                its axis, but the spin is such that one side always faces towards the Earth. 
+                                This is known as a spin-orbit locking, an illustration is provided right. 
+                                The side we don’t see is known as the ‘dark side’ of the Moon.</p>
+                </div>
+                
+        </div>
+        <div class='clear'></div>
 </div>
+
 <div class="aBlock hidden" id="1P1">
-        <!-- load assessment here -->
-        <h3>Phases of the Moon</h3>
-        <img src="/static/images/Phases1.png" width="500" height="333" style='float:right'>
         <br>
-        <br>1P
-        <p>Due to the orbit of the moon, from a specific location on Earth, the moon seems to change shape as it orbits. The different shapes are known as ‘phases’ of the Moon. This is due to the sunlight hitting the Moon at different angles as seen from Earth, causing different parts of the moon to be illuminated as it orbits the Earth. A common misconception is that the phases are caused by Earth's shadow falling on the Moon.</p>
+        <h3 style='text-align: center;'>Phases of the Moon</h3>
         <br>
-        <p>The moon’s phases are shown in the photo below. The phases start with a New Moon, where the Moon is not visible at all, and go from a crescent moon towards a full Moon and back to the New Moon.</p>
-        
-        <img src="/static/images/Phases2.jpg" width="500" height="333">
+        <div style='padding-left: 2em;'>
+                <img src="/static/images/Phases1.png" width="40%" height="280" 
+                style='float:right; padding-right:2em;'>
+                <div style='padding-right: 2em; width:60%'>
+                        <p>Due to the orbit of the moon, from a specific location on Earth, 
+                        the moon seems to change shape as it orbits. This is due to the sunlight hitting the 
+                        Moon at different angles and due to the Earth’s shadow, causing different parts of the 
+                        moon to be illuminated as it orbits the Earth. The different shapes are knoown 
+                        as ‘phases’ of the Moon. </p>
+                        <br>
+                        <p>The moon’s phases are shown in the photo below. The phases 
+                        start with a New Moon, where the Moon is not visible at all, and go from a 
+                        crescent moon towards a full Moon and back to the New Moon.</p>
+                </div>
+        </div>
+        <div class='clear'></div>
 </div>
 
 <div class="aBlock hidden" id="1P2">
-        <!-- load next bit of assessment -->
-        <p>First Q form goes here</p>
-        <form class = "questionForm">
-                <div><!--Question-->
-                        <h3 style='text-align: center'>{{answers[0].question}}</h3>
+        <br>
+        <h3 style='text-align: center;'>Moon and Tidal Effects</h3>
+        <br>
+        <div style='padding-left: 2em;'>    
+                <img src="/static/images/Tides.gif" width="40%" height="300" 
+                style='float: right; padding-right:2em;'>
+                <div style='padding-right: 2em; width:60%'>
+                        <p>The gravitational attraction of the Earth on the Moon keeps it in orbit, 
+                                but the Moon also has its own gravitational pull on the Earth. 
+                                The Moon has a mass approximately 1.2% that of Earth’s, this means there is a 
+                                significant gravitational pull from the Moon on the Earth. </p>
+                        <br>
+                        <p>This pull influences the Earth’s oceans and causes the water to rise in 
+                                accordance with the position of the moon, as shown. This causes high-tide and 
+                                low-tide as seen on a beach or foreshore, and is essential for the 
+                                lifecycles of many aquatic creatures.</p>
                 </div>
-                <div>
-                        <input type='radio' id='1P2-1' name='1P2-1' value='{{answers[0].answer1}}'>
-                        <label for ='1p2-1'>{{answers[0].answer1}}</label><br>
-                        <input type='radio' id='1P2-1' name='1P2-2' value='{{answers[0].answer2}}'>
-                        <label for ='1p2-2'>{{answers[0].answer2}}</label><br>
-                        <input type='radio' id='1P2-1' name='1P2-3' value='{{answers[0].answer3}}'>
-                        <label for ='1p2-3'>{{answers[0].answer3}}</label><br>
-                        <input type='radio' id='1P2-1' name='1P2-4' value='{{answers[0].answer4}}'>
-                        <label for ='1p2-4'>{{answers[0].answer4}}</label>
-                </div>
-                <div style='float: right;'><!--submit button-->
-                        <button class = 'ansButton'>Submit</button>
-                </div>
-        </form>
+        </div>
+        <div class='clear'></div>
 </div>
+
 <div class="aBlock hidden" id="1P3">
-        <!-- load next bit of assessment -->
-        <h3>Moon and Tidal Effects</h3>
         <br>
+        <h3 style='text-align: center;'>Barycentre</h3>
         <br>
-        <p>The gravitational attraction of the Earth on the Moon keeps it in orbit, but the Moon also has its own gravitational pull on the Earth. The Moon has a mass approximately 1.2% that of Earth’s, this means there is a significant gravitational pull from the Moon on the Earth. </p>
+        <div style='padding-right: 2em;'>
+                <img src="/static/images/Barycentre.gif" width="40%" height="280" 
+                style='float: left; padding-left:2em;'>
+                <div style='padding-left: 2em; width:60%; float:right;'>
+                        <p>The gravitational pull of the Moon is quite large 
+                                and so causes the centre-of-mass of the Earth-Moon system to lie 4,671 km 
+                                away from the centre of the earth, 1700km below the surface of the Earth. 
+                                This means the Earth actually rotates around the combined centre-of-mass 
+                                known as the barycentre, as shown in the graphic. </p>
+                        <br>
+                        <p>The period of rotation is the same as the period of rotation of the Moon which is 
+                                aprroximately 28 days. But the speed at which the moon travels around the 
+                                barycentre is much faster than the speed at which the Earth travels.</p>
+                </div>
+        </div>
+        <div class='clear'></div>
         <br>
-        <p>This pull influences the Earth’s oceans and causes the water to rise in accordance with the position of the moon, as shown. This causes high-tide and low-tide as seen on a beach or foreshore, and is essential for the lifecycles of many aquatic creatures.</p>
-        <img src="Tides.gif" width="500" height="333">
 </div>
+
 <div class="aBlock hidden" id="1P4">
-        <!-- load next bit of assessment -->
-        <p>2nd Q</p>
         <br>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam consequuntur beatae ab iste nulla ullam dolorem unde soluta provident natus magni architecto, esse, eum rem accusantium itaque veritatis est dolor.</p>
+        <h3 style='text-align: center;'>Solar and Lunar Eclipses</h3>
         <br>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam consequuntur beatae ab iste nulla ullam dolorem unde soluta provident natus magni architecto, esse, eum rem accusantium itaque veritatis est dolor.</p>
+        <div style='padding-left:2em;padding-right:4em;'>
+                <p>The Moon allows two extraordinary events to occur throughout the year, 
+                        namely the solar and lunar eclipses. Both occur when the Sun, Moon and Earth 
+                        lie in a straight line but both are very unique.</p>
+        </div>
         <br>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam consequuntur beatae ab iste nulla ullam dolorem unde soluta provident natus magni architecto, esse, eum rem accusantium itaque veritatis est dolor.</p>
+        <img src="/static/images/Solar Eclipse.png" width="40%" height="250" 
+        style='float: left; padding-left:2em;'>
+        <div style='padding: 0em 2em;'>
+                <div style='width:60%; float:right; padding-right:2em;'>
+                        <p style='padding-left: 2em;'>A solar eclipse occurs when the Moon lies directly in 
+                                between the earth and the sun, blocking out the sun completely. This can only 
+                                occur, co-incidentally, because the angular size of the sun and the moon in 
+                                the sky are the same (0.5°). This allows astronomers to see the outer edges of 
+                                the sun, which is called the Corona, something that is otherwise invisible.</p>
+                </div>
+        </div>
+        <div class='clear'></div>
+        <br>
+        <br>
+        <div style='padding: 0em 2em;'>
+                <img src="/static/images/Lunar Eclipse.png" width="40%" height="250" 
+                style='float:right; padding-right:2em;'>
+                <div style='width:60%;'>
+                        <p style='padding-right: 2em;'>A Lunar eclipse, on the other hand, occurs when 
+                                the Earth comes between the Moon and the Sun. The Sun’s light cannot reach 
+                                the Moon directly, but instead passes around the Earth, through the Earth’s 
+                                atmosphere. The Atmosphere absorbs most of the light and leaves only the 
+                                longest wavelength red light to illuminate the Moon. This phenomenon is what 
+                                causes a ‘Blood Moon’ where the moon appears to be a reddish-orange hue.</p>
+                </div>
+                
+                
+        </div>
+        <div class='clear'></div>
 </div>
+
 <div class="aBlock hidden" id="1P5">
-        <!-- load next bit of assessment -->
-        <h3>Barycentre</h3>
-        <br>
-        <br>
-        <p>The gravitational pull of the Moon is quite large and so causes the centre-of-mass of the Earth-Moon system to lie 4,671 km away from the centre of the earth, ie. 1700km below the surface of the Earth. This means the Earth actually rotates around the combined centre-of-mass (barycentre), as shown in the graphic. </p>
-        <br>
-        <p>The period of rotation is the same as the period of rotation of the Moon ≈ 28 days. But the speed at which the moon travels around the barycentre is much faster than the speed at which the Earth travels.</p>
-        <img src="Barycentre.gif" width="500" height="333">
+        {{wtf.quick_form(form1)}}
 </div>
 <div class="aBlock hidden" id="1P6">
-        <!-- load next bit of assessment -->
-        <p>3rd Q</p>
-        <form class = 'questionForm'>
-                <div><!--Question-->
-                        <h3 style='text-align: center'>{{answers[2].question}}</h3>
-                </div>
-                <div>
-                        <input type='radio' id='1P2-1' name='1P2-1' value='{{answers[2].answer1}}'>
-                        <label for ='1p2-1'>{{answers[2].answer1}}</label><br>
-                        <input type='radio' id='1P2-1' name='1P2-2' value='{{answers[2].answer2}}'>
-                        <label for ='1p2-2'>{{answers[2].answer2}}</label><br>
-                        <input type='radio' id='1P2-1' name='1P2-3' value='{{answers[2].answer3}}'>
-                        <label for ='1p2-3'>{{answers[2].answer3}}</label><br>
-                        <input type='radio' id='1P2-1' name='1P2-4' value='{{answers[2].answer4}}'>
-                        <label for ='1p2-4'>{{answers[2].answer4}}</label>
-                </div>
-                <div style='float: right;'><!--submit button-->
-                        <button class = 'ansButton'>Submit</button>
-                </div>
-        </form>
-</div>
-<div class="aBlock hidden" id="1P7">
-        <!-- load next bit of assessment -->
-        <h3>Solar and Lunar Eclipse</h3>
-        <br>
-        <br>
-        <p>The Moon allows two extraordinary events to occur throughout the year, namely the solar and lunar eclipses. Both occur when the Sun, Moon and Earth lie in a straight line but both are very unique.</p>
-        <br>
-        <p>A solar eclipse occurs when the Moon lies directly in between the earth and the sun, blocking out the sun completely. This can only occur, co-incidentally, because the angular size of the sun and the moon in the sky are the same (0.5°). This allows astronomers to see the outer edges of the sun (called the Corona), which is otherwise invisible.</p>
-        <img src="Solar Eclipse.png" width="500" height="333">
-        <br>
-        <p>A Lunar eclipse, on the other hand, occurs when the Earth comes between the Moon and the Sun. The Sun’s light cannot reach the Moon directly, but instead passes around the Earth, through the Earth’s atmosphere. The Atmosphere absorbs most of the light and leaves only the longest wavelength red light to illuminate the Moon. This phenomenon is what causes a ‘Blood Moon’ where the moon appears to be a reddish-orange hue.</p>
-        <img src="Lunar Eclipse.png" width="500" height="333">
-</div>
-<div class="aBlock hidden" id="1P8">
-        <!-- load next bit of assessment -->
-        <p>4th Q</p>
-</div>
-<div class="aBlock hidden" id="1P9">
-        <!-- load next bit of assessment -->
         <br>
         <br>
         <h3 style='text-align:center'>Congratulations on Finishing "Assessment 1"</h3>
@@ -162,40 +179,41 @@
         </div>
 </div>
 <div class="aBlock hidden" id="2P0">
-        <!-- load next bit of assessment -->
-        <h1>The Sun</h1>
-        <p>Hunger for Heat</p>
+        <br>
+        <h3 style='text-align: center;'>Introduction</h3>
+        <br>
+        <div style='padding-left:2em;padding-right:4em;'>
+                <p>Our Sun is the largest object in the solar system. Everything in the solar system 
+                        revolves around the sun, including the Earth. Without the Sun the solar system 
+                        would not exist, hence the name ‘solar’ – meaning sun, and ‘system’, meaning sun’s 
+                        system.</p>
+        </div>
+        
 </div>
 <div class="aBlock hidden" id="2P1">
-        <!-- load next bit of assessment -->
-        <h3>Macroscopic properties of the Sun</h3>
         <br>
-        <p>The Sun has an extremely strong gravitational field, which arises due to its large mass. In fact the sun weighs about 1.989 x 1030 kg. In addition to being large and having lots of mass, the Sun is extremely bright and hot. This is because the Sun burns Hydrogen in its core through fusion, which can only occur at extremely high temperatures. The core temperature of the sun is ≈ 15 million °C.  However the temperature rapidly decreases towards the surface where the temperature is about 5,505 °C. The Sun is also very far from the Earth, about 151 million km, it is due to this that the Earth does not get bombarded with radiation from the sun and life can flourish here on Earth.</p>
+        <h3 style='text-align: center;'>Macroscopic properties of the Sun</h3>
+        <br>
+        <div style='padding-left:2em;padding-right:4em;'>
+                <p>The Sun has an extremely strong gravitational field, which arises due to its large mass. 
+                        In fact the sun weighs about 1.989 x 1030 kg. In addition to being large and having 
+                        lots of mass, the Sun is extremely bright and hot. This is because the Sun burns 
+                        Hydrogen in its core through fusion, which can only occur at extremely high 
+                        temperatures. The core temperature of the sun is ≈ 15 million °C. </p>
+                        <br>
+                        <p>However the temperature rapidly decreases 
+                        towards the surface where the temperature is about 5,505 °C. The Sun is also very 
+                        far from the Earth, about 151 million km, it is due to this that the Earth does not 
+                        get bombarded with radiation from the sun and life can flourish here on Earth. This 
+                        is known as the ‘Goldilock’s Zone’ where just the right amount of radiation reaches 
+                        Earth to sustain life.</p>
+        </div>
+        
 </div>
 <div class="aBlock hidden" id="2P2">
-        <!-- load next bit of assessment -->
-        <p>2nd Q1</p>
-        <form class = 'questionForm'>
-                <div><!--Question-->
-                        <h3 style='text-align: center'>{{answers[4].question}}</h3>
-                </div>
-                <div>
-                        <input type='radio' id='1P2-1' name='1P2-1' value='{{answers[4].answer1}}'>
-                        <label for ='1p2-1'>{{answers[4].answer1}}</label><br>
-                        <input type='radio' id='1P2-1' name='1P2-2' value='{{answers[4].answer2}}'>
-                        <label for ='1p2-2'>{{answers[4].answer2}}</label><br>
-                        <input type='radio' id='1P2-1' name='1P2-3' value='{{answers[4].answer3}}'>
-                        <label for ='1p2-3'>{{answers[4].answer3}}</label><br>
-                        <input type='radio' id='1P2-1' name='1P2-4' value='{{answers[4].answer4}}'>
-                        <label for ='1p2-4'>{{answers[4].answer4}}</label>
-                </div>
-                <div style='float: right;'><!--submit button-->
-                        <button class = 'ansButton'>Submit</button>
-                </div>
-        </form>
+        {{wtf.quick_form(form2)}}
 </div>
 <div class="aBlock hidden" id="2P3">
-        <!-- load next bit of assessment -->
         <br>
         <br>
         <h3 style='text-align:center'>Congratulations on Finishing "Assessment 2"</h3>
