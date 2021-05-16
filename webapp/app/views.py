@@ -73,7 +73,7 @@ def getValue():
 @setQuestions_bp.route("/setQuestions", methods=["POST"])
 def setQuestions():
     set = Answers.query.all()
-    if set is not None:
+    if set is None:
         set1 = Answers(question='What is are the phases of the Moon caused by?', answer1='Sunlight reflecting at different angles on the surface of the Moon as seen from Earth.',
                       answer2='The effect of Earth’s shadow covering specific parts of the Moon.', answer3='The rotation of the Moon about its axis.',
                       answer4='Due to the Earth’s rotation.', correctAnswer='Sunlight reflecting at different angles on the surface of the Moon as seen from Earth.', mark=10)
