@@ -1,5 +1,4 @@
 {%extends "base.html" %}
-{% import 'bootstrap/wtf.html' as wtf %}
 {% block title %}Assessments{% endblock %}
 {% block content %}
 <div class="gen">
@@ -165,7 +164,6 @@
 </div>
 
 <div class="aBlock hidden" id="1P5">
-        {{wtf.quick_form(form1)}}
 </div>
 <div class="aBlock hidden" id="1P6">
         <br>
@@ -211,7 +209,6 @@
         
 </div>
 <div class="aBlock hidden" id="2P2">
-        {{wtf.quick_form(form2)}}
 </div>
 <div class="aBlock hidden" id="2P3">
         <br>
