@@ -164,6 +164,17 @@
 </div>
 
 <div class="aBlock hidden" id="1P5">
+        <h2 style='text-align: center;'>Quiz</h2>
+        <br>
+        {% for i in range(4) %}
+                {{question1[i]}}
+                {% for j in range (4)}
+                        <form style='text-align: center;'>
+                        <input type="radio" name=questions1[0] id={{answer1[i][j]}}>
+                        <label>{{answer1[i][j]}</label><br>
+                
+        <p style = "border-style: solid;"> Check </p>
+        {% endfor %}
 </div>
 <div class="aBlock hidden" id="1P6">
         <br>
@@ -198,7 +209,7 @@
                         lots of mass, the Sun is extremely bright and hot. This is because the Sun burns 
                         Hydrogen in its core through fusion, which can only occur at extremely high 
                         temperatures. The core temperature of the sun is ≈ 15 million °C. </p>
-                        <br>
+                        <br> 
                         <p>However the temperature rapidly decreases 
                         towards the surface where the temperature is about 5,505 °C. The Sun is also very 
                         far from the Earth, about 151 million km, it is due to this that the Earth does not 
@@ -209,6 +220,7 @@
         
 </div>
 <div class="aBlock hidden" id="2P2">
+        <p>second form</p>
 </div>
 <div class="aBlock hidden" id="2P3">
         <br>
