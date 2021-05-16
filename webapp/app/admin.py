@@ -52,7 +52,6 @@ def deleteAssessment():
 @removeUser_bp.route("/removeUser", methods=["POST"])
 def removeUser():
     # Function to get user details from ajax
-    req = request.get_json()
     username = request.form['username']
 
     current_user_username = User.query.filter_by(username=username).first()
@@ -67,7 +66,6 @@ def removeUser():
 @getUser_bp.route("/getUser", methods=["POST"])
 def getUser():
     # Function to get user details from ajax
-    req = request.get_json()
     query = request.form['query']
 
     current_user_email = User.query.filter_by(email=query).first()
@@ -144,7 +142,6 @@ def adminAssessment():
 
         number_of_question = 0
         questions_from_form = []
-        scores = []
         for key in request.form.keys():
 
             # Add questions to db

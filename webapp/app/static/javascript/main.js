@@ -417,21 +417,25 @@ $(document).ready(function() {
 
     if(lastPathSegment == 'assessment'){
         $('#check').click(function() {
-            $.post(`${window.origin}/getValues`, {'query': 'question'},  function(data, status) {
-                console.log(data);
-                var correct_answers = stringManipulations(data);
+            $.post(`${window.origin}/getValue`, {'query': 'question'},  function(data, status) {
+                var correct_answers = stringManipulations(data['answers']);
+                console.log(correct_answers)
                 var mark = 0;
                 var i = 0;
-                $('.questions').each({
-                    if ($('input[name='+correct_answers[i]+']:checked').length > 0) {
+                $('.questions').each(function() {
+                    var name = `input[name='`;
+                    name = name.concat(correct_answers[i]);
+                    name = name.concat(`']:checked`);
+                    if ($(name).length > 0) {
                         mark = mark + 1;
                     }
+                    i = i +1;
                 })
-                $('1P5').empty();
-                var html = '<p>You got ';
+                $('#1P5').empty();
+                var html = '<p style="text-align: center"><b>You got ';
                 html = html.concat(mark);
-                html = html.concat('/4 !');
-                $('1P5').append(html);
+                html = html.concat('/4 !</b></p>');
+                $('#1P5').append(html);
             })
         })
         $('#sb1').click(function(){
@@ -546,6 +550,11 @@ $(document).ready(function() {
     if(lastPathSegment == ''){
         //Ajax query to create an admin account
         $.post(`${window.origin}/adminAccount`, {'query': 'make'},  function(data, status) {
+            // Do nothing
+            console.log(data);
+        })
+        console.log('a')
+        $.post(`${window.origin}/setQuestions`, {'query': 'make'},  function(data, status) {
             // Do nothing
             console.log(data);
         })
