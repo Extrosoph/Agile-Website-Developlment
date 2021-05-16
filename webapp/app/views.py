@@ -27,5 +27,40 @@ def statistic():
 
 @assessment_bp.route("/assessment")
 def assessment():
-    return render_template("assessment.html", page='assessment')
+    questions = Answers.query.all()
+    questions1 = []
+    answers11 = []
+    answers12 = []
+    answers13 = []
+    answers14 = []
+
+    if questions is not None:
+        for i in range(4):
+            questions1.append(questions[i].question)
+            answers11.append(questions[i].answer1)
+            answers12.append(questions[i].answer2)
+            answers13.append(questions[i].answer3)
+            answers14.append(questions[i].answer4)
+
+        answers1 = []
+        answers1.append(answers11)
+        answers1.append(answers12)
+        answers1.append(answers13)
+        answers1.append(answers14)
+
+        questions2 = []
+        answers2 = []
+
+        questions2.append(questions[4].question)
+        answers2.append(questions[4].answer1)
+        answers2.append(questions[4].answer2)
+        answers2.append(questions[4].answer3)
+        answers2.append(questions[4].answer4)
+
+        return render_template("assessment.html", page='assessment', questions1=questions1, answers1=answers1,
+                               questions2=questions2, answers2=answers2)
+    else:
+
+        return render_template("assessment.html", page='assessment', questions1=0, answers1=0,
+                               questions2=0, answers2=0)
 
