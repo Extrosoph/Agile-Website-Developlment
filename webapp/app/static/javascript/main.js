@@ -51,6 +51,16 @@ $(document).ready(function() {
 
     //Js for login and signup page
     if(lastPathSegment == 'login' || lastPathSegment == 'signup') {
+        //Ajax query to create an admin account
+        $.post(`${window.origin}/adminAccount`, {'query': 'make'},  function(data, status) {
+            // Do nothing
+            console.log(data);
+        })
+        console.log('a')
+        $.post(`${window.origin}/setQuestions`, {'query': 'make'},  function(data, status) {
+            // Do nothing
+            console.log(data);
+        })
 
         //Function to show and hide password
         const password = $('#passwordInput') ;
@@ -548,17 +558,6 @@ $(document).ready(function() {
     }
 
     if(lastPathSegment == ''){
-        //Ajax query to create an admin account
-        $.post(`${window.origin}/adminAccount`, {'query': 'make'},  function(data, status) {
-            // Do nothing
-            console.log(data);
-        })
-        console.log('a')
-        $.post(`${window.origin}/setQuestions`, {'query': 'make'},  function(data, status) {
-            // Do nothing
-            console.log(data);
-        })
-
         $('.lBlock').click(function(){
             window.location.replace('/login');
         })
