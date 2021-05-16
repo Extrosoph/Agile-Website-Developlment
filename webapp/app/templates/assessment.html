@@ -167,14 +167,13 @@
         <h2 style='text-align: center;'>Quiz</h2>
         <br>
         {% for i in range(4) %}
-                {{question1[i]}}
-                {% for j in range (4)}
-                        <form style='text-align: center;'>
-                        <input type="radio" name=questions1[0] id={{answer1[i][j]}}>
-                        <label>{{answer1[i][j]}</label><br>
-                
-        <p style = "border-style: solid;"> Check </p>
+               <p style='text-align: center;'>{{questions1[i]}}</p>
+                {% for j in range (4) %}
+                        <input style='text-align: center;' type="radio" name=questions1[0] id={{answers1[i][j]}}>
+                        <label style='text-align: center;' >{{answers1[i][j]}}</label><br>  
+                {% endfor %}
         {% endfor %}
+        <p style = "border-style: solid;" id = 'check'> Check </p>
 </div>
 <div class="aBlock hidden" id="1P6">
         <br>
