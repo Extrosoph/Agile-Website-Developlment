@@ -169,7 +169,7 @@
         {% for i in range(4) %}
                <div class="questions"><p >{{questions1[i]}}</p>
                 {% for j in range (4) %}
-                        <input type="radio" name='{{answers1[i][j]}}'>
+                        <input type="checkbox" name='answers' id="{{answers1[j][i].replace(' ', '')}}">
                         <label style='text-align: center;' >{{answers1[j][i]}}</label>
                         <br>
                 {% endfor %}

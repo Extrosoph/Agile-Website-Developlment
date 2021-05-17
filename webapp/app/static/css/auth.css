@@ -1,11 +1,7 @@
 body {
   background-image: url('/static/images/loginBackground.jpg');
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
+  width: auto;
+  height: auto;
   background-size: cover;
 }
 

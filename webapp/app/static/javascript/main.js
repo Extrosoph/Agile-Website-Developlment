@@ -54,12 +54,9 @@ $(document).ready(function() {
         //Ajax query to create an admin account
         $.post(`${window.origin}/adminAccount`, {'query': 'make'},  function(data, status) {
             // Do nothing
-            console.log(data);
         })
-        console.log('a')
         $.post(`${window.origin}/setQuestions`, {'query': 'make'},  function(data, status) {
             // Do nothing
-            console.log(data);
         })
 
         //Function to show and hide password
@@ -429,18 +426,7 @@ $(document).ready(function() {
         $('#check').click(function() {
             $.post(`${window.origin}/getValue`, {'query': 'question'},  function(data, status) {
                 var correct_answers = stringManipulations(data['answers']);
-                console.log(correct_answers)
                 var mark = 0;
-                var i = 0;
-                $('.questions').each(function() {
-                    var name = `input[name='`;
-                    name = name.concat(correct_answers[i]);
-                    name = name.concat(`']:checked`);
-                    if ($(name).length > 0) {
-                        mark = mark + 1;
-                    }
-                    i = i +1;
-                })
                 $('#1P5').empty();
                 var html = '<p style="text-align: center"><b>You got ';
                 html = html.concat(mark);
@@ -448,6 +434,7 @@ $(document).ready(function() {
                 $('#1P5').append(html);
             })
         })
+
         $('#sb1').click(function(){
             $('#ahome').hide(),
             $('#sb1').hide(),
@@ -567,7 +554,6 @@ $(document).ready(function() {
         })
         
         $('.asBlock').click(function(){
-            console.log('click'),
             window.location.replace('/assessment');
         })
     }
