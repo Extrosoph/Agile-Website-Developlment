@@ -2,13 +2,13 @@
 
 ## Venv
 The best way to run the web server is through the use of python virtual environment and so
-far we have been utilising it. To install venv we ran [pip install venv] and then ran [virtualenv venv] to create the venv folder.
+far we have been utilising it. To install venv we ran **[ pip install venv ]** and then ran **[ virtualenv venv ]** to create the venv folder.
 
-##Flask Migrate
+## Flask Migrate
 Once we have the venv setup we ran use flask migrate to create the database file.
-To run set up flask migrate we initially ran [flask db init] to create the migration folder, then
-we ran [flask db migrate] to create the first migration. After the first migrations are finished, we
-ran [flask db upgrade] to make and update the database based on changes being made to the model.py file.
+To run set up flask migrate we initially ran **[ flask db init ]** to create the migration folder, then
+we ran **[ flask db migrate ]** to create the first migration. After the first migrations are finished, we
+ran **[ flask db upgrade ]** to make and update the database based on changes being made to the model.py file.
 
 ## Structure
 For the set up of the webapp we followed the structure from large flask webapp. We have the first folder
@@ -30,19 +30,20 @@ We had always ran git commits and push with specific messages and resolve any me
 For the database we initially created them through the sqlalchemy until we started using flask migrate
 We had an initial design which were changed numerous amount until we had the design now. They include multiple type of relationship
 from one-to-one, one-to-many and many-to-many. In the initial design there were a lot of unnecessary tables which were then removed to 
-make the design better.
+make the design better. There is an included erd diagram which shows the structure of our database including the relationships.
 
 ## Initial Set UP
 Depending on the OS it will either be pip or pip3 and set or export. 
-pip3 is mainly used for mac/linux and export is used for max/linux and so far every one has been working on windows.
+pip3 and export is used for mac/linux.
+pip and set is used for windows.
 
-1. To set up the server we first run [pip install -r -requirements.txt] to download all the required dependencies.
-2. We go into the webapp folder and run [pip intall -e .] to set up the application.
-3. exit the webapp folder.
-4. run [flask db upgrade 9f85057d656a] to set up the database based on the latest version
+1. To set up the server we first run **[ pip install -r -requirements.txt ]** to download all the required dependencies
+2. We go into the webapp folder and run **[ pip intall -e . ]** to set up the application
+3. exit the webapp folder **[ cd .. ]**
+4. run **[flask db upgrade 9f85057d656a]** to set up the database based on the latest version
 5. Depending on the required task we either set environment to development or production:
-    * set FLASK_ENV=development
-    * set FLASK_ENV=production
+    * **[ set FLASK_ENV=development ]**
+    * **[ set FLASK_ENV=production ]**
 6. flask run
 
 # Testing with selenium:
