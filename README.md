@@ -1,94 +1,60 @@
-# How to run with venv:
+# Design and Set up
 
-## windows:
+## Venv
+The best way to run the web server is through the use of python virtual environment and so
+far we have been utilising it. To install venv we ran [pip install venv] and then ran [virtualenv venv] to create the venv folder.
 
-### How to install venv through pip:
+##Flask Migrate
+Once we have the venv setup we ran use flask migrate to create the database file.
+To run set up flask migrate we initially ran [flask db init] to create the migration folder, then
+we ran [flask db migrate] to create the first migration. After the first migrations are finished, we
+ran [flask db upgrade] to make and update the database based on changes being made to the model.py file.
 
-1. pip install virtualenv
-2. virtualenv venv
+## Structure
+For the set up of the webapp we followed the structure from large flask webapp. We have the first folder
+called webapp and another folder called app inside which holds all the routing, static files and html templates.
+We also made setup.py which is from the large flask application website and also created a config file which sets the flask configurations.
+Every time we need to include a specific dependencies we add them to requirements.txt which can then be installed through pip.
 
-### Must install requirements!
+## Flask, Jquery and Ajax 
+We had chosen to keep using Jquery for our main.js file to make it neater. Throughout main.js we implemented many ajax POST and GET request
+to make our website more efficient. We kept the Js to be external and only one file for the same reason. Unfortunately we were unable to keep the css
+file in one file, but we maintained a unique naming sceme. We also had to consider whether to use single application or multiple page 
+application for certain pages using Jquery.
 
-* pip install -r requirements.txt
+## Gits
+We added certain files which did not need to be in git, and they are placed in .gitignore file.
+We had always ran git commits and push with specific messages and resolve any merge conflict together.
 
-#### Must create the DB file first!
+## Database
+For the database we initially created them through the sqlalchemy until we started using flask migrate
+We had an initial design which were changed numerous amount until we had the design now. They include multiple type of relationship
+from one-to-one, one-to-many and many-to-many. In the initial design there were a lot of unnecessary tables which were then removed to 
+make the design better.
 
-1. venv\Scripts\activate.bat
-2. set FLASK_APP=webapp\app
-3. flask db migrate
-4. flask db upgrade
-5. set FLASK_ENV=development
+## Initial Set UP
+Depending on the OS it will either be pip or pip3 and set or export. 
+pip3 is mainly used for mac/linux and export is used for max/linux and so far every one has been working on windows.
+
+1. To set up the server we first run [pip install -r -requirements.txt] to download all the required dependencies.
+2. We go into the webapp folder and run [pip intall -e .] to set up the application.
+3. exit the webapp folder.
+4. run [flask db upgrade 9f85057d656a] to set up the database based on the latest version
+5. Depending on the required task we either set environment to development or production:
+    * set FLASK_ENV=development
+    * set FLASK_ENV=production
 6. flask run
-   
-## mac/linux:
-
-### Must install requirements!
-
-* pip3 install -r requirements.txt
-
-#### Must create the DB file first!
-
-1. source venv/bin/activate
-2. export FLASK_APP=webapp\app
-3. flask db migrate
-4. flask db upgrade
-5. export FLASK_ENV=development
-6. flask run
-
-## How to deactivate venv:
-
-* deactivate
-
-# How to run without venv:
-
-## windows:
-
-### Must install requirements!
-
-* pip3 install -r requirements.txt
-
-#### Must create the DB file first!
-
-1. set FLASK_APP=webapp\app
-2. flask db migrate
-3. flask db upgrade
-4. set FLASK_ENV=development
-5. flask run
-
-## mac/linux:
-
-### Must install requirements!
-
-* pip install -r requirements.txt
-
-#### Must create the DB file first!
-
-1. export FLASK_APP=webapp\app
-2. flask db migrate
-3. flask db upgrade
-4. export FLASK_ENV=development
-5. flask run
 
 # Testing with selenium:
 
-1. run test.py
+We had started on testing with selenium in test.py file using chromebrowser but we also planned on using Safary driver as well as mozilla Firefor driver.
+So far test.py can click on links and login only.
 
-# Account with admin privileges for testing: 
-**This account will be created once the server starts**
+## Accounts made
 
+When the web server starts it will create a new user which can be used for testing.
+The details of the account is:
 * username: admin
-* password: admin
 * email: admin@admin.com
+* password: admin
 
-# Github process:
-
-* git clone <linktorepo> to clone the repository
-* git pull to pull updated file
-* git commit to commit changes to a file
-* git add . to add the commits
-* git push to push the changes from local to remote branch
-* git checkout <branchname> to check out to another branch
-* git fetch to update the project
-* git log to show the commits log
-* git status to show the changes between the local and remote branch
-*Will create a simple ERD soon too :)
