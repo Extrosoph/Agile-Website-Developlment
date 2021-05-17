@@ -15,6 +15,7 @@ For the set up of the webapp we followed the structure from large flask webapp. 
 called webapp and another folder called app inside which holds all the routing, static files and html templates.
 We also made setup.py which is from the large flask application website and also created a config file which sets the flask configurations.
 Every time we need to include a specific dependencies we add them to requirements.txt which can then be installed through pip.
+We have always been using bluerpints from the beginning.
 
 ## Flask, Jquery and Ajax 
 We had chosen to keep using Jquery for our main.js file to make it neater. Throughout main.js we implemented many ajax POST and GET request
@@ -58,4 +59,10 @@ The details of the account is:
 * username: admin
 * email: admin@admin.com
 * password: admin
+
+## References
+for webapp structure: https://flask.palletsprojects.com/en/1.1.x/patterns/packages/
+for creating erd: erdplus.com
+for config.py: https://flask.palletsprojects.com/en/1.1.x/config/
+for flask_migrate: https://flask-migrate.readthedocs.io/en/latest/
 
