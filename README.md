@@ -62,7 +62,10 @@ The details of the account is:
 
 ## References
 for webapp structure: https://flask.palletsprojects.com/en/1.1.x/patterns/packages/
+
 for creating erd: erdplus.com
+
 for config.py: https://flask.palletsprojects.com/en/1.1.x/config/
+
 for flask_migrate: https://flask-migrate.readthedocs.io/en/latest/
 
