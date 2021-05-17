@@ -1,5 +1,5 @@
 Group:
-22764884: THheoridho Andily
+22764884: Theoridho Andily
 22723671: Saksham Chopra
 21499457: Isaac Chegwidden
 
