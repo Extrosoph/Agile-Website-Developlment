@@ -1,3 +1,8 @@
+Group:
+22764884: THheoridho Andily
+22723671: Saksham Chopra
+21499457: Isaac Chegwidden
+
 # Design and Set up
 
 ## Venv
